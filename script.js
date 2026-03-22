@@ -162,16 +162,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const date = document.getElementById('order-date').value || 'Belirtilmedi';
             const notes = document.getElementById('order-notes').value || 'Yok';
 
-            let message = `*Yeni Özel Sipariş Talebi*%0A%0A`;
-            message += `*👤 İsim:* ${name}%0A`;
-            message += `*📞 Telefon:* ${phone}%0A`;
-            message += `*🧶 Ürün:* ${category}%0A`;
-            message += `*🎨 Renk:* ${color}%0A`;
-            message += `*📏 Ölçü:* ${size}%0A`;
-            message += `*🗓️ Tarih:* ${date}%0A`;
-            message += `%0A*📝 Notlar:* ${notes}`;
+            let message = `*Yeni Özel Sipariş Talebi*\n\n`;
+            message += `👤 *İsim:* ${name}\n`;
+            message += `📞 *Telefon:* ${phone}\n`;
+            message += `🧶 *Ürün:* ${category}\n`;
+            message += `🎨 *Renk:* ${color}\n`;
+            message += `📏 *Ölçü:* ${size}\n`;
+            message += `🗓️ *Tarih:* ${date}\n\n`;
+            message += `📝 *Notlar:* ${notes}`;
 
-            const whatsappUrl = `https://wa.me/905330513394?text=${message}`;
+            const whatsappUrl = `https://wa.me/905330513394?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         });
     }
