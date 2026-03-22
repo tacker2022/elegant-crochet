@@ -178,30 +178,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 7. Soundscape Logic ---
     const soundToggle = document.getElementById('sound-toggle');
+    const statusCard = document.getElementById('sound-status-card');
+    const statusMsg = document.getElementById('sound-status-msg');
+    
     const bgAmbience = new Audio('https://upload.wikimedia.org/wikipedia/commons/b/b0/Bird_Song_Ambience.mp3');
     bgAmbience.loop = true;
     bgAmbience.volume = 0.5;
 
     let isPlaying = false;
 
+    function showStatus(msg, duration = 3000) {
+        if (!statusCard || !statusMsg) return;
+        statusMsg.innerText = msg;
+        statusCard.classList.add('active');
+        setTimeout(() => {
+            statusCard.classList.remove('active');
+        }, duration);
+    }
+
     if (soundToggle) {
         soundToggle.addEventListener('click', () => {
-            console.log("Sound toggle clicked, isPlaying:", isPlaying);
             if (isPlaying) {
                 bgAmbience.pause();
-                console.log("Ambience paused");
+                showStatus("Atölye sesi duraklatıldı.");
                 soundToggle.classList.remove('playing');
                 soundToggle.querySelector('i').className = 'fas fa-volume-mute';
             } else {
+                showStatus("Ses yükleniyor, lütfen bekleyin...");
                 bgAmbience.play()
                     .then(() => {
-                        console.log("Ambience playing successfully");
+                        showStatus("Atölye huzuru aktif.");
                         soundToggle.classList.add('playing');
                         soundToggle.querySelector('i').className = 'fas fa-volume-up';
                     })
                     .catch(e => {
                         console.error("Ambience Error:", e);
-                        alert("Ses dosyası yüklenemedi, bağlantı sorunu olabilir.");
+                        showStatus("Hata: Ses dosyası engellendi veya yüklenemedi. (CORS/Bağlantı)", 5000);
                     });
             }
             isPlaying = !isPlaying;
