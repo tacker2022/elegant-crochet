@@ -472,8 +472,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
 }
 
 .product-card {
@@ -491,7 +491,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .product-img-wrapper {
     position: relative;
-    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    padding-top: 75%; /* 4:3 Aspect Ratio - Daha büyük dikey alan */
     overflow: hidden;
     background-color: var(--color-bg);
 }
