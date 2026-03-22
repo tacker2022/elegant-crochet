@@ -197,14 +197,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (soundToggle) {
-        soundToggle.addEventListener('click', () => {
+        soundToggle.addEventListener('click', (e) => {
+            e.preventDefault(); // Her ihtimale karşı
             if (isPlaying) {
                 bgAmbience.pause();
                 showStatus("Atölye sesi duraklatıldı.");
                 soundToggle.classList.remove('playing');
                 soundToggle.querySelector('i').className = 'fas fa-volume-mute';
             } else {
-                showStatus("Ses yükleniyor, lütfen bekleyin...");
+                showStatus("Ses yükleniyor...");
                 bgAmbience.play()
                     .then(() => {
                         showStatus("Atölye huzuru aktif.");
@@ -213,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     })
                     .catch(e => {
                         console.error("Ambience Error:", e);
-                        showStatus("Hata: Ses dosyası engellendi veya yüklenemedi. (CORS/Bağlantı)", 5000);
+                        showStatus("Hata: Ses dosyası engellendi. (CORS)", 5000);
                     });
             }
             isPlaying = !isPlaying;
