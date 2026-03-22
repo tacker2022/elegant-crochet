@@ -547,6 +547,47 @@ h1, h2, h3, h4, h5, h6 {
     font-style: italic;
 }
 
+/* --- Category Sections --- */
+.category-section {
+    margin-bottom: 6rem;
+}
+
+.category-title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    color: var(--color-brown-dark);
+    margin-bottom: 2.5rem;
+    position: relative;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+.category-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background-color: var(--color-brown);
+}
+
+.coming-soon-box {
+    background-color: var(--color-white);
+    border: 1px dashed var(--color-brown);
+    padding: 4rem 2rem;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.coming-soon-box:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-5px);
+}
+
 /* ==============================
    Why Us Section
 ============================== */
