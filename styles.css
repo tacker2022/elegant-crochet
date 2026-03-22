@@ -1250,13 +1250,147 @@ a.premium-footer-link:hover { opacity: 0.7; padding-left: 5px; color: var(--colo
     100% { box-shadow: 0 0 0 0 rgba(139, 115, 85, 0); }
 }
 
+    }
+}
+
+/* --- Care Guide Section --- */
+.care-guide {
+    background-color: var(--color-bg);
+}
+
+.care-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.care-item {
+    padding: 2.5rem;
+    background: var(--color-white);
+    border-radius: 12px;
+    transition: var(--transition);
+    border: 1px solid transparent;
+    text-align: center;
+}
+
+.care-item:hover {
+    transform: translateY(-10px);
+    border-color: var(--color-brown-light);
+    box-shadow: var(--shadow-md);
+}
+
+.care-icon {
+    width: 70px;
+    height: 70px;
+    background-color: var(--color-bg);
+    color: var(--color-brown);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    margin: 0 auto 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.care-item:hover .care-icon {
+    background-color: var(--color-brown);
+    color: var(--color-white);
+}
+
+.care-item h4 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: var(--color-brown-dark);
+    margin-bottom: 1rem;
+}
+
+.care-item p {
+    font-size: 0.95rem;
+    color: var(--color-brown);
+    line-height: 1.6;
+}
+
+/* --- Custom Order Form --- */
+.custom-order {
+    background-color: var(--color-white);
+}
+
+.custom-order-wrapper {
+    max-width: 850px;
+    margin: 0 auto;
+    background: var(--color-bg);
+    padding: 4rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+}
+
+.bespoke-form {
+    margin-top: 2rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    text-align: left;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group.full-width {
+    grid-column: span 2;
+}
+
+.form-group label {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    color: var(--color-brown-dark);
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.9rem 1.2rem;
+    border: 1px solid rgba(139, 115, 85, 0.2);
+    border-radius: 10px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    background: var(--color-white);
+    transition: var(--transition);
+    color: var(--color-brown-dark);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-brown);
+    box-shadow: 0 0 0 4px rgba(139, 115, 85, 0.1);
+}
+
 @media (max-width: 768px) {
-    .whatsapp-float {
-        width: 55px;
-        height: 55px;
-        bottom: 20px;
-        right: 20px;
-        font-size: 28px;
+    .care-grid {
+        gap: 1.5rem;
+    }
+    .care-item {
+        padding: 2rem 1.5rem;
+    }
+    .custom-order-wrapper {
+        padding: 2.5rem 1.5rem;
+    }
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    .form-group.full-width {
+        grid-column: span 1;
     }
 }
 

@@ -147,4 +147,32 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // --- 6. Bespoke Form Logic ---
+    const bespokeForm = document.getElementById('bespoke-form');
+    if (bespokeForm) {
+        bespokeForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('order-name').value;
+            const phone = document.getElementById('order-phone').value;
+            const category = document.getElementById('order-category').value;
+            const color = document.getElementById('order-color').value || 'Belirtilmedi';
+            const size = document.getElementById('order-size').value || 'Belirtilmedi';
+            const date = document.getElementById('order-date').value || 'Belirtilmedi';
+            const notes = document.getElementById('order-notes').value || 'Yok';
+
+            let message = `*Yeni Özel Sipariş Talebi*%0A%0A`;
+            message += `*👤 İsim:* ${name}%0A`;
+            message += `*📞 Telefon:* ${phone}%0A`;
+            message += `*🧶 Ürün:* ${category}%0A`;
+            message += `*🎨 Renk:* ${color}%0A`;
+            message += `*📏 Ölçü:* ${size}%0A`;
+            message += `*🗓️ Tarih:* ${date}%0A`;
+            message += `%0A*📝 Notlar:* ${notes}`;
+
+            const whatsappUrl = `https://wa.me/905330513394?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        });
+    }
 });

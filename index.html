@@ -451,6 +451,63 @@
         </div>
     </section>
 
+    <!-- Custom Order Section -->
+    <section class="custom-order section-padding" id="custom-order">
+        <div class="container reveal">
+            <div class="custom-order-wrapper">
+                <div class="custom-order-info text-center">
+                    <h3 class="section-subtitle">Hayalinizdeki Tasarım</h3>
+                    <h2 class="section-title">Size Özel Sipariş</h2>
+                    <p style="margin-bottom: 3rem;">Sofranızın ölçülerine veya hayalinizdeki renklere uygun bir tasarım mı istiyorsunuz? Detayları iletin, size özel örelim.</p>
+                </div>
+
+                <form id="bespoke-form" class="bespoke-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="order-name">Adınız Soyadınız</label>
+                            <input type="text" id="order-name" placeholder="Örn: Ayşe Yılmaz" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="order-phone">Telefon Numaranız</label>
+                            <input type="tel" id="order-phone" placeholder="05XX XXX XX XX" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="order-category">Ürün Tipi</label>
+                            <select id="order-category" required>
+                                <option value="" disabled selected>Seçiniz...</option>
+                                <option value="Supla Seti">Supla Seti</option>
+                                <option value="Runner">Runner</option>
+                                <option value="El Örgüsü Çanta">El Örgüsü Çanta</option>
+                                <option value="Diğer">Diğer</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="order-color">Renk Tercihi</label>
+                            <input type="text" id="order-color" placeholder="Örn: Vizon, Toprak Tonları">
+                        </div>
+                        <div class="form-group">
+                            <label for="order-size">Ölçü Bilgisi (Opsiyonel)</label>
+                            <input type="text" id="order-size" placeholder="Örn: 35cm Çap veya Masa Ölçüsü">
+                        </div>
+                        <div class="form-group">
+                            <label for="order-date">İstediğiniz Teslim Tarihi</label>
+                            <input type="date" id="order-date">
+                        </div>
+                    </div>
+                    <div class="form-group full-width" style="margin-top: 1.5rem;">
+                        <label for="order-notes">Eklemek İstediğiniz Detaylar</label>
+                        <textarea id="order-notes" rows="4" placeholder="Hayalinizdeki tasarımı bize kısaca tarif edin..."></textarea>
+                    </div>
+                    <div class="text-center" style="margin-top: 3rem;">
+                        <button type="submit" class="btn btn-primary premium-btn" style="padding: 1rem 4rem;">
+                            <i class="fab fa-whatsapp" style="margin-right: 10px;"></i> Talebi WhatsApp ile İlet
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- Instagram & Social Proof -->
     <section class="social section-padding" id="instagram">
         <div class="container text-center reveal">
