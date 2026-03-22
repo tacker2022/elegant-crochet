@@ -175,4 +175,27 @@ document.addEventListener('DOMContentLoaded', () => {
             window.open(whatsappUrl, '_blank');
         });
     }
+
+    // --- 7. Soundscape Logic ---
+    const soundToggle = document.getElementById('sound-toggle');
+    const bgAmbience = new Audio('https://www.orangefreesounds.com/wp-content/uploads/2021/01/Wind-birds-and-rain-nature-sounds.mp3');
+    bgAmbience.loop = true;
+    bgAmbience.volume = 0.3;
+
+    let isPlaying = false;
+
+    if (soundToggle) {
+        soundToggle.addEventListener('click', () => {
+            if (isPlaying) {
+                bgAmbience.pause();
+                soundToggle.classList.remove('playing');
+                soundToggle.querySelector('i').className = 'fas fa-volume-mute';
+            } else {
+                bgAmbience.play().catch(e => console.log("Autoplay blocked or link error"));
+                soundToggle.classList.add('playing');
+                soundToggle.querySelector('i').className = 'fas fa-volume-up';
+            }
+            isPlaying = !isPlaying;
+        });
+    }
 });
