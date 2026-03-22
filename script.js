@@ -178,9 +178,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 7. Soundscape Logic ---
     const soundToggle = document.getElementById('sound-toggle');
-    const bgAmbience = new Audio('https://www.orangefreesounds.com/wp-content/uploads/2021/01/Wind-birds-and-rain-nature-sounds.mp3');
+    const bgAmbience = new Audio('https://www.chosic.com/wp-content/uploads/2021/07/Birds-singing-in-a-forest-sound-effect.mp3');
     bgAmbience.loop = true;
-    bgAmbience.volume = 0.3;
+    bgAmbience.volume = 0.5;
 
     let isPlaying = false;
 
