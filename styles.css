@@ -932,7 +932,7 @@ h1, h2, h3, h4, h5, h6 {
 ============================== */
 .premium-cta-section { padding-bottom: 0; }
 .premium-cta-card { background-color: var(--color-brown); border-radius: 20px; padding: 5rem 2rem; position: relative; overflow: hidden; box-shadow: var(--shadow-lg); }
-.premium-cta-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('assets/cta-bg.jpg'); background-size: cover; background-position: center; opacity: 0.15; z-index: 0; }
+.premium-cta-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('assets/cta-bg-v2.jpg'); background-size: cover; background-position: center; opacity: 0.15; z-index: 0; }
 .premium-cta-content { position: relative; z-index: 1; }
 .premium-cta-title { color: white; font-size: 2.8rem; margin-bottom: 1.5rem; font-family: var(--font-heading); }
 .premium-cta-desc { color: rgba(255,255,255,0.9); max-width: 650px; margin: 0 auto 2.5rem auto; font-size: 1.1rem; line-height: 1.8; }
