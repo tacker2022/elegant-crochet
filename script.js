@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 7. Soundscape Logic ---
     const soundToggle = document.getElementById('sound-toggle');
-    const bgAmbience = new Audio('https://archive.org/download/NatureSounds-ForestBirdsSinging/Forest%20Birds%20Singing.mp3');
+    const bgAmbience = new Audio('https://upload.wikimedia.org/wikipedia/commons/b/b0/Bird_Song_Ambience.mp3');
     bgAmbience.loop = true;
     bgAmbience.volume = 0.5;
 
