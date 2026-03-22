@@ -1093,3 +1093,66 @@ a.premium-footer-link:hover { opacity: 0.7; padding-left: 5px; color: var(--colo
     font-size: 1.2rem;
 }
 
+/* --- Infinity Slider --- */
+.infinity-slider-section {
+    width: 100%;
+    overflow: hidden;
+    background: transparent;
+    padding: 3rem 0;
+    margin-bottom: 2rem;
+}
+
+.slider-container {
+    width: 100%;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.slider-track {
+    display: flex;
+    width: calc(320px * 20); /* Slide sayısı x 2 (loop için) x slide genişliği */
+    animation: scrollSlider 40s linear infinite;
+    gap: 20px;
+}
+
+.slider-track:hover {
+    animation-play-state: paused;
+}
+
+.slide {
+    width: 320px;
+    height: 420px;
+    flex-shrink: 0;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+.slide:hover img {
+    transform: scale(1.03);
+    box-shadow: var(--shadow-lg);
+}
+
+@keyframes scrollSlider {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-320px * 10 - 200px)); } /* Slide genişliği * adet + gap toplamı */
+}
+
+/* Mobil Slider Uyumu */
+@media (max-width: 768px) {
+    .slide {
+        width: 250px;
+        height: 350px;
+    }
+    @keyframes scrollSlider {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-250px * 10 - 200px)); }
+    }
+}
+
