@@ -1,3 +1,12 @@
+// --- 0. Preloader Logic ---
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    setTimeout(() => {
+        preloader.classList.add('hidden');
+        document.body.classList.remove('no-scroll');
+    }, 2000); // 2 saniye bekleme
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- 1. Navbar Scroll Effect ---
