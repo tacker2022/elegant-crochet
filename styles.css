@@ -634,6 +634,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    .product-card {
+        max-width: 500px;
+        margin: 0 auto;
+    }
     .insta-grid {
         grid-template-columns: repeat(2, 1fr);
     }
