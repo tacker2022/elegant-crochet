@@ -175,49 +175,4 @@ document.addEventListener('DOMContentLoaded', () => {
             window.open(whatsappUrl, '_blank');
         });
     }
-
-    // --- 7. Soundscape Logic ---
-    const soundToggle = document.getElementById('sound-toggle');
-    const statusCard = document.getElementById('sound-status-card');
-    const statusMsg = document.getElementById('sound-status-msg');
-    
-    const bgAmbience = new Audio('https://upload.wikimedia.org/wikipedia/commons/b/b0/Bird_Song_Ambience.mp3');
-    bgAmbience.loop = true;
-    bgAmbience.volume = 0.5;
-
-    let isPlaying = false;
-
-    function showStatus(msg, duration = 3000) {
-        if (!statusCard || !statusMsg) return;
-        statusMsg.innerText = msg;
-        statusCard.classList.add('active');
-        setTimeout(() => {
-            statusCard.classList.remove('active');
-        }, duration);
-    }
-
-    if (soundToggle) {
-        soundToggle.addEventListener('click', (e) => {
-            e.preventDefault(); // Her ihtimale karşı
-            if (isPlaying) {
-                bgAmbience.pause();
-                showStatus("Atölye sesi duraklatıldı.");
-                soundToggle.classList.remove('playing');
-                soundToggle.querySelector('i').className = 'fas fa-volume-mute';
-            } else {
-                showStatus("Ses yükleniyor...");
-                bgAmbience.play()
-                    .then(() => {
-                        showStatus("Atölye huzuru aktif.");
-                        soundToggle.classList.add('playing');
-                        soundToggle.querySelector('i').className = 'fas fa-volume-up';
-                    })
-                    .catch(e => {
-                        console.error("Ambience Error:", e);
-                        showStatus("Hata: Ses dosyası engellendi. (CORS)", 5000);
-                    });
-            }
-            isPlaying = !isPlaying;
-        });
-    }
 });
