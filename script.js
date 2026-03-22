@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 7. Soundscape Logic ---
     const soundToggle = document.getElementById('sound-toggle');
-    const bgAmbience = new Audio('https://www.chosic.com/wp-content/uploads/2021/07/Birds-singing-in-a-forest-sound-effect.mp3');
+    const bgAmbience = new Audio('https://cdn.pixabay.com/audio/2022/03/10/audio_51c85672d5.mp3');
     bgAmbience.loop = true;
     bgAmbience.volume = 0.5;
 
@@ -186,14 +186,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (soundToggle) {
         soundToggle.addEventListener('click', () => {
+            console.log("Sound toggle clicked, isPlaying:", isPlaying);
             if (isPlaying) {
                 bgAmbience.pause();
+                console.log("Ambience paused");
                 soundToggle.classList.remove('playing');
                 soundToggle.querySelector('i').className = 'fas fa-volume-mute';
             } else {
-                bgAmbience.play().catch(e => console.log("Autoplay blocked or link error"));
-                soundToggle.classList.add('playing');
-                soundToggle.querySelector('i').className = 'fas fa-volume-up';
+                bgAmbience.play()
+                    .then(() => {
+                        console.log("Ambience playing successfully");
+                        soundToggle.classList.add('playing');
+                        soundToggle.querySelector('i').className = 'fas fa-volume-up';
+                    })
+                    .catch(e => {
+                        console.error("Ambience Error:", e);
+                        alert("Ses dosyası yüklenemedi, bağlantı sorunu olabilir.");
+                    });
             }
             isPlaying = !isPlaying;
         });
