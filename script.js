@@ -1,11 +1,23 @@
 // --- 0. Preloader Logic ---
-window.addEventListener('load', () => {
+const hidePreloader = () => {
     const preloader = document.getElementById('preloader');
-    setTimeout(() => {
+    if (preloader && !preloader.classList.contains('hidden')) {
         preloader.classList.add('hidden');
         document.body.classList.remove('no-scroll');
-    }, 2000); // 2 saniye bekleme
-});
+    }
+};
+
+// Check if page is already loaded, otherwise listen to load event
+if (document.readyState === 'complete') {
+    setTimeout(hidePreloader, 1000);
+} else {
+    window.addEventListener('load', () => {
+        setTimeout(hidePreloader, 1000);
+    });
+}
+
+// Safety fallback: hide preloader after maximum 3 seconds regardless of resource states
+setTimeout(hidePreloader, 3000);
 
 document.addEventListener('DOMContentLoaded', () => {
     
@@ -205,8 +217,8 @@ document.addEventListener('DOMContentLoaded', () => {
         bakim: {
             title: "Bakım Kılavuzu",
             slides: [
-                { type: "image", url: "assets/product-9.jpg", time: "3h" },
-                { type: "image", url: "assets/product-10.jpg", time: "2h" }
+                { type: "image", url: "assets/product-runner.jpg", time: "3h" },
+                { type: "image", url: "assets/product-gray.jpg", time: "2h" }
             ]
         }
     };
