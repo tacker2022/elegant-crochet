@@ -175,4 +175,45 @@ document.addEventListener('DOMContentLoaded', () => {
             window.open(whatsappUrl, '_blank');
         });
     }
+
+    // --- 7. Instagram Feed Dynamic Loader ---
+    const instaFeedContainer = document.getElementById('insta-feed');
+    if (instaFeedContainer) {
+        fetch('/api/instagram')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('API request failed');
+                }
+                return response.json();
+            })
+            .then(res => {
+                if (res.success && res.data && res.data.length > 0) {
+                    // Clear the container
+                    instaFeedContainer.innerHTML = '';
+                    
+                    // Render the items
+                    res.data.forEach(item => {
+                        const mediaUrl = item.media_type === 'VIDEO' ? (item.thumbnail_url || item.media_url) : item.media_url;
+                        const permalink = item.permalink || 'https://www.instagram.com/elegantcrochet2026/';
+                        const caption = item.caption || 'Elegant Crochet';
+                        
+                        const a = document.createElement('a');
+                        a.href = permalink;
+                        a.target = '_blank';
+                        
+                        const img = document.createElement('img');
+                        img.src = mediaUrl;
+                        img.alt = caption;
+                        img.className = 'insta-img';
+                        
+                        a.appendChild(img);
+                        instaFeedContainer.appendChild(a);
+                    });
+                }
+            })
+            .catch(error => {
+                console.warn('Instagram API error, displaying static fallback content:', error);
+                // Keep the static fallback already defined in HTML
+            });
+    }
 });

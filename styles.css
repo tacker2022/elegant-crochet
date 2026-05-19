@@ -653,7 +653,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .insta-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 1rem;
     margin-top: 2rem;
 }
@@ -672,6 +672,12 @@ h1, h2, h3, h4, h5, h6 {
     transform: scale(1.03);
     box-shadow: var(--shadow-md);
     z-index: 10;
+}
+
+@media (max-width: 1024px) {
+    .insta-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
