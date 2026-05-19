@@ -32,7 +32,11 @@ module.exports = async (req, res) => {
       if (kvResponse.ok) {
         const kvData = await kvResponse.json();
         if (kvData && kvData.result) {
-          accessToken = kvData.result;
+          let tokenVal = kvData.result;
+          if (typeof tokenVal === "string") {
+            tokenVal = tokenVal.replace(/^["']|["']$/g, "");
+          }
+          accessToken = tokenVal;
           console.log("Token successfully loaded from Vercel KV.");
         } else {
           console.warn("No token found in Vercel KV, using fallback token.");

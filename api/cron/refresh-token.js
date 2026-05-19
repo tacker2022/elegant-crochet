@@ -34,7 +34,11 @@ module.exports = async (req, res) => {
     if (kvResponse.ok) {
       const kvData = await kvResponse.json();
       if (kvData && kvData.result) {
-        currentToken = kvData.result;
+        let tokenVal = kvData.result;
+        if (typeof tokenVal === "string") {
+          tokenVal = tokenVal.replace(/^["']|["']$/g, "");
+        }
+        currentToken = tokenVal;
         console.log("Current token loaded from KV for refresh.");
       }
     }
