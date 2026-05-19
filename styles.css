@@ -658,20 +658,108 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 2rem;
 }
 
+/* Instagram Premium Item Design */
+.insta-item {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid rgba(224, 204, 190, 0.4);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.insta-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
 .insta-img {
+    display: block;
     width: 100%;
     aspect-ratio: 1/1;
     object-fit: cover;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: var(--transition);
-    box-shadow: var(--shadow-sm);
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.insta-img:hover {
-    transform: scale(1.03);
-    box-shadow: var(--shadow-md);
-    z-index: 10;
+.insta-item:hover .insta-img {
+    transform: scale(1.08);
+}
+
+.insta-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(43, 31, 26, 0.65); /* Warm elegant dark overlay */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+.insta-item:hover .insta-overlay {
+    opacity: 1;
+}
+
+.insta-overlay-content {
+    text-align: center;
+    color: var(--color-white);
+    transform: translateY(15px);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.insta-item:hover .insta-overlay-content {
+    transform: translateY(0);
+}
+
+.insta-overlay-content i {
+    font-size: 1.8rem;
+    color: #e0ccbe; /* Premium gold/taupe accent */
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.insta-overlay-content span {
+    font-size: 0.85rem;
+    font-family: var(--font-sans);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Video Badge */
+.insta-video-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: var(--color-white);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    z-index: 5;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @media (max-width: 1024px) {

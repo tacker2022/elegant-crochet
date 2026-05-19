@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     instaFeedContainer.innerHTML = '';
                     
                     // Render the items
-                    res.data.forEach(item => {
+                    res.data.forEach((item, index) => {
                         const mediaUrl = item.media_type === 'VIDEO' ? (item.thumbnail_url || item.media_url) : item.media_url;
                         const permalink = item.permalink || 'https://www.instagram.com/elegantcrochet2026/';
                         const caption = item.caption || 'Elegant Crochet';
@@ -200,13 +200,34 @@ document.addEventListener('DOMContentLoaded', () => {
                         const a = document.createElement('a');
                         a.href = permalink;
                         a.target = '_blank';
+                        a.className = 'insta-item';
+                        a.style.animationDelay = `${index * 100}ms`;
                         
                         const img = document.createElement('img');
                         img.src = mediaUrl;
                         img.alt = caption;
                         img.className = 'insta-img';
-                        
                         a.appendChild(img);
+                        
+                        // Add video badge if it's a video
+                        if (item.media_type === 'VIDEO') {
+                            const badge = document.createElement('div');
+                            badge.className = 'insta-video-badge';
+                            badge.innerHTML = '<i class="fas fa-play"></i>';
+                            a.appendChild(badge);
+                        }
+                        
+                        // Add elegant overlay
+                        const overlay = document.createElement('div');
+                        overlay.className = 'insta-overlay';
+                        overlay.innerHTML = `
+                            <div class="insta-overlay-content">
+                                <i class="fab fa-instagram"></i>
+                                <span>Gönderiyi Gör</span>
+                            </div>
+                        `;
+                        a.appendChild(overlay);
+                        
                         instaFeedContainer.appendChild(a);
                     });
                 }
