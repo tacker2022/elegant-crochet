@@ -372,9 +372,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Bind Feed Lightbox close elements
-    const lightboxClose = document.getElementById('insta-lightbox-close');
+    const instaLightboxClose = document.getElementById('insta-lightbox-close');
     const lightboxBg = document.querySelector('.insta-lightbox-bg');
-    if (lightboxClose) lightboxClose.addEventListener('click', closeFeedLightbox);
+    if (instaLightboxClose) instaLightboxClose.addEventListener('click', closeFeedLightbox);
     if (lightboxBg) lightboxBg.addEventListener('click', closeFeedLightbox);
 
 
