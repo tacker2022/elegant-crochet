@@ -176,31 +176,75 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 7. Instagram Feed Dynamic Loader ---
+    // --- 7. Instagram Interactive Integration (Stories Highlights & Lightbox Modal) ---
+    
+    // Stories highlights data
+    const STORIES_DATA = {
+        atolye: {
+            title: "Atölyemiz",
+            slides: [
+                { type: "image", url: "assets/product-1.jpg", time: "2sa" },
+                { type: "image", url: "assets/product-2.jpg", time: "1sa" },
+                { type: "image", url: "assets/product-8.jpg", time: "45dk" }
+            ]
+        },
+        paketleme: {
+            title: "Özenli Paketleme",
+            slides: [
+                { type: "image", url: "assets/product-3.jpg", time: "5g" },
+                { type: "image", url: "assets/product-4.jpg", time: "4g" }
+            ]
+        },
+        "sizden-gelenler": {
+            title: "Sizden Gelenler",
+            slides: [
+                { type: "image", url: "assets/product-5.jpg", time: "1h" },
+                { type: "image", url: "assets/product-6.jpg", time: "6g" }
+            ]
+        },
+        bakim: {
+            title: "Bakım Kılavuzu",
+            slides: [
+                { type: "image", url: "assets/product-9.jpg", time: "3h" },
+                { type: "image", url: "assets/product-10.jpg", time: "2h" }
+            ]
+        }
+    };
+
+    // Story viewer state variables
+    let activeStoryKey = null;
+    let activeSlideIndex = 0;
+    let storyTimer = null;
+    let storyProgressPercent = 0;
+    const SLIDE_DURATION = 5000; // 5 seconds per slide
+
+    // Instagram feed data container
+    let loadedInstagramItems = [];
+
     const instaFeedContainer = document.getElementById('insta-feed');
+    const instaLightbox = document.getElementById('insta-lightbox');
+    const storyViewer = document.getElementById('story-viewer');
+
+    // Load feed items via API
     if (instaFeedContainer) {
         fetch('/api/instagram')
             .then(response => {
-                if (!response.ok) {
-                    throw new Error('API request failed');
-                }
+                if (!response.ok) throw new Error('API request failed');
                 return response.json();
             })
             .then(res => {
                 if (res.success && res.data && res.data.length > 0) {
-                    // Clear the container
-                    instaFeedContainer.innerHTML = '';
+                    loadedInstagramItems = res.data;
+                    instaFeedContainer.innerHTML = ''; // Clear fallback
                     
-                    // Render the items
                     res.data.forEach((item, index) => {
                         const mediaUrl = item.media_type === 'VIDEO' ? (item.thumbnail_url || item.media_url) : item.media_url;
-                        const permalink = item.permalink || 'https://www.instagram.com/elegantcrochet2026/';
                         const caption = item.caption || 'Elegant Crochet';
                         
                         const a = document.createElement('a');
-                        a.href = permalink;
-                        a.target = '_blank';
+                        a.href = '#';
                         a.className = 'insta-item';
+                        a.setAttribute('data-index', index);
                         a.style.animationDelay = `${index * 100}ms`;
                         
                         const img = document.createElement('img');
@@ -209,7 +253,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         img.className = 'insta-img';
                         a.appendChild(img);
                         
-                        // Add video badge if it's a video
                         if (item.media_type === 'VIDEO') {
                             const badge = document.createElement('div');
                             badge.className = 'insta-video-badge';
@@ -217,7 +260,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             a.appendChild(badge);
                         }
                         
-                        // Add elegant overlay
                         const overlay = document.createElement('div');
                         overlay.className = 'insta-overlay';
                         overlay.innerHTML = `
@@ -227,14 +269,258 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                         `;
                         a.appendChild(overlay);
-                        
                         instaFeedContainer.appendChild(a);
                     });
+                } else {
+                    setupFallbackIndexes();
                 }
             })
             .catch(error => {
                 console.warn('Instagram API error, displaying static fallback content:', error);
-                // Keep the static fallback already defined in HTML
+                setupFallbackIndexes();
             });
+
+        // Event delegation for clicking feed items
+        instaFeedContainer.addEventListener('click', (e) => {
+            const a = e.target.closest('.insta-item');
+            if (!a) return;
+            e.preventDefault();
+            const index = parseInt(a.getAttribute('data-index'), 10);
+            openFeedLightbox(index, a);
+        });
     }
+
+    function setupFallbackIndexes() {
+        const items = instaFeedContainer.querySelectorAll('.insta-item');
+        items.forEach((item, index) => {
+            item.setAttribute('data-index', index);
+            item.href = '#'; // Override direct link to support lightbox
+        });
+    }
+
+    // --- Feed Lightbox Controls ---
+    function openFeedLightbox(index, element) {
+        if (!instaLightbox) return;
+        
+        const mediaContainer = document.getElementById('insta-lightbox-media');
+        const captionContainer = document.getElementById('insta-lightbox-caption');
+        const instaLink = document.getElementById('insta-lightbox-instagram-link');
+
+        if (loadedInstagramItems && loadedInstagramItems[index]) {
+            const item = loadedInstagramItems[index];
+            mediaContainer.innerHTML = '';
+            
+            if (item.media_type === 'VIDEO') {
+                const video = document.createElement('video');
+                video.src = item.media_url;
+                video.controls = true;
+                video.autoplay = true;
+                video.loop = true;
+                video.muted = true;
+                mediaContainer.appendChild(video);
+            } else {
+                const img = document.createElement('img');
+                img.src = item.media_url;
+                img.alt = item.caption || 'Elegant Crochet Post';
+                mediaContainer.appendChild(img);
+            }
+            
+            captionContainer.textContent = item.caption || 'Elegant Crochet el emeği ürünlerimiz.';
+            instaLink.href = item.permalink || 'https://www.instagram.com/elegantcrochet2026/';
+        } else {
+            // Fallback content parsing
+            const imgElement = element.querySelector('.insta-img');
+            mediaContainer.innerHTML = '';
+            if (imgElement) {
+                const img = document.createElement('img');
+                img.src = imgElement.src;
+                img.alt = 'Elegant Crochet Fallback';
+                mediaContainer.appendChild(img);
+            }
+            captionContainer.textContent = "Elegant Crochet ile sofralarınıza lüks bir dokunuş katın. Tamamı titizlikle ve el emeğiyle hazırlanan supla, runner ve çanta tasarımlarımız hakkında detaylı bilgi ve özel siparişleriniz için bizimle WhatsApp üzerinden de dilediğiniz an iletişime geçebilirsiniz. ✨";
+            instaLink.href = 'https://www.instagram.com/elegantcrochet2026/';
+        }
+
+        instaLightbox.classList.add('active');
+        document.body.classList.add('no-scroll');
+    }
+
+    function closeFeedLightbox() {
+        if (!instaLightbox) return;
+        
+        // Stop any playing video
+        const mediaContainer = document.getElementById('insta-lightbox-media');
+        if (mediaContainer) {
+            const video = mediaContainer.querySelector('video');
+            if (video) video.pause();
+        }
+
+        instaLightbox.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+    }
+
+    // Bind Feed Lightbox close elements
+    const lightboxClose = document.getElementById('insta-lightbox-close');
+    const lightboxBg = document.querySelector('.insta-lightbox-bg');
+    if (lightboxClose) lightboxClose.addEventListener('click', closeFeedLightbox);
+    if (lightboxBg) lightboxBg.addEventListener('click', closeFeedLightbox);
+
+
+    // --- Stories Highlights Controls ---
+    const storyBubbles = document.querySelectorAll('.story-bubble');
+    storyBubbles.forEach(bubble => {
+        bubble.addEventListener('click', () => {
+            const key = bubble.getAttribute('data-story');
+            if (key && STORIES_DATA[key]) {
+                openStory(key);
+            }
+        });
+    });
+
+    function openStory(key) {
+        if (!storyViewer) return;
+        activeStoryKey = key;
+        activeSlideIndex = 0;
+        
+        storyViewer.classList.add('active');
+        document.body.classList.add('no-scroll');
+        
+        createProgressBars();
+        loadStorySlide();
+    }
+
+    function createProgressBars() {
+        const progressContainer = document.getElementById('story-progress');
+        if (!progressContainer) return;
+        progressContainer.innerHTML = '';
+        
+        const slides = STORIES_DATA[activeStoryKey].slides;
+        slides.forEach((_, index) => {
+            const bar = document.createElement('div');
+            bar.className = 'story-progress-bar';
+            bar.setAttribute('data-index', index);
+            
+            const fill = document.createElement('div');
+            fill.className = 'story-progress-fill';
+            bar.appendChild(fill);
+            
+            progressContainer.appendChild(bar);
+        });
+    }
+
+    function loadStorySlide() {
+        const slideBody = document.getElementById('story-slide-body');
+        const timeLabel = document.getElementById('story-time');
+        if (!slideBody) return;
+        
+        const slide = STORIES_DATA[activeStoryKey].slides[activeSlideIndex];
+        slideBody.innerHTML = '';
+        
+        if (slide.type === 'video') {
+            const video = document.createElement('video');
+            video.src = slide.url;
+            video.autoplay = true;
+            video.playsInline = true;
+            video.muted = false;
+            slideBody.appendChild(video);
+        } else {
+            const img = document.createElement('img');
+            img.src = slide.url;
+            img.alt = 'Story Slide';
+            slideBody.appendChild(img);
+        }
+
+        if (timeLabel) timeLabel.textContent = slide.time || '1s';
+        
+        updateProgressBarsUI();
+        startStoryTimer();
+    }
+
+    function updateProgressBarsUI() {
+        const bars = document.querySelectorAll('.story-progress-bar');
+        bars.forEach((bar, index) => {
+            const fill = bar.querySelector('.story-progress-fill');
+            if (index < activeSlideIndex) {
+                fill.className = 'story-progress-fill filled';
+                fill.style.width = '100%';
+            } else if (index > activeSlideIndex) {
+                fill.className = 'story-progress-fill';
+                fill.style.width = '0%';
+            } else {
+                fill.className = 'story-progress-fill';
+                fill.style.width = '0%';
+            }
+        });
+    }
+
+    function startStoryTimer() {
+        if (storyTimer) clearInterval(storyTimer);
+        
+        const activeBar = document.querySelector(`.story-progress-bar[data-index="${activeSlideIndex}"] .story-progress-fill`);
+        if (!activeBar) return;
+        
+        storyProgressPercent = 0;
+        const tickRate = 40; // update UI every 40ms
+        const step = (tickRate / SLIDE_DURATION) * 100;
+        
+        storyTimer = setInterval(() => {
+            storyProgressPercent += step;
+            if (storyProgressPercent >= 100) {
+                storyProgressPercent = 100;
+                activeBar.style.width = '100%';
+                activeBar.classList.add('filled');
+                clearInterval(storyTimer);
+                handleStoryNext();
+            } else {
+                activeBar.style.width = `${storyProgressPercent}%`;
+            }
+        }, tickRate);
+    }
+
+    function handleStoryNext() {
+        const slides = STORIES_DATA[activeStoryKey].slides;
+        if (activeSlideIndex < slides.length - 1) {
+            activeSlideIndex++;
+            loadStorySlide();
+        } else {
+            closeStoryViewer();
+        }
+    }
+
+    function handleStoryPrev() {
+        if (activeSlideIndex > 0) {
+            activeSlideIndex--;
+            loadStorySlide();
+        } else {
+            // Restart slide
+            loadStorySlide();
+        }
+    }
+
+    function closeStoryViewer() {
+        if (!storyViewer) return;
+        if (storyTimer) clearInterval(storyTimer);
+        storyViewer.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+        activeStoryKey = null;
+    }
+
+    // Bind story navigation events
+    const storyClose = document.getElementById('story-close');
+    const storyBg = document.querySelector('.story-viewer-bg');
+    const storyPrevBtn = document.getElementById('story-prev');
+    const storyNextBtn = document.getElementById('story-next');
+
+    if (storyClose) storyClose.addEventListener('click', closeStoryViewer);
+    if (storyBg) storyBg.addEventListener('click', closeStoryViewer);
+    if (storyPrevBtn) storyPrevBtn.addEventListener('click', handleStoryPrev);
+    if (storyNextBtn) storyNextBtn.addEventListener('click', handleStoryNext);
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeStoryViewer();
+            closeFeedLightbox();
+        }
+    });
 });

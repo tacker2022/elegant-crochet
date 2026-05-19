@@ -1547,3 +1547,463 @@ a.premium-footer-link:hover { opacity: 0.7; padding-left: 5px; color: var(--colo
         grid-column: span 1;
     }
 }
+
+/* ==========================================================================
+   INSTAGRAM STORIES HIGHLIGHTS & LIGHTBOX DESIGN SYSTEM
+   ========================================================================== */
+
+/* Stories Container & Bubble Row */
+.stories-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 2.5rem auto 3.5rem;
+    flex-wrap: wrap;
+    max-width: 800px;
+}
+
+.story-bubble {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.story-bubble:hover {
+    transform: scale(1.05);
+}
+
+.story-bubble:active {
+    transform: scale(0.95);
+}
+
+.story-ring {
+    position: relative;
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    padding: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.story-img-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--color-bg);
+    padding: 3px;
+    overflow: hidden;
+}
+
+.story-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.story-bubble span {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-brown-dark);
+    font-family: var(--font-sans);
+    letter-spacing: 0.5px;
+    text-transform: capitalize;
+}
+
+/* Story Viewer Modal (9:16 Immersive Screen) */
+.story-viewer-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.story-viewer-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.story-viewer-bg {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 11, 10, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+.story-viewer-content {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    aspect-ratio: 9/16;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+}
+
+.story-close-btn {
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 2.2rem;
+    cursor: pointer;
+    z-index: 100;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.story-close-btn:hover {
+    color: var(--color-white);
+}
+
+/* Progress Bars */
+.story-progress-container {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    display: flex;
+    gap: 4px;
+    z-index: 90;
+}
+
+.story-progress-bar {
+    height: 2px;
+    flex: 1;
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.story-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--color-white);
+}
+
+.story-progress-fill.filled {
+    width: 100%;
+}
+
+.story-progress-fill.active {
+    animation: storyProgress linear forwards;
+}
+
+@keyframes storyProgress {
+    from { width: 0%; }
+    to { width: 100%; }
+}
+
+/* Story Header */
+.story-viewer-header {
+    position: absolute;
+    top: 20px;
+    left: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 90;
+    pointer-events: none;
+}
+
+.story-profile-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    object-fit: cover;
+}
+
+.story-profile-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.story-username {
+    color: var(--color-white);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    font-family: var(--font-sans);
+}
+
+.story-time {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    font-family: var(--font-sans);
+}
+
+/* Story Slide Content */
+.story-slide-body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.story-slide-body img,
+.story-slide-body video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Story Navigation Arrows */
+.story-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 20px 10px;
+    z-index: 90;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.story-nav-btn:hover {
+    color: var(--color-white);
+}
+
+.story-nav-btn.prev {
+    left: 8px;
+}
+
+.story-nav-btn.next {
+    right: 8px;
+}
+
+.story-nav-btn:active {
+    transform: translateY(-50%) scale(0.9);
+}
+
+/* Instagram Post Lightbox Modal (Split Screen Design) */
+.insta-lightbox-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.insta-lightbox-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.insta-lightbox-bg {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 11, 10, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.insta-lightbox-content {
+    position: relative;
+    width: 90%;
+    max-width: 960px;
+    height: 80vh;
+    max-height: 600px;
+    background: var(--color-bg);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+    border: 1px solid rgba(224, 204, 190, 0.3);
+    z-index: 10;
+}
+
+.lightbox-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(15, 11, 10, 0.1);
+    border: none;
+    color: var(--color-brown-dark);
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 95;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.lightbox-close-btn:hover {
+    background: rgba(15, 11, 10, 0.7);
+    color: var(--color-white);
+}
+
+/* Lightbox Body (Split Grid) */
+.lightbox-body {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    width: 100%;
+    height: 100%;
+}
+
+.lightbox-media-container {
+    background: #0d0908;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.lightbox-media-container img,
+.lightbox-media-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.lightbox-details {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--color-bg);
+}
+
+.lightbox-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid rgba(139, 115, 85, 0.12);
+}
+
+.lightbox-profile-img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(139, 115, 85, 0.2);
+}
+
+.lightbox-profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.lightbox-username {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-brown-dark);
+}
+
+.lightbox-location {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--color-brown);
+}
+
+.lightbox-caption-container {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+    border-bottom: 1px solid rgba(139, 115, 85, 0.12);
+}
+
+.lightbox-caption {
+    font-size: 0.95rem;
+    color: var(--color-brown-dark);
+    line-height: 1.6;
+    white-space: pre-wrap;
+    font-family: var(--font-sans);
+}
+
+.lightbox-footer {
+    padding: 1.2rem 1.5rem;
+    background: rgba(224, 204, 190, 0.2);
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Lightbox Button styling */
+.btn-sm {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+}
+
+/* Responsiveness for Lightbox & Stories */
+@media (max-width: 900px) {
+    .insta-lightbox-content {
+        height: auto;
+        max-height: 90vh;
+    }
+    
+    .lightbox-body {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    
+    .lightbox-media-container {
+        aspect-ratio: 1/1;
+        max-height: 45vh;
+    }
+    
+    .lightbox-details {
+        max-height: 45vh;
+    }
+    
+    .lightbox-caption-container {
+        padding: 1rem 1.5rem;
+    }
+    
+    .story-viewer-content {
+        max-width: 100vw;
+        height: 100vh;
+        aspect-ratio: auto;
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .stories-container {
+        gap: 1.2rem;
+        margin: 2rem auto 3rem;
+    }
+    
+    .story-ring {
+        width: 72px;
+        height: 72px;
+    }
+    
+    .story-bubble span {
+        font-size: 0.75rem;
+        margin-top: 0.5rem;
+    }
+}

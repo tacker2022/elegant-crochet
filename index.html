@@ -558,7 +558,43 @@
         <div class="container text-center reveal">
             <h3 class="section-subtitle">İlham Alın</h3>
             <h2 class="section-title">Instagram'da Bizi Takip Edin</h2>
-            <p style="margin-bottom: 2rem;">Evlerinizin en güzel köşelerinden yansıyan zarif tasarımlarımızı keşfetmek için bizi takip edin.</p>
+            <p style="margin-bottom: 1.5rem;">Evlerinizin en güzel köşelerinden yansıyan zarif tasarımlarımızı keşfetmek için bizi takip edin.</p>
+            
+            <!-- Instagram Stories Highlights Row -->
+            <div class="stories-container">
+                <div class="story-bubble" data-story="atolye">
+                    <div class="story-ring">
+                        <div class="story-img-container">
+                            <img src="assets/product-1.jpg" alt="Atölyemiz">
+                        </div>
+                    </div>
+                    <span>Atölyemiz</span>
+                </div>
+                <div class="story-bubble" data-story="paketleme">
+                    <div class="story-ring">
+                        <div class="story-img-container">
+                            <img src="assets/product-3.jpg" alt="Özenli Paketleme">
+                        </div>
+                    </div>
+                    <span>Paketleme</span>
+                </div>
+                <div class="story-bubble" data-story="sizden-gelenler">
+                    <div class="story-ring">
+                        <div class="story-img-container">
+                            <img src="assets/product-5.jpg" alt="Sizden Gelenler">
+                        </div>
+                    </div>
+                    <span>Sizden Gelenler</span>
+                </div>
+                <div class="story-bubble" data-story="bakim">
+                    <div class="story-ring">
+                        <div class="story-img-container">
+                            <img src="assets/product-9.jpg" alt="Bakım Kılavuzu">
+                        </div>
+                    </div>
+                    <span>Bakım Kılavuzu</span>
+                </div>
+            </div>
             
             <div class="insta-grid" id="insta-feed">
                 <!-- Fallback Static Content (will be replaced dynamically if API succeeds) -->
@@ -693,6 +729,53 @@
             <button class="lightbox-close">&times;</button>
             <img src="" alt="Büyük Görsel" id="lightbox-img">
             <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <!-- Instagram Story Viewer Modal -->
+    <div class="story-viewer-modal" id="story-viewer">
+        <div class="story-viewer-bg"></div>
+        <div class="story-viewer-content">
+            <button class="story-close-btn" id="story-close">&times;</button>
+            <div class="story-progress-container" id="story-progress"></div>
+            <div class="story-viewer-header">
+                <img src="assets/about.jpg" alt="Elegant Crochet" class="story-profile-img">
+                <div class="story-profile-info">
+                    <span class="story-username">elegantcrochet2026</span>
+                    <span class="story-time" id="story-time">1s</span>
+                </div>
+            </div>
+            <div class="story-slide-body" id="story-slide-body"></div>
+            <button class="story-nav-btn prev" id="story-prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="story-nav-btn next" id="story-next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <!-- Instagram Post Lightbox Modal -->
+    <div class="insta-lightbox-modal" id="insta-lightbox">
+        <div class="insta-lightbox-bg"></div>
+        <div class="insta-lightbox-content">
+            <button class="lightbox-close-btn" id="insta-lightbox-close">&times;</button>
+            <div class="lightbox-body">
+                <div class="lightbox-media-container" id="insta-lightbox-media"></div>
+                <div class="lightbox-details">
+                    <div class="lightbox-header">
+                        <img src="assets/about.jpg" alt="Elegant Crochet" class="lightbox-profile-img">
+                        <div class="lightbox-profile-info">
+                            <span class="lightbox-username">elegantcrochet2026</span>
+                            <span class="lightbox-location">İstanbul, Turkey</span>
+                        </div>
+                    </div>
+                    <div class="lightbox-caption-container">
+                        <p class="lightbox-caption" id="insta-lightbox-caption"></p>
+                    </div>
+                    <div class="lightbox-footer">
+                        <a href="#" target="_blank" class="btn btn-outline btn-sm" id="insta-lightbox-instagram-link">
+                            <i class="fab fa-instagram"></i> Instagram'da Gör
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
