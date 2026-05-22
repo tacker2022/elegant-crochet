@@ -1,7 +1,7 @@
 // api/instagram.js
 // Vercel Serverless Function to fetch latest 6 Instagram posts
 
-const FALLBACK_TOKEN = "IGAAUuhE5c1Y5BZAGFRZAHc2WWR0MXBKWERaai1hbF9Qc1pkcmQ3aEc2YUlsMHVJUUFJMUJrQ1BHOFlnMXlsQ3NFdVMwUDJYamxwY0xaMlMzbW5ycXJ0U0lRV25CanlZAWnc0Y18wcGYwOG13aGx4eHUwTWt5Nkd6NTZARQnNDeFV4cwZDZD";
+const FALLBACK_TOKEN = "IGAAUuhE5c1Y5BZAGFVVWQzSEJlUU5PbXFfLU9rTkMtNjQtdmlpVDYwMkFFbGtGQURRS0JEUTNVWEhmYnB6cUhlYXpCT3dxa2lsV1AwMm9XdlFtU3hNWE9hb3JLd3kxTE12QzJkVUJRZAkNXdktmclBXSUhmUnhGcmRsVWEwQ1llZAwZDZD";
 
 module.exports = async (req, res) => {
   // Enable CORS
@@ -27,8 +27,54 @@ module.exports = async (req, res) => {
   const cacheKey = `instagram_cache_${limit}`;
   const isKvConfigured = !!(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
 
-  // 1. Check Redis Cache first if KV is configured
+  let accessToken = FALLBACK_TOKEN;
+  let forceFreshFetch = false;
+
+  // 1. Load Instagram Access Token from KV & Sync
   if (isKvConfigured) {
+    try {
+      const kvUrl = `${process.env.KV_REST_API_URL}/get/instagram_access_token`;
+      const kvResponse = await fetch(kvUrl, {
+        headers: {
+          Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}`
+        }
+      });
+      if (kvResponse.ok) {
+        const kvData = await kvResponse.json();
+        let tokenVal = kvData && kvData.result;
+        if (typeof tokenVal === "string") {
+          tokenVal = tokenVal.replace(/^["']|["']$/g, "");
+        }
+        
+        // If the token in KV does not match the new FALLBACK_TOKEN, sync it to KV
+        if (tokenVal !== FALLBACK_TOKEN) {
+          console.log("KV token is outdated. Syncing new token to Vercel KV...");
+          const kvSetUrl = `${process.env.KV_REST_API_URL}/set/instagram_access_token`;
+          await fetch(kvSetUrl, {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}`,
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(FALLBACK_TOKEN)
+          });
+          console.log("Vercel KV synced successfully.");
+          forceFreshFetch = true; // Bypass cache to force a fresh fetch with the new token
+        }
+        accessToken = FALLBACK_TOKEN;
+        console.log("Token successfully loaded/synced in Vercel KV.");
+      } else {
+        console.warn("Failed to fetch token from Vercel KV, using fallback token.", kvResponse.statusText);
+      }
+    } catch (kvError) {
+      console.error("Error reading/syncing token from Vercel KV:", kvError);
+    }
+  } else {
+    console.log("Vercel KV environment variables not found, using fallback token.");
+  }
+
+  // 2. Check Redis Cache first (unless token just changed and we need a fresh fetch)
+  if (isKvConfigured && !forceFreshFetch) {
     try {
       const kvGetUrl = `${process.env.KV_REST_API_URL}/get/${cacheKey}`;
       const kvGetResponse = await fetch(kvGetUrl, {
@@ -70,39 +116,6 @@ module.exports = async (req, res) => {
     } catch (cacheReadError) {
       console.error("Cache read error:", cacheReadError);
     }
-  }
-
-  let accessToken = FALLBACK_TOKEN;
-
-  // 2. Load Instagram Access Token from KV
-  if (isKvConfigured) {
-    try {
-      const kvUrl = `${process.env.KV_REST_API_URL}/get/instagram_access_token`;
-      const kvResponse = await fetch(kvUrl, {
-        headers: {
-          Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}`
-        }
-      });
-      if (kvResponse.ok) {
-        const kvData = await kvResponse.json();
-        if (kvData && kvData.result) {
-          let tokenVal = kvData.result;
-          if (typeof tokenVal === "string") {
-            tokenVal = tokenVal.replace(/^["']|["']$/g, "");
-          }
-          accessToken = tokenVal;
-          console.log("Token successfully loaded from Vercel KV.");
-        } else {
-          console.warn("No token found in Vercel KV, using fallback token.");
-        }
-      } else {
-        console.warn("Failed to fetch token from Vercel KV, using fallback token.", kvResponse.statusText);
-      }
-    } catch (kvError) {
-      console.error("Error reading token from Vercel KV:", kvError);
-    }
-  } else {
-    console.log("Vercel KV environment variables not found, using fallback token.");
   }
 
   // 3. Fetch media from Instagram Graph API
