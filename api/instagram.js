@@ -18,10 +18,64 @@ module.exports = async (req, res) => {
     return;
   }
 
+  // Parse limit parameter (default is 6, maximum 100)
+  let limit = req.query.limit ? parseInt(req.query.limit, 10) : 6;
+  if (isNaN(limit) || limit <= 0 || limit > 100) {
+    limit = 6;
+  }
+
+  const cacheKey = `instagram_cache_${limit}`;
+  const isKvConfigured = !!(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
+
+  // 1. Check Redis Cache first if KV is configured
+  if (isKvConfigured) {
+    try {
+      const kvGetUrl = `${process.env.KV_REST_API_URL}/get/${cacheKey}`;
+      const kvGetResponse = await fetch(kvGetUrl, {
+        headers: {
+          Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}`
+        }
+      });
+      if (kvGetResponse.ok) {
+        const kvGetData = await kvGetResponse.json();
+        if (kvGetData && kvGetData.result) {
+          let cachedPayload = kvGetData.result;
+          
+          // Decode JSON if double stringified
+          if (typeof cachedPayload === "string") {
+            try {
+              cachedPayload = JSON.parse(cachedPayload);
+              if (typeof cachedPayload === "string") {
+                cachedPayload = JSON.parse(cachedPayload);
+              }
+            } catch (e) {
+              // Proceed with fallback if parsing fails
+            }
+          }
+          
+          if (cachedPayload && cachedPayload.timestamp && cachedPayload.data) {
+            const CACHE_TTL = 3600000; // 1 hour
+            if (Date.now() - cachedPayload.timestamp < CACHE_TTL) {
+              console.log(`Serving ${limit} items from Redis cache.`);
+              res.status(200).json({
+                success: true,
+                data: cachedPayload.data,
+                cached: true
+              });
+              return;
+            }
+          }
+        }
+      }
+    } catch (cacheReadError) {
+      console.error("Cache read error:", cacheReadError);
+    }
+  }
+
   let accessToken = FALLBACK_TOKEN;
 
-  // Attempt to load token from Vercel KV if configured
-  if (process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN) {
+  // 2. Load Instagram Access Token from KV
+  if (isKvConfigured) {
     try {
       const kvUrl = `${process.env.KV_REST_API_URL}/get/instagram_access_token`;
       const kvResponse = await fetch(kvUrl, {
@@ -51,9 +105,9 @@ module.exports = async (req, res) => {
     console.log("Vercel KV environment variables not found, using fallback token.");
   }
 
-  // Fetch media from Instagram Graph API (Instagram API with Instagram Login)
+  // 3. Fetch media from Instagram Graph API
   try {
-    const instagramUrl = `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp&access_token=${accessToken}&limit=6`;
+    const instagramUrl = `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp&access_token=${accessToken}&limit=${limit}`;
     const response = await fetch(instagramUrl);
     
     if (!response.ok) {
@@ -62,11 +116,36 @@ module.exports = async (req, res) => {
     }
 
     const data = await response.json();
+    const mediaData = data.data || [];
+
+    // 4. Save to Redis Cache (only if we got valid data back)
+    if (isKvConfigured && mediaData.length > 0) {
+      try {
+        const kvSetUrl = `${process.env.KV_REST_API_URL}/set/${cacheKey}`;
+        const cachePayload = {
+          timestamp: Date.now(),
+          data: mediaData
+        };
+        
+        await fetch(kvSetUrl, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(cachePayload)
+        });
+        console.log(`Saved ${limit} items to Redis cache.`);
+      } catch (cacheWriteError) {
+        console.error("Cache write error:", cacheWriteError);
+      }
+    }
     
     // Return the media items
     res.status(200).json({
       success: true,
-      data: data.data || []
+      data: mediaData,
+      cached: false
     });
   } catch (error) {
     console.error("Error fetching Instagram media:", error);
