@@ -167,7 +167,7 @@ h1, h2, h3, h4, h5, h6 {
    Navbar
 ============================== */
 .navbar {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
@@ -1251,6 +1251,47 @@ a.premium-footer-link:hover { opacity: 0.7; padding-left: 5px; color: var(--colo
         100% { transform: translateX(calc(-250px * 10 - 200px)); }
     }
 }
+
+/* --- Top Bar --- */
+.top-bar {
+    background-color: var(--color-brown);
+    color: var(--color-white);
+    font-size: 0.85rem;
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1000;
+}
+
+.top-bar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-bar-text {
+    letter-spacing: 0.5px;
+    font-weight: 300;
+}
+
+.top-social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.top-social-icons a {
+    color: var(--color-white);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.top-social-icons a:hover {
+    color: var(--color-pink);
+    transform: translateY(-2px);
+}
+
+
 
 /* --- Preloader --- */
 .no-scroll {
