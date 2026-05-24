@@ -293,30 +293,19 @@ document.addEventListener('DOMContentLoaded', () => {
         shareFloatBtn.addEventListener('click', (e) => {
             e.preventDefault();
             
-            // Try to use native sharing if available
-            if (navigator.share) {
-                navigator.share({
-                    title: document.title,
-                    text: 'Elegant Crochet | Lüks El Emeği Tığ İşi Supla & Runner Takımları',
-                    url: window.location.href
-                }).catch(err => {
-                    console.log('Native share error or cancelled:', err);
-                });
-            } else {
-                // Open custom glassmorphism share modal
-                if (shareModal) {
-                    const shareWa = document.getElementById('share-wa');
-                    const sharePin = document.getElementById('share-pin');
-                    const shareFb = document.getElementById('share-fb');
-                    const currentUrl = window.location.href;
-                    const shareText = `${document.title} - ${currentUrl}`;
+            // Open custom glassmorphism share modal directly for a fully branded premium experience
+            if (shareModal) {
+                const shareWa = document.getElementById('share-wa');
+                const sharePin = document.getElementById('share-pin');
+                const shareFb = document.getElementById('share-fb');
+                const currentUrl = window.location.href;
+                const shareText = `${document.title} - ${currentUrl}`;
 
-                    if (shareWa) shareWa.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
-                    if (sharePin) sharePin.href = `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(currentUrl)}&media=${encodeURIComponent('https://elegantcrochet.net/assets/about.jpg')}&description=${encodeURIComponent(document.title)}`;
-                    if (shareFb) shareFb.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`;
+                if (shareWa) shareWa.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+                if (sharePin) sharePin.href = `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(currentUrl)}&media=${encodeURIComponent('https://elegantcrochet.net/assets/about.jpg')}&description=${encodeURIComponent(document.title)}`;
+                if (shareFb) shareFb.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`;
 
-                    shareModal.classList.add('active');
-                }
+                shareModal.classList.add('active');
             }
         });
     }
