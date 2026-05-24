@@ -372,7 +372,19 @@ function setLanguage(lang) {
     // 3. Category & Product details
     translateProducts(lang);
 
-    // 4. Update language toggler active highlights
+    // 4. Hero Banner Image translation
+    const heroImg = document.querySelector('.hero-banner img');
+    if (heroImg) {
+        if (lang === 'en') {
+            heroImg.src = 'assets/hero-banner-en.jpg';
+            heroImg.alt = 'Handmade Crocheted with Love - Elegant Crochet';
+        } else {
+            heroImg.src = 'assets/hero-banner-yeni.jpg';
+            heroImg.alt = 'El Emeği Sevgiyle Örüldü - Elegant Crochet';
+        }
+    }
+
+    // 5. Update language toggler active highlights
     document.querySelectorAll('.lang-btn').forEach(btn => {
         if (btn.getAttribute('data-lang') === lang) {
             btn.classList.add('active');
@@ -383,6 +395,7 @@ function setLanguage(lang) {
 
     // Dispatch custom event to notify scripts (e.g. galeri.js) that language has changed
     window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
+
 }
 
 // Auto-run on load
