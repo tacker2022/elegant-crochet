@@ -471,13 +471,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 3rem;
 }
 
 .product-card {
+    width: 100%;
+    max-width: 380px;
     background: var(--color-white);
     border-radius: 8px;
     overflow: hidden;
@@ -771,7 +773,6 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 768px) {
     .product-grid {
-        grid-template-columns: 1fr;
         gap: 2.5rem;
     }
     .product-card {
