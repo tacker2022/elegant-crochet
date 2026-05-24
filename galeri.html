@@ -59,6 +59,7 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css?v=2">
+    <script src="translations.js"></script>
 </head>
 <body class="no-scroll">
     <!-- Preloader -->
@@ -74,9 +75,9 @@
         <div class="nav-container">
             <a href="index.html" class="logo">Elegant Crochet</a>
             <nav class="nav-links">
-                <a href="index.html#story">Hikayemiz</a>
+                <a href="index.html#story" data-i18n="nav-story">Hikayemiz</a>
                 <div class="nav-dropdown" style="position: relative; display: inline-block;">
-                    <a href="index.html#products" style="cursor: pointer;">Ürünler <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 2px;"></i></a>
+                    <a href="index.html#products" style="cursor: pointer;"><span data-i18n="nav-products">Ürünler</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 2px;"></i></a>
                     <div class="dropdown-content" style="display: none; position: absolute; background-color: var(--color-white); min-width: 220px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1); z-index: 100; border-radius: 8px; overflow: hidden; top: 100%; left: 0;">
                         <a href="index.html#cat-polyester" style="display: block; padding: 12px 16px; color: var(--color-brown-dark); text-decoration: none; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem;">Polyester Supla Takımları</a>
                         <a href="index.html#cat-koton" style="display: block; padding: 12px 16px; color: var(--color-brown-dark); text-decoration: none; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem;">Koton Supla Takımları</a>
@@ -89,18 +90,23 @@
                         <a href="index.html#cat-amigurumi" style="display: block; padding: 12px 16px; color: var(--color-brown-dark); text-decoration: none; font-size: 0.95rem;">Amigurumi</a>
                     </div>
                 </div>
-                <a href="index.html#why-us">Neden Biz?</a>
-                <a href="galeri.html" class="active">Galeri</a>
+                <a href="index.html#why-us" data-i18n="nav-why-us">Neden Biz?</a>
+                <a href="galeri.html" class="active" data-i18n="nav-gallery">Galeri</a>
             </nav>
             <div class="nav-actions">
-                <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn btn-outline btn-sm">Shopier'de İncele</a>
+                <div class="lang-selector">
+                    <button class="lang-btn active" data-lang="tr" onclick="setLanguage('tr')">TR</button>
+                    <span class="lang-separator">|</span>
+                    <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+                </div>
+                <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn btn-outline btn-sm" data-i18n="nav-shopier">Shopier'de İncele</a>
                 <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
             </div>
         </div>
         <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobile-menu">
-            <a href="index.html#story">Hikayemiz</a>
-            <div style="padding: 10px 0; font-weight: 500; color: var(--color-brown-dark);">Kategoriler <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></div>
+            <a href="index.html#story" data-i18n="nav-story">Hikayemiz</a>
+            <div style="padding: 10px 0; font-weight: 500; color: var(--color-brown-dark);"><span data-i18n="nav-categories">Kategoriler</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></div>
             <div class="mobile-subcategories" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px;">
                 <a href="index.html#cat-polyester" style="font-size: 1rem; padding: 5px 0 5px 20px; font-weight: 400;">- Polyester Supla Takımları</a>
                 <a href="index.html#cat-koton" style="font-size: 1rem; padding: 5px 0 5px 20px; font-weight: 400;">- Koton Supla Takımları</a>
@@ -112,9 +118,14 @@
                 <a href="index.html#cat-anahtarlik" style="font-size: 1rem; padding: 5px 0 5px 20px; font-weight: 400;">- Anahtarlık</a>
                 <a href="index.html#cat-amigurumi" style="font-size: 1rem; padding: 5px 0 5px 20px; font-weight: 400;">- Amigurumi</a>
             </div>
-            <a href="index.html#why-us">Neden Biz?</a>
-            <a href="galeri.html" class="active">Galeri</a>
-            <a href="https://www.shopier.com/ElegantCrochet" target="_blank" style="margin-top: 15px;" class="btn btn-primary btn-sm">Shopier'de İncele</a>
+            <a href="index.html#why-us" data-i18n="nav-why-us-mobile">Neden Biz?</a>
+            <a href="galeri.html" class="active" data-i18n="nav-gallery">Galeri</a>
+            <a href="https://www.shopier.com/ElegantCrochet" target="_blank" style="margin-top: 15px;" class="btn btn-primary btn-sm" data-i18n="nav-shopier">Shopier'de İncele</a>
+            <div class="lang-selector" style="margin-top: 1.5rem; padding-left: 0;">
+                <button class="lang-btn active" data-lang="tr" onclick="setLanguage('tr')">TR</button>
+                <span class="lang-separator">|</span>
+                <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+            </div>
         </div>
     </header>
 
@@ -122,10 +133,10 @@
     <section class="gallery-section section-padding">
         <div class="container">
             <div class="section-header reveal reveal-up">
-                <h3 class="section-subtitle">Canlı Instagram Vitrinimiz</h3>
-                <h2 class="section-title">Sosyal Medya Kataloğumuz</h2>
+                <h3 class="section-subtitle" data-i18n="gallery-subtitle">Canlı Instagram Vitrinimiz</h3>
+                <h2 class="section-title" data-i18n="gallery-title">Sosyal Medya Kataloğumuz</h2>
                 <div class="section-divider"></div>
-                <p class="section-desc" style="max-width: 600px; margin: 0 auto 3rem auto;">
+                <p class="section-desc" style="max-width: 600px; margin: 0 auto 3rem auto;" data-i18n="gallery-desc">
                     Tasarım atölyemizden çıkan en yeni supla, runner ve el örgüsü çanta modellerimizin canlı görsellerini keşfedin. Detayları görmek ve videoları oynatmak için gönderilerin üzerine tıklayabilirsiniz.
                 </p>
             </div>
@@ -133,7 +144,7 @@
             <!-- Loader -->
             <div class="gallery-loader" id="gallery-loader" style="text-align: center; padding: 5rem 0; color: var(--color-brown); font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
                 <i class="fas fa-spinner fa-spin" style="font-size: 2.5rem;"></i>
-                <span>Zarafet dolu galerimiz yükleniyor...</span>
+                <span data-i18n="gallery-loading">Zarafet dolu galerimiz yükleniyor...</span>
             </div>
 
             <!-- Dynamic Gallery Grid -->
@@ -149,26 +160,26 @@
             <div class="footer-grid">
                 <div class="footer-info premium-footer-col">
                     <h3 class="footer-logo">Elegant Crochet</h3>
-                    <p class="footer-about">Tığ işi ve el sanatlarının asaletini sofralarınıza ve yaşam alanlarınıza taşıyoruz. Her ilmeği sabır, aşk ve zarafetle işlenen tasarımlar.</p>
+                    <p class="footer-about" data-i18n="footer-desc">Tığ işi ve el sanatlarının asaletini sofralarınıza ve yaşam alanlarınıza taşıyoruz. Her ilmeği sabır, aşk ve zarafetle işlenen tasarımlar.</p>
                 </div>
 
                 <div class="footer-links premium-footer-col">
-                    <h4 class="premium-footer-title">Hızlı Bağlantılar</h4>
-                    <a href="index.html#hero" class="premium-footer-link">Ana Sayfa</a>
-                    <a href="index.html#story" class="premium-footer-link">Hikayemiz</a>
-                    <a href="index.html#products" class="premium-footer-link">Ürünler</a>
+                    <h4 class="premium-footer-title" data-i18n="footer-title-explore-galeri">Hızlı Bağlantılar</h4>
+                    <a href="index.html#hero" class="premium-footer-link" data-i18n="footer-link-home">Ana Sayfa</a>
+                    <a href="index.html#story" class="premium-footer-link" data-i18n="nav-story">Hikayemiz</a>
+                    <a href="index.html#products" class="premium-footer-link" data-i18n="nav-products">Ürünler</a>
                 </div>
 
                 <div class="footer-contact premium-footer-col">
-                    <h4 class="premium-footer-title">İletişim</h4>
+                    <h4 class="premium-footer-title" data-i18n="footer-title-contact">İletişim</h4>
                     <p class="premium-footer-link"><i class="fab fa-instagram" style="margin-right: 10px; color: var(--color-brown);"></i> @elegantcrochet2026</p>
-                    <p class="premium-footer-link"><i class="fas fa-gem" style="margin-right: 10px; color: var(--color-brown);"></i> %100 El Emeği</p>
-                    <p class="premium-footer-link"><i class="fas fa-seedling" style="margin-right: 10px; color: var(--color-brown);"></i> Doğal İplik Kalitesi</p>
+                    <p class="premium-footer-link"><i class="fas fa-gem" style="margin-right: 10px; color: var(--color-brown);"></i> <span data-i18n="footer-contact-handmade">%100 El Emeği</span></p>
+                    <p class="premium-footer-link"><i class="fas fa-seedling" style="margin-right: 10px; color: var(--color-brown);"></i> <span data-i18n="footer-contact-yarn">Doğal İplik Kalitesi</span></p>
                 </div>
             </div>
 
             <div class="footer-bottom premium-footer-bottom">
-                <p>&copy; 2026 Elegant Crochet. Tüm Hakları Saklıdır.</p>
+                <p data-i18n="footer-copyright">&copy; 2026 Elegant Crochet. Tüm Hakları Saklıdır.</p>
                 <div class="social-icons premium-social-icons">
                     <a href="https://www.instagram.com/elegantcrochet2026/" target="_blank"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.youtube.com/channel/UCKVZCmUqrnV1xfZrMiFufsw" target="_blank"><i class="fab fa-youtube"></i></a>
@@ -200,7 +211,7 @@
                     </div>
                     <div class="lightbox-footer" style="display: flex; gap: 1rem;">
                         <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn btn-primary btn-sm" style="flex: 1; justify-content: center; display: flex; align-items: center; gap: 0.5rem;">
-                            <i class="fas fa-shopping-bag"></i> Satın Al
+                            <i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Satın Al</span>
                         </a>
                         <a href="#" target="_blank" class="btn btn-outline btn-sm" id="insta-lightbox-instagram-link" style="flex: 1; justify-content: center; display: flex; align-items: center; gap: 0.5rem;">
                             <i class="fab fa-instagram"></i> Instagram'da Gör

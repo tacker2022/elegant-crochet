@@ -83,15 +83,16 @@
       gtag('config', 'G-1TCJSLLE19');
     </script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="translations.js"></script>
 </head>
 <body class="no-scroll">
     <!-- Splash Screen / Preloader -->
     <div class="preloader" id="preloader">
         <div class="preloader-content splash-content">
             <h1 class="preloader-logo splash-logo">Elegant Crochet</h1>
-            <p class="splash-subtitle">Zarif Örgü Dünyasına Hoşgeldiniz</p>
+            <p class="splash-subtitle" data-i18n="splash-subtitle">Zarif Örgü Dünyasına Hoşgeldiniz</p>
             <div class="splash-line"></div>
-            <button id="enter-site-btn" class="btn btn-primary premium-btn splash-btn">Koleksiyonu Keşfet</button>
+            <button id="enter-site-btn" class="btn btn-primary premium-btn splash-btn" data-i18n="splash-btn">Koleksiyonu Keşfet</button>
         </div>
     </div>
     
@@ -114,25 +115,30 @@
         <!-- Top Bar -->
         <div class="top-bar">
         <div class="nav-container top-bar-inner">
-            <div class="top-bar-text"><i class="fas fa-gem" style="margin-right: 5px;"></i> %100 El Emeği Zarif Tasarımlar</div>
+            <div class="top-bar-text"><i class="fas fa-gem" style="margin-right: 5px;"></i> <span data-i18n="top-bar-text">%100 El Emeği Zarif Tasarımlar</span></div>
             <div class="top-social-icons">
                 <a href="https://www.instagram.com/elegantcrochet2026/" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="https://www.youtube.com/channel/UCKVZCmUqrnV1xfZrMiFufsw" target="_blank"><i class="fab fa-youtube"></i></a>
                 <a href="https://www.pinterest.com/elegantcrochet2026/" target="_blank"><i class="fab fa-pinterest"></i></a>
                 <a href="https://www.facebook.com/people/elegantcrochet/61580742497981/" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://www.shopier.com/ElegantCrochet" target="_blank" title="Shopier Mağazamıza Git"><i class="fas fa-shopping-bag"></i></a>
+                <div class="lang-selector">
+                    <button class="lang-btn active" data-lang="tr" onclick="setLanguage('tr')">TR</button>
+                    <span class="lang-separator">|</span>
+                    <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+                </div>
             </div>
         </div>
     </div>
-
+ 
     <!-- Navbar -->
     <header class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#" class="logo">Elegant Crochet</a>
             <nav class="nav-links">
-                <a href="#story">Hikayemiz</a>
+                <a href="#story" data-i18n="nav-story">Hikayemiz</a>
                 <div class="nav-dropdown" style="position: relative; display: inline-block;">
-                    <a href="#products" style="cursor: pointer;">Ürünler <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 2px;"></i></a>
+                    <a href="#products" style="cursor: pointer;"><span data-i18n="nav-products">Ürünler</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 2px;"></i></a>
                     <div class="dropdown-content" style="display: none; position: absolute; background-color: var(--color-white); min-width: 220px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1); z-index: 100; border-radius: 8px; overflow: hidden; top: 100%; left: 0;">
                         <a href="#cat-polyester" style="display: block; padding: 12px 16px; color: var(--color-brown-dark); text-decoration: none; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem;">Polyester Supla Takımları</a>
                         <a href="#cat-koton" style="display: block; padding: 12px 16px; color: var(--color-brown-dark); text-decoration: none; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem;">Koton Supla Takımları</a>
@@ -145,18 +151,23 @@
                         <a href="#cat-amigurumi" style="display: block; padding: 12px 16px; color: var(--color-brown-dark); text-decoration: none; font-size: 0.95rem;">Amigurumi</a>
                     </div>
                 </div>
-                <a href="#why-us">Neden Biz?</a>
+                <a href="#why-us" data-i18n="nav-why-us">Neden Biz?</a>
                 <!-- <a href="#testimonials">Yorumlar</a> -->
             </nav>
             <div class="nav-actions">
-                <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn btn-outline btn-sm">Shopier'de İncele</a>
+                <div class="lang-selector">
+                    <button class="lang-btn active" data-lang="tr" onclick="setLanguage('tr')">TR</button>
+                    <span class="lang-separator">|</span>
+                    <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+                </div>
+                <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn btn-outline btn-sm" data-i18n="nav-shopier">Shopier'de İncele</a>
                 <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
             </div>
         </div>
         <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobile-menu">
-            <a href="#story">Hikayemiz</a>
-            <div style="padding: 10px 0; font-weight: 500; color: var(--color-brown-dark);">Kategoriler <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></div>
+            <a href="#story" data-i18n="nav-story">Hikayemiz</a>
+            <div style="padding: 10px 0; font-weight: 500; color: var(--color-brown-dark);"><span data-i18n="nav-categories">Kategoriler</span> <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></div>
             <div class="mobile-subcategories" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px;">
                 <a href="#cat-polyester" style="font-size: 1rem; padding: 5px 0 5px 20px; font-weight: 400;">- Polyester Supla Takımları</a>
                 <a href="#cat-koton" style="font-size: 1rem; padding: 5px 0 5px 20px; font-weight: 400;">- Koton Supla Takımları</a>
@@ -168,9 +179,14 @@
                 <a href="#cat-anahtarlik" style="font-size: 1rem; padding: 5px 0 5px 20px; font-weight: 400;">- Anahtarlık</a>
                 <a href="#cat-amigurumi" style="font-size: 1rem; padding: 5px 0 5px 20px; font-weight: 400;">- Amigurumi</a>
             </div>
-            <a href="#why-us">Neden Biz?</a>
+            <a href="#why-us" data-i18n="nav-why-us-mobile">Neden Biz?</a>
             <!-- <a href="#testimonials">Yorumlar</a> -->
-            <a href="https://www.shopier.com/ElegantCrochet" target="_blank" style="margin-top: 15px;" class="btn btn-primary btn-sm">Shopier'de İncele</a>
+            <a href="https://www.shopier.com/ElegantCrochet" target="_blank" style="margin-top: 15px;" class="btn btn-primary btn-sm" data-i18n="nav-shopier">Shopier'de İncele</a>
+            <div class="lang-selector" style="margin-top: 1.5rem; padding-left: 0;">
+                <button class="lang-btn active" data-lang="tr" onclick="setLanguage('tr')">TR</button>
+                <span class="lang-separator">|</span>
+                <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+            </div>
         </div>
     </header>
     </div>
@@ -189,10 +205,10 @@
                 <img src="assets/about.jpg" alt="Elegant Crochet Hikayesi">
             </div>
             <div class="story-text reveal reveal-right">
-                <h3 class="section-subtitle">Hikayemiz</h3>
-                <h2 class="section-title">Her İlmekte Sevgi Var</h2>
-                <p>Elegant Crochet, tığ işine duyduğumuz tutkunun ve el sanatlarına olan saygımızın bir yansımasıdır. Her bir tasarım özenle, sabırla ve en yüksek kalite standartlarında hazırlanır.</p>
-                <p>Masanıza sadece bir dekor değil, aynı zamanda zarif bir yaşam tarzı ve ince düşünülmüş bir dokunuş katmak isterseniz doğru yerdesiniz. Bizim için her ilmek, ustalığın ve zarafetin bir sembolüdür.</p>
+                <h3 class="section-subtitle" data-i18n="story-subtitle">Hikayemiz</h3>
+                <h2 class="section-title" data-i18n="story-title">Her İlmekte Sevgi Var</h2>
+                <p data-i18n="story-p1">Elegant Crochet, tığ işine duyduğumuz tutkunun ve el sanatlarına olan saygımızın bir yansımasıdır. Her bir tasarım özenle, sabırla ve en yüksek kalite standartlarında hazırlanır.</p>
+                <p data-i18n="story-p2">Masanıza sadece bir dekor değil, aynı zamanda zarif bir yaşam tarzı ve ince düşünülmüş bir dokunuş katmak isterseniz doğru yerdesiniz. Bizim için her ilmek, ustalığın ve zarafetin bir sembolüdür.</p>
                 <div class="signature">Elegant Crochet</div>
             </div>
         </div>
@@ -232,12 +248,12 @@
 
 
     <!-- Products Section -->
-                        <section class="products section-padding" id="products">
+                            <section class="products section-padding" id="products">
         <div class="container">
             <div class="section-header reveal">
-                <h3 class="section-subtitle">Koleksiyonumuz</h3>
-                <h2 class="section-title">En Çok Tercih Edilenler</h2>
-                <p>Masanızı zarifliğin zirvesine taşıyacak, özenle tasarlanmış favori parçalarımız.</p>
+                <h3 class="section-subtitle" data-i18n="products-subtitle">Koleksiyonumuz</h3>
+                <h2 class="section-title" data-i18n="products-title">En Çok Tercih Edilenler</h2>
+                <p data-i18n="products-desc">Masanızı zarifliğin zirvesine taşıyacak, özenle tasarlanmış favori parçalarımız.</p>
             </div>
 
             <!-- Polyester Supla Takımları -->
@@ -248,87 +264,87 @@
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_96168d8f2c621327b742df295e76cb68.jpeg" alt="Acı Kahve Polyester Supla Takımı">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_96168d8f2c621327b742df295e76cb68.jpeg" data-caption="Acı Kahve Polyester Supla Takımı">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_96168d8f2c621327b742df295e76cb68.jpeg" data-caption="Acı Kahve Polyester Supla Takımı"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Acı Kahve Polyester Supla Takımı</h4>
                             <p class="price">2.700 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45671945" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45671945" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-2">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_83ca82beef62c457cf588f92773175ac.png" alt="Antrasit Polyester Supla Takımı">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_83ca82beef62c457cf588f92773175ac.png" data-caption="Antrasit Polyester Supla Takımı">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_83ca82beef62c457cf588f92773175ac.png" data-caption="Antrasit Polyester Supla Takımı"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Antrasit Polyester Supla Takımı</h4>
                             <p class="price">2.300 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45446802" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45446802" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-3">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_c78a917b44a296970d6980b35391c716.jpg" alt="Füme Polyester Supla Takımı">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_c78a917b44a296970d6980b35391c716.jpg" data-caption="Füme Polyester Supla Takımı">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_c78a917b44a296970d6980b35391c716.jpg" data-caption="Füme Polyester Supla Takımı"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Füme Polyester Supla Takımı</h4>
                             <p class="price">2.900 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45418785" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45418785" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-4">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_5fe538271570c8583f48757371de6fb6.jpg" alt="Turuncu Polyester Supla Takımı">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_5fe538271570c8583f48757371de6fb6.jpg" data-caption="Turuncu Polyester Supla Takımı">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_5fe538271570c8583f48757371de6fb6.jpg" data-caption="Turuncu Polyester Supla Takımı"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Turuncu Polyester Supla Takımı</h4>
                             <p class="price">2.700 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45418499" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45418499" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-1">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_28957eb46bb0f1211fa66a841b5ce9d9.jpg" alt="Lacivert Polyester Makrome Supla Takımı">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_28957eb46bb0f1211fa66a841b5ce9d9.jpg" data-caption="Lacivert Polyester Makrome Supla Takımı">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_28957eb46bb0f1211fa66a841b5ce9d9.jpg" data-caption="Lacivert Polyester Makrome Supla Takımı"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Lacivert Polyester Makrome Supla Takımı</h4>
                             <p class="price">3.000 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45415629" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45415629" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-2">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_4df51e31f2267e3c0763d7b96e811926.jpg" alt="Gri Polyester Supla Takımı">
-<div class="product-overlay" style="background: rgba(255,255,255,0.7); display:flex; align-items:center; justify-content:center;"><span style="background:#c98693; color:white; padding:5px 15px; border-radius:20px; font-weight:bold;">Tükendi</span></div>
+<div class="product-overlay" style="background: rgba(255,255,255,0.7); display:flex; align-items:center; justify-content:center;"><span style="background:#c98693; color:white; padding:5px 15px; border-radius:20px; font-weight:bold;" data-i18n="sold-out">Tükendi</span></div>
                         </div>
                         <div class="product-info">
                             <h4>Gri Polyester Supla Takımı</h4>
                             <p class="price">2.300 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45418932" target="_blank" class="btn-product-buy" style="background-color: #ddd; color: #666; cursor: not-allowed; pointer-events: none;"><i class="fas fa-shopping-bag"></i> Tükendi</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45418932" target="_blank" class="btn-product-buy" style="background-color: #ddd; color: #666; cursor: not-allowed; pointer-events: none;"><i class="fas fa-shopping-bag"></i> <span data-i18n="sold-out">Tükendi</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-3">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_1702ee907360a8ac3c62ead0232668c2.jpeg" alt="Kahverengi Polyester Supla Takımı">
-<div class="product-overlay" style="background: rgba(255,255,255,0.7); display:flex; align-items:center; justify-content:center;"><span style="background:#c98693; color:white; padding:5px 15px; border-radius:20px; font-weight:bold;">Tükendi</span></div>
+<div class="product-overlay" style="background: rgba(255,255,255,0.7); display:flex; align-items:center; justify-content:center;"><span style="background:#c98693; color:white; padding:5px 15px; border-radius:20px; font-weight:bold;" data-i18n="sold-out">Tükendi</span></div>
                         </div>
                         <div class="product-info">
                             <h4>Kahverengi Polyester Supla Takımı</h4>
                             <p class="price">2.700 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45393904" target="_blank" class="btn-product-buy" style="background-color: #ddd; color: #666; cursor: not-allowed; pointer-events: none;"><i class="fas fa-shopping-bag"></i> Tükendi</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45393904" target="_blank" class="btn-product-buy" style="background-color: #ddd; color: #666; cursor: not-allowed; pointer-events: none;"><i class="fas fa-shopping-bag"></i> <span data-i18n="sold-out">Tükendi</span></a>
                         </div>
                     </div>
                 </div>
@@ -342,78 +358,78 @@
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_aa2b7805059f6aaef393d2835bcac3eb.png" alt="Safir Mavi Koton supla takımı">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_aa2b7805059f6aaef393d2835bcac3eb.png" data-caption="Safir Mavi Koton supla takımı">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_aa2b7805059f6aaef393d2835bcac3eb.png" data-caption="Safir Mavi Koton supla takımı"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Safir Mavi Koton supla takımı</h4>
                             <p class="price">1.700,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45618763" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45618763" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-2">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_01cad8161da4b6356293eba029d3e1bc.jpeg" alt="Krem Koton 4 'lü Supla Takımı">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_01cad8161da4b6356293eba029d3e1bc.jpeg" data-caption="Krem Koton 4 'lü Supla Takımı">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_01cad8161da4b6356293eba029d3e1bc.jpeg" data-caption="Krem Koton 4 'lü Supla Takımı"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Krem Koton 4 'lü Supla Takımı</h4>
                             <p class="price">1.200,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45908306" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45908306" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-3">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_c17b51f9b851570ee6ec0a3b541c0fd9.jpeg" alt="El Emeği Koton Makrome 4'lü Supla Takımı">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_c17b51f9b851570ee6ec0a3b541c0fd9.jpeg" data-caption="El Emeği Koton Makrome 4'lü Supla Takımı">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_c17b51f9b851570ee6ec0a3b541c0fd9.jpeg" data-caption="El Emeği Koton Makrome 4'lü Supla Takımı"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>El Emeği Koton Makrome 4'lü Supla Takımı</h4>
                             <p class="price">1.200 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45758656" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45758656" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-4">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_8deea4781cbe9d16de448c71aaef71c2.jpeg" alt="Şeker pembe koton supla takımı">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_8deea4781cbe9d16de448c71aaef71c2.jpeg" data-caption="Şeker pembe koton supla takımı">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_8deea4781cbe9d16de448c71aaef71c2.jpeg" data-caption="Şeker pembe koton supla takımı"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Şeker pembe koton supla takımı</h4>
                             <p class="price">1.700 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45590531" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45590531" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-1">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_408313d6e157f3c61f816c2dab890f81.png" alt="Meyve Temalı Koton Supla Takımı">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_408313d6e157f3c61f816c2dab890f81.png" data-caption="Meyve Temalı Koton Supla Takımı">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_408313d6e157f3c61f816c2dab890f81.png" data-caption="Meyve Temalı Koton Supla Takımı"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Meyve Temalı Koton Supla Takımı</h4>
                             <p class="price">1.900 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45446173" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45446173" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-2">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_b343553fb1fe8801a50ef1aec5beb6f6.png" alt="Meyve Temalı Koton Supla Takımı">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_b343553fb1fe8801a50ef1aec5beb6f6.png" data-caption="Meyve Temalı Koton Supla Takımı">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_b343553fb1fe8801a50ef1aec5beb6f6.png" data-caption="Meyve Temalı Koton Supla Takımı"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Meyve Temalı Koton Supla Takımı</h4>
                             <p class="price">1.900 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45446421" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45446421" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                 </div>
@@ -427,63 +443,63 @@
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_221e3428d668fe31ccc75484454fb819.png" alt="Pembe çocuk kol çantası">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_221e3428d668fe31ccc75484454fb819.png" data-caption="Pembe çocuk kol çantası">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_221e3428d668fe31ccc75484454fb819.png" data-caption="Pembe çocuk kol çantası"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Pembe çocuk kol çantası</h4>
                             <p class="price">900,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45726438" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45726438" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-2">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_ac256da88afba26a2400aad777e2f512.jpeg" alt="Turkuaz Çocuk Sırt Çantası">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_ac256da88afba26a2400aad777e2f512.jpeg" data-caption="Turkuaz Çocuk Sırt Çantası">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_ac256da88afba26a2400aad777e2f512.jpeg" data-caption="Turkuaz Çocuk Sırt Çantası"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Turkuaz Çocuk Sırt Çantası</h4>
                             <p class="price">900,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45648992" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45648992" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-3">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_56ec67291e0b57f39e094b83ca1b43d3.jpeg" alt="Lacivert Papatya Detaylı Çocuk Sırt Çantası">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_56ec67291e0b57f39e094b83ca1b43d3.jpeg" data-caption="Lacivert Papatya Detaylı Çocuk Sırt Çantası">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_56ec67291e0b57f39e094b83ca1b43d3.jpeg" data-caption="Lacivert Papatya Detaylı Çocuk Sırt Çantası"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Lacivert Papatya Detaylı Çocuk Sırt Çantası</h4>
                             <p class="price">900,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45648788" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45648788" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-4">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_fb9b4995b54943081735277dd5f492d7.jpeg" alt="Yeşil Çocuk Sırt Çantası">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_fb9b4995b54943081735277dd5f492d7.jpeg" data-caption="Yeşil Çocuk Sırt Çantası">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_fb9b4995b54943081735277dd5f492d7.jpeg" data-caption="Yeşil Çocuk Sırt Çantası"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Yeşil Çocuk Sırt Çantası</h4>
                             <p class="price">900,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45447169" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45447169" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-1">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_059b8eb89d5aaafbf3d197af0d810508.jpg" alt="Pembe Çocuk Sırt Çantası">
-<div class="product-overlay" style="background: rgba(255,255,255,0.7); display:flex; align-items:center; justify-content:center;"><span style="background:#c98693; color:white; padding:5px 15px; border-radius:20px; font-weight:bold;">Tükendi</span></div>
+<div class="product-overlay" style="background: rgba(255,255,255,0.7); display:flex; align-items:center; justify-content:center;"><span style="background:#c98693; color:white; padding:5px 15px; border-radius:20px; font-weight:bold;" data-i18n="sold-out">Tükendi</span></div>
                         </div>
                         <div class="product-info">
                             <h4>Pembe Çocuk Sırt Çantası</h4>
                             <p class="price">900 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45447256" target="_blank" class="btn-product-buy" style="background-color: #ddd; color: #666; cursor: not-allowed; pointer-events: none;"><i class="fas fa-shopping-bag"></i> Tükendi</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45447256" target="_blank" class="btn-product-buy" style="background-color: #ddd; color: #666; cursor: not-allowed; pointer-events: none;"><i class="fas fa-shopping-bag"></i> <span data-i18n="sold-out">Tükendi</span></a>
                         </div>
                     </div>
                 </div>
@@ -497,61 +513,61 @@
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_ac256da88afba26a2400aad777e2f512.jpeg" alt="Turkuaz Çocuk Sırt Çantası">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_ac256da88afba26a2400aad777e2f512.jpeg" data-caption="Turkuaz Çocuk Sırt Çantası">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_ac256da88afba26a2400aad777e2f512.jpeg" data-caption="Turkuaz Çocuk Sırt Çantası"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Turkuaz Çocuk Sırt Çantası</h4>
                             <p class="price">900,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45648992" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45648992" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-2">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_56ec67291e0b57f39e094b83ca1b43d3.jpeg" alt="Lacivert Papatya Detaylı Çocuk Sırt Çantası">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_56ec67291e0b57f39e094b83ca1b43d3.jpeg" data-caption="Lacivert Papatya Detaylı Çocuk Sırt Çantası">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_56ec67291e0b57f39e094b83ca1b43d3.jpeg" data-caption="Lacivert Papatya Detaylı Çocuk Sırt Çantası"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Lacivert Papatya Detaylı Çocuk Sırt Çantası</h4>
                             <p class="price">900,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45648788" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45648788" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-3">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_fb9b4995b54943081735277dd5f492d7.jpeg" alt="Yeşil Çocuk Sırt Çantası">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_fb9b4995b54943081735277dd5f492d7.jpeg" data-caption="Yeşil Çocuk Sırt Çantası">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_fb9b4995b54943081735277dd5f492d7.jpeg" data-caption="Yeşil Çocuk Sırt Çantası"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Yeşil Çocuk Sırt Çantası</h4>
                             <p class="price">900,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45447169" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45447169" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-4">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_dce59140565cfec04a8ed3e4575c9fcf.jpeg" alt="Motifli Sırt Çantası">
-<div class="product-overlay" style="background: rgba(255,255,255,0.7); display:flex; align-items:center; justify-content:center;"><span style="background:#c98693; color:white; padding:5px 15px; border-radius:20px; font-weight:bold;">Tükendi</span></div>
+<div class="product-overlay" style="background: rgba(255,255,255,0.7); display:flex; align-items:center; justify-content:center;"><span style="background:#c98693; color:white; padding:5px 15px; border-radius:20px; font-weight:bold;" data-i18n="sold-out">Tükendi</span></div>
                         </div>
                         <div class="product-info">
                             <h4>Motifli Sırt Çantası</h4>
                             <p class="price">1.300 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45891908" target="_blank" class="btn-product-buy" style="background-color: #ddd; color: #666; cursor: not-allowed; pointer-events: none;"><i class="fas fa-shopping-bag"></i> Tükendi</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45891908" target="_blank" class="btn-product-buy" style="background-color: #ddd; color: #666; cursor: not-allowed; pointer-events: none;"><i class="fas fa-shopping-bag"></i> <span data-i18n="sold-out">Tükendi</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-1">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_059b8eb89d5aaafbf3d197af0d810508.jpg" alt="Pembe Çocuk Sırt Çantası">
-<div class="product-overlay" style="background: rgba(255,255,255,0.7); display:flex; align-items:center; justify-content:center;"><span style="background:#c98693; color:white; padding:5px 15px; border-radius:20px; font-weight:bold;">Tükendi</span></div>
+<div class="product-overlay" style="background: rgba(255,255,255,0.7); display:flex; align-items:center; justify-content:center;"><span style="background:#c98693; color:white; padding:5px 15px; border-radius:20px; font-weight:bold;" data-i18n="sold-out">Tükendi</span></div>
                         </div>
                         <div class="product-info">
                             <h4>Pembe Çocuk Sırt Çantası</h4>
                             <p class="price">900 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45447256" target="_blank" class="btn-product-buy" style="background-color: #ddd; color: #666; cursor: not-allowed; pointer-events: none;"><i class="fas fa-shopping-bag"></i> Tükendi</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45447256" target="_blank" class="btn-product-buy" style="background-color: #ddd; color: #666; cursor: not-allowed; pointer-events: none;"><i class="fas fa-shopping-bag"></i> <span data-i18n="sold-out">Tükendi</span></a>
                         </div>
                     </div>
                 </div>
@@ -565,13 +581,13 @@
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_b2db3af0c426bc23618b734238c32422.jpeg" alt="Açık bej 2'li Runner takımı">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_b2db3af0c426bc23618b734238c32422.jpeg" data-caption="Açık bej 2'li Runner takımı">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_b2db3af0c426bc23618b734238c32422.jpeg" data-caption="Açık bej 2'li Runner takımı"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Açık bej 2'li Runner takımı</h4>
                             <p class="price">1.700,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45603321" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45603321" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                 </div>
@@ -585,39 +601,39 @@
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_9ae4f8563b73dfc52c69021c32120172.jpeg" alt="El Örgüsü Tasarım Çanta - Kırmızı & Ekru Geometrik Desenli">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_9ae4f8563b73dfc52c69021c32120172.jpeg" data-caption="El Örgüsü Tasarım Çanta - Kırmızı & Ekru Geometrik Desenli">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_9ae4f8563b73dfc52c69021c32120172.jpeg" data-caption="El Örgüsü Tasarım Çanta - Kırmızı & Ekru Geometrik Desenli"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>El Örgüsü Tasarım Çanta - Kırmızı & Ekru Geometrik Desenli</h4>
                             <p class="price">2.000,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/46146794" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/46146794" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-2">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_684fb6f949e28b0765da4fa84c9b242b.jpeg" alt="9 Motifli Boho Tarz El Yapımı Tığ İşi Çanta">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_684fb6f949e28b0765da4fa84c9b242b.jpeg" data-caption="9 Motifli Boho Tarz El Yapımı Tığ İşi Çanta">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_684fb6f949e28b0765da4fa84c9b242b.jpeg" data-caption="9 Motifli Boho Tarz El Yapımı Tığ İşi Çanta"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>9 Motifli Boho Tarz El Yapımı Tığ İşi Çanta</h4>
                             <p class="price">1.800,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45964294" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45964294" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-3">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_221e3428d668fe31ccc75484454fb819.png" alt="Pembe çocuk kol çantası">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_221e3428d668fe31ccc75484454fb819.png" data-caption="Pembe çocuk kol çantası">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_221e3428d668fe31ccc75484454fb819.png" data-caption="Pembe çocuk kol çantası"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Pembe çocuk kol çantası</h4>
                             <p class="price">900,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/45726438" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/45726438" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                 </div>
@@ -631,104 +647,104 @@
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_8ae1e2ff0b9d25c6b56c8f1acd27ffd7.jpeg" alt="Hello Kitty Charm">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_8ae1e2ff0b9d25c6b56c8f1acd27ffd7.jpeg" data-caption="Hello Kitty Charm">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_8ae1e2ff0b9d25c6b56c8f1acd27ffd7.jpeg" data-caption="Hello Kitty Charm"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Hello Kitty Charm</h4>
                             <p class="price">250,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/46825507" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/46825507" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-2">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_8360856026a21c6329df295a9a25636e.png" alt="El Örgüsü Tilki Figürlü Gözlük Kılıfı">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_8360856026a21c6329df295a9a25636e.png" data-caption="El Örgüsü Tilki Figürlü Gözlük Kılıfı">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_8360856026a21c6329df295a9a25636e.png" data-caption="El Örgüsü Tilki Figürlü Gözlük Kılıfı"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>El Örgüsü Tilki Figürlü Gözlük Kılıfı</h4>
                             <p class="price">300,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/47175481" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/47175481" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-3">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_198062f029be6a6eb837be14fd27683f.png" alt="Bıdık Arı El Yapımı Amigurumi Anahtarlık">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_198062f029be6a6eb837be14fd27683f.png" data-caption="Bıdık Arı El Yapımı Amigurumi Anahtarlık">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_198062f029be6a6eb837be14fd27683f.png" data-caption="Bıdık Arı El Yapımı Amigurumi Anahtarlık"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Bıdık Arı El Yapımı Amigurumi Anahtarlık</h4>
                             <p class="price">250,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/47177093" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/47177093" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-4">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_c6425dbb8507de03c7a89fbb5f5e322c.jpg" alt="El Örgüsü Kalpli Çanta Charmı – Kırmızı Beyaz Aksesuar">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_c6425dbb8507de03c7a89fbb5f5e322c.jpg" data-caption="El Örgüsü Kalpli Çanta Charmı – Kırmızı Beyaz Aksesuar">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_c6425dbb8507de03c7a89fbb5f5e322c.jpg" data-caption="El Örgüsü Kalpli Çanta Charmı – Kırmızı Beyaz Aksesuar"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>El Örgüsü Kalpli Çanta Charmı – Kırmızı Beyaz Aksesuar</h4>
                             <p class="price">200,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/47174748" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/47174748" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-1">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_45a04909ddb85aa7d02a670ff280e0a6.jpeg" alt="Avokado Amigurumi Anahtarlık & Çanta Charmı">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_45a04909ddb85aa7d02a670ff280e0a6.jpeg" data-caption="Avokado Amigurumi Anahtarlık & Çanta Charmı">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_45a04909ddb85aa7d02a670ff280e0a6.jpeg" data-caption="Avokado Amigurumi Anahtarlık & Çanta Charmı"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Avokado Amigurumi Anahtarlık & Çanta Charmı</h4>
                             <p class="price">150,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/46801925" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/46801925" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-2">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_e3f18ae040ec4d093cf49f1186a014a2.jpeg" alt="El Yapımı Papatya Anahtarlık & Çanta Charm">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_e3f18ae040ec4d093cf49f1186a014a2.jpeg" data-caption="El Yapımı Papatya Anahtarlık & Çanta Charm">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_e3f18ae040ec4d093cf49f1186a014a2.jpeg" data-caption="El Yapımı Papatya Anahtarlık & Çanta Charm"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>El Yapımı Papatya Anahtarlık & Çanta Charm</h4>
                             <p class="price">150,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/46801852" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/46801852" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-3">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_10940b1a3ab4aaebc2af1655c268b7c9.jpeg" alt="(Ön Sipariş )(El Yapımı Papatya Anahtarlık">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_10940b1a3ab4aaebc2af1655c268b7c9.jpeg" data-caption="(Ön Sipariş )(El Yapımı Papatya Anahtarlık">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_10940b1a3ab4aaebc2af1655c268b7c9.jpeg" data-caption="(Ön Sipariş )(El Yapımı Papatya Anahtarlık"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>(Ön Sipariş )(El Yapımı Papatya Anahtarlık</h4>
                             <p class="price">150,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/46667020" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/46667020" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-4">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_cdbefd56869ed188861d2f6633bce35d.jpg" alt="El Örgüsü Kaplumbağa Aksesuar / Amigurumi Dekoratif Figür">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_cdbefd56869ed188861d2f6633bce35d.jpg" data-caption="El Örgüsü Kaplumbağa Aksesuar / Amigurumi Dekoratif Figür">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_cdbefd56869ed188861d2f6633bce35d.jpg" data-caption="El Örgüsü Kaplumbağa Aksesuar / Amigurumi Dekoratif Figür"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>El Örgüsü Kaplumbağa Aksesuar / Amigurumi Dekoratif Figür</h4>
                             <p class="price">200,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/47174685" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/47174685" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                 </div>
@@ -742,104 +758,104 @@
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_dbf2c3ab610145d21910db365ef3bcea.jpg" alt="El Örgüsü Tembel Hayvan Amigurumi Çanta Süsü">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_dbf2c3ab610145d21910db365ef3bcea.jpg" data-caption="El Örgüsü Tembel Hayvan Amigurumi Çanta Süsü">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_dbf2c3ab610145d21910db365ef3bcea.jpg" data-caption="El Örgüsü Tembel Hayvan Amigurumi Çanta Süsü"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>El Örgüsü Tembel Hayvan Amigurumi Çanta Süsü</h4>
                             <p class="price">250,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/47174633" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/47174633" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-2">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_8360856026a21c6329df295a9a25636e.png" alt="El Örgüsü Tilki Figürlü Gözlük Kılıfı">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_8360856026a21c6329df295a9a25636e.png" data-caption="El Örgüsü Tilki Figürlü Gözlük Kılıfı">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_8360856026a21c6329df295a9a25636e.png" data-caption="El Örgüsü Tilki Figürlü Gözlük Kılıfı"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>El Örgüsü Tilki Figürlü Gözlük Kılıfı</h4>
                             <p class="price">300,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/47175481" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/47175481" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-3">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_3e445ae723fef7490eefe85a3b1c682d.jpeg" alt="PUFİ PENGUEN">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_3e445ae723fef7490eefe85a3b1c682d.jpeg" data-caption="PUFİ PENGUEN">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_3e445ae723fef7490eefe85a3b1c682d.jpeg" data-caption="PUFİ PENGUEN"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>PUFİ PENGUEN</h4>
                             <p class="price">1.000,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/46705751" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/46705751" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-4">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_a115ce37aa035453d7c54a6b35ace877.jpeg" alt="El Yapımı Baykuş Kulaklık Kılıfı">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_a115ce37aa035453d7c54a6b35ace877.jpeg" data-caption="El Yapımı Baykuş Kulaklık Kılıfı">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_a115ce37aa035453d7c54a6b35ace877.jpeg" data-caption="El Yapımı Baykuş Kulaklık Kılıfı"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>El Yapımı Baykuş Kulaklık Kılıfı</h4>
                             <p class="price">100,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/46802887" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/46802887" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-1">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_198062f029be6a6eb837be14fd27683f.png" alt="Bıdık Arı El Yapımı Amigurumi Anahtarlık">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_198062f029be6a6eb837be14fd27683f.png" data-caption="Bıdık Arı El Yapımı Amigurumi Anahtarlık">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_198062f029be6a6eb837be14fd27683f.png" data-caption="Bıdık Arı El Yapımı Amigurumi Anahtarlık"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Bıdık Arı El Yapımı Amigurumi Anahtarlık</h4>
                             <p class="price">250,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/47177093" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/47177093" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-2">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_00d75c725729a195abf0289fa23294de.jpg" alt="El Örgüsü Mavi Kedi Dekoratif Amigurumi">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_00d75c725729a195abf0289fa23294de.jpg" data-caption="El Örgüsü Mavi Kedi Dekoratif Amigurumi">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_00d75c725729a195abf0289fa23294de.jpg" data-caption="El Örgüsü Mavi Kedi Dekoratif Amigurumi"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>El Örgüsü Mavi Kedi Dekoratif Amigurumi</h4>
                             <p class="price">150,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/47174946" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/47174946" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-3">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_45a04909ddb85aa7d02a670ff280e0a6.jpeg" alt="Avokado Amigurumi Anahtarlık & Çanta Charmı">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_45a04909ddb85aa7d02a670ff280e0a6.jpeg" data-caption="Avokado Amigurumi Anahtarlık & Çanta Charmı">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_45a04909ddb85aa7d02a670ff280e0a6.jpeg" data-caption="Avokado Amigurumi Anahtarlık & Çanta Charmı"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Avokado Amigurumi Anahtarlık & Çanta Charmı</h4>
                             <p class="price">150,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/46801925" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/46801925" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-4">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_cdbefd56869ed188861d2f6633bce35d.jpg" alt="El Örgüsü Kaplumbağa Aksesuar / Amigurumi Dekoratif Figür">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_cdbefd56869ed188861d2f6633bce35d.jpg" data-caption="El Örgüsü Kaplumbağa Aksesuar / Amigurumi Dekoratif Figür">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_cdbefd56869ed188861d2f6633bce35d.jpg" data-caption="El Örgüsü Kaplumbağa Aksesuar / Amigurumi Dekoratif Figür"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>El Örgüsü Kaplumbağa Aksesuar / Amigurumi Dekoratif Figür</h4>
                             <p class="price">200,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/47174685" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/47174685" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                 </div>
@@ -853,52 +869,52 @@
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_f9355ff93d4eeaeba4aa2c2fdcfd634b.jpeg" alt="Hello Kitty Örgü Gözlük Kılıfı">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_f9355ff93d4eeaeba4aa2c2fdcfd634b.jpeg" data-caption="Hello Kitty Örgü Gözlük Kılıfı">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_f9355ff93d4eeaeba4aa2c2fdcfd634b.jpeg" data-caption="Hello Kitty Örgü Gözlük Kılıfı"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>Hello Kitty Örgü Gözlük Kılıfı</h4>
                             <p class="price">300,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/46803516" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/46803516" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-2">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_ae4028be88952b0ebae6ca0c8afeeabd.jpeg" alt="El Yapımı Tilki Gözlük Kılıfı​ El Örgüsü Karakter Gözlük Kılıfı">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_ae4028be88952b0ebae6ca0c8afeeabd.jpeg" data-caption="El Yapımı Tilki Gözlük Kılıfı​ El Örgüsü Karakter Gözlük Kılıfı">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_ae4028be88952b0ebae6ca0c8afeeabd.jpeg" data-caption="El Yapımı Tilki Gözlük Kılıfı​ El Örgüsü Karakter Gözlük Kılıfı"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>El Yapımı Tilki Gözlük Kılıfı​ El Örgüsü Karakter Gözlük Kılıfı</h4>
                             <p class="price">300,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/46803422" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/46803422" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-3">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_8360856026a21c6329df295a9a25636e.png" alt="El Örgüsü Tilki Figürlü Gözlük Kılıfı">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_8360856026a21c6329df295a9a25636e.png" data-caption="El Örgüsü Tilki Figürlü Gözlük Kılıfı">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_8360856026a21c6329df295a9a25636e.png" data-caption="El Örgüsü Tilki Figürlü Gözlük Kılıfı"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>El Örgüsü Tilki Figürlü Gözlük Kılıfı</h4>
                             <p class="price">300,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/47175481" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/47175481" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                     <div class="product-card reveal reveal-up fade-delay-4">
                         <div class="product-img-wrapper">
                             <img src="https://cdn.shopier.app/pictures_mid/elegantcrochet_d724936473cc2f845f976bf6a118df4e.jpeg" alt="El Yapımı Kurbağa Temalı Örgü Gözlük Kılıfı ✨">
                             <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_d724936473cc2f845f976bf6a118df4e.jpeg" data-caption="El Yapımı Kurbağa Temalı Örgü Gözlük Kılıfı ✨">Resmi Gör</button>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="https://cdn.shopier.app/pictures_mid/elegantcrochet_d724936473cc2f845f976bf6a118df4e.jpeg" data-caption="El Yapımı Kurbağa Temalı Örgü Gözlük Kılıfı ✨"><span data-i18n="view-image">Resmi Gör</span></button>
                             </div>
                         </div>
                         <div class="product-info">
                             <h4>El Yapımı Kurbağa Temalı Örgü Gözlük Kılıfı ✨</h4>
                             <p class="price">300,00 TL</p>
-                            <a href="https://www.shopier.com/ElegantCrochet/46803282" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                            <a href="https://www.shopier.com/ElegantCrochet/46803282" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>
                         </div>
                     </div>
                 </div>
@@ -910,28 +926,28 @@
     <section class="why-us section-padding" id="why-us">
         <div class="container">
             <div class="section-header reveal">
-                <h2 class="section-title">Neden Elegant Crochet?</h2>
+                <h2 class="section-title" data-i18n="why-us-title">Neden Elegant Crochet?</h2>
             </div>
             <div class="features-grid">
                 <div class="feature-item reveal reveal-up fade-delay-1">
                     <div class="icon-circle"><i class="fas fa-hand-holding-heart"></i></div>
-                    <h4>%100 El Yapımı</h4>
-                    <p>Tamamen el emeği göz nuru ile üretilir, fabrikasyon değildir.</p>
+                    <h4 data-i18n="feature-1-title">%100 El Yapımı</h4>
+                    <p data-i18n="feature-1-desc">Tamamen el emeği göz nuru ile üretilir, fabrikasyon değildir.</p>
                 </div>
                 <div class="feature-item reveal reveal-up fade-delay-2">
                     <div class="icon-circle"><i class="fas fa-leaf"></i></div>
-                    <h4>Premium İplik Kalitesi</h4>
-                    <p>Polyester soft makrome ve %100 pamuk ipliklerin özel kombinasyonu sayesinde, hem estetik hem de dayanıklı bir kullanım deneyimi sunar.</p>
+                    <h4 data-i18n="feature-2-title">Premium İplik Kalitesi</h4>
+                    <p data-i18n="feature-2-desc">Polyester soft makrome ve %100 pamuk ipliklerin özel kombinasyonu sayesinde, hem estetik hem de dayanıklı bir kullanım deneyimi sunar.</p>
                 </div>
                 <div class="feature-item reveal reveal-up fade-delay-3">
                     <div class="icon-circle"><i class="fas fa-gem"></i></div>
-                    <h4>Özel Tasarım</h4>
-                    <p>Masanız için size özel hissettirecek benzersiz estetik desenler.</p>
+                    <h4 data-i18n="feature-3-title">Özel Tasarım</h4>
+                    <p data-i18n="feature-3-desc">Masanız için size özel hissettirecek benzersiz estetik desenler.</p>
                 </div>
                 <div class="feature-item reveal reveal-up fade-delay-4">
                     <div class="icon-circle"><i class="fas fa-gift"></i></div>
-                    <h4>Hediye İçin Mükemmel</h4>
-                    <p>Sevdiklerinize anlamlı ve şık bir hediye vermek için en zarif tercih.</p>
+                    <h4 data-i18n="feature-4-title">Hediye İçin Mükemmel</h4>
+                    <p data-i18n="feature-4-desc">Sevdiklerinize anlamlı ve şık bir hediye vermek için en zarif tercih.</p>
                 </div>
             </div>
         </div>
@@ -940,9 +956,9 @@
     <!-- Video Section -->
     <section class="video-showcase section-padding" id="video">
         <div class="container text-center reveal">
-            <h3 class="section-subtitle">Yakından İnceleyin</h3>
-            <h2 class="section-title">Emeğin Yolculuğuna Eşlik Edin</h2>
-            <p style="margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">Zarif el emeği ürünlerimizin eşsiz duruşunu ve iplik kalitesine yansıyan o ince detayları yakından hissetmek için kısa videomuza göz atabilirsiniz.</p>
+            <h3 class="section-subtitle" data-i18n="video-subtitle">Yakından İnceleyin</h3>
+            <h2 class="section-title" data-i18n="video-title">Emeğin Yolculuğuna Eşlik Edin</h2>
+            <p style="margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;" data-i18n="video-desc">Zarif el emeği ürünlerimizin eşsiz duruşunu ve iplik kalitesine yansıyan o ince detayları yakından hissetmek için kısa videomuza göz atabilirsiniz.</p>
             <div class="video-grid">
                 <!-- Video 1 -->
                 <div class="video-container reveal reveal-up fade-delay-1">
@@ -965,9 +981,9 @@
     <!-- Care Guide Section -->
     <section class="care-guide section-padding" id="care">
         <div class="container text-center reveal">
-            <h3 class="section-subtitle">Ürünlerinizin Ömrünü Uzatın</h3>
-            <h2 class="section-title">Bakım ve Yıkama Kılavuzu</h2>
-            <p style="margin-bottom: 4rem; max-width: 600px; margin-left: auto; margin-right: auto;">Zarif el emeği ürünlerinizin formunu ve kalitesini yıllarca koruması için önerdiğimiz hassas bakım adımları.</p>
+            <h3 class="section-subtitle" data-i18n="care-subtitle">Ürünlerinizin Ömrünü Uzatın</h3>
+            <h2 class="section-title" data-i18n="care-title">Bakım ve Yıkama Kılavuzu</h2>
+            <p style="margin-bottom: 4rem; max-width: 600px; margin-left: auto; margin-right: auto;" data-i18n="care-desc">Zarif el emeği ürünlerinizin formunu ve kalitesini yıllarca koruması için önerdiğimiz hassas bakım adımları.</p>
             
             <div class="care-grid">
                 <!-- Item 1 -->
@@ -975,32 +991,32 @@
                     <div class="care-icon">
                         <i class="fas fa-hands-wash"></i>
                     </div>
-                    <h4>Elde Yıkama</h4>
-                    <p>Ilık su ve yumuşak sabun ile nazikçe, çitilemeden yıkayınız.</p>
+                    <h4 data-i18n="care-1-title">Elde Yıkama</h4>
+                    <p data-i18n="care-1-desc">Ilık su ve yumuşak sabun ile nazikçe, çitilemeden yıkayınız.</p>
                 </div>
                 <!-- Item 2 -->
                 <div class="care-item reveal reveal-up fade-delay-2">
                     <div class="care-icon">
                         <i class="fas fa-wind"></i>
                     </div>
-                    <h4>Düz Kurutma</h4>
-                    <p>Formunu koruması için düz bir zemine temiz bir havlu üzerine sererek kurutun.</p>
+                    <h4 data-i18n="care-2-title">Düz Kurutma</h4>
+                    <p data-i18n="care-2-desc">Formunu koruması için düz bir zemine temiz bir havlu üzerine sererek kurutun.</p>
                 </div>
                 <!-- Item 3 -->
                 <div class="care-item reveal reveal-up fade-delay-3">
                     <div class="care-icon">
                         <i class="fas fa-temperature-low"></i>
                     </div>
-                    <h4>Hassas Ütüleme</h4>
-                    <p>Düşük ısıda, üzerine ince bir tülbent koyarak nazikçe ütüleyebilirsiniz.</p>
+                    <h4 data-i18n="care-3-title">Hassas Ütüleme</h4>
+                    <p data-i18n="care-3-desc">Düşük ısıda, üzerine ince bir tülbent koyarak nazikçe ütüleyebilirsiniz.</p>
                 </div>
                 <!-- Item 4 -->
                 <div class="care-item reveal reveal-up fade-delay-4">
                     <div class="care-icon">
                         <i class="fas fa-vial-virus"></i>
                     </div>
-                    <h4>Kimyasal Uzak</h4>
-                    <p>Ürünlerinizin ömrünü kısaltacak ağartıcı veya sert kimyasallardan kaçının.</p>
+                    <h4 data-i18n="care-4-title">Kimyasal Uzak</h4>
+                    <p data-i18n="care-4-desc">Ürünlerinizin ömrünü kısaltacak ağartıcı veya sert kimyasallardan kaçının.</p>
                 </div>
             </div>
         </div>
@@ -1011,51 +1027,37 @@
         <div class="container reveal">
             <div class="custom-order-wrapper">
                 <div class="custom-order-info text-center">
-                    <h3 class="section-subtitle">Hayalinizdeki Tasarım</h3>
-                    <h2 class="section-title">Size Özel Sipariş</h2>
-                    <p style="margin-bottom: 3rem;">Sofranızın ölçülerine veya hayalinizdeki renklere uygun bir tasarım mı istiyorsunuz? Detayları iletin, size özel örelim.</p>
+                    <h3 class="section-subtitle" data-i18n="bespoke-subtitle">Hayalinizdeki Tasarım</h3>
+                    <h2 class="section-title" data-i18n="bespoke-title">Size Özel Sipariş</h2>
+                    <p style="margin-bottom: 3rem;" data-i18n="bespoke-desc">Sofranızın ölçülerine veya hayalinizdeki renklere uygun bir tasarım mı istiyorsunuz? Detayları iletin, size özel örelim.</p>
                 </div>
 
                 <form id="bespoke-form" class="bespoke-form">
                     <div class="form-grid">
                         <div class="form-group">
-                            <label for="order-name">Adınız Soyadınız</label>
-                            <input type="text" id="order-name" placeholder="Örn: Ayşe Yılmaz" required>
+                            <label for="order-name" data-i18n="label-name">Adınız Soyadınız</label>
+                            <input type="text" id="order-name" data-i18n-placeholder="order-name" placeholder="Örn: Ayşe Yılmaz" required>
+                        </div>
+                                <div class="form-group">
+                            <label for="order-color" data-i18n="label-color">Renk Tercihi</label>
+                            <input type="text" id="order-color" data-i18n-placeholder="order-color" placeholder="Örn: Vizon, Toprak Tonları">
                         </div>
                         <div class="form-group">
-                            <label for="order-phone">Telefon Numaranız</label>
-                            <input type="tel" id="order-phone" placeholder="05XX XXX XX XX" required>
+                            <label for="order-size" data-i18n="label-size">Ölçü Bilgisi (Opsiyonel)</label>
+                            <input type="text" id="order-size" data-i18n-placeholder="order-size" placeholder="Örn: 35cm Çap veya Masa Ölçüsü">
                         </div>
                         <div class="form-group">
-                            <label for="order-category">Ürün Tipi</label>
-                            <select id="order-category" required>
-                                <option value="" disabled selected>Seçiniz...</option>
-                                <option value="Supla Seti">Supla Seti</option>
-                                <option value="Runner">Runner</option>
-                                <option value="El Örgüsü Çanta">El Örgüsü Çanta</option>
-                                <option value="Diğer">Diğer</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="order-color">Renk Tercihi</label>
-                            <input type="text" id="order-color" placeholder="Örn: Vizon, Toprak Tonları">
-                        </div>
-                        <div class="form-group">
-                            <label for="order-size">Ölçü Bilgisi (Opsiyonel)</label>
-                            <input type="text" id="order-size" placeholder="Örn: 35cm Çap veya Masa Ölçüsü">
-                        </div>
-                        <div class="form-group">
-                            <label for="order-date">İstediğiniz Teslim Tarihi</label>
+                            <label for="order-date" data-i18n="label-date">İstediğiniz Teslim Tarihi</label>
                             <input type="date" id="order-date">
                         </div>
                     </div>
                     <div class="form-group full-width" style="margin-top: 1.5rem;">
-                        <label for="order-notes">Eklemek İstediğiniz Detaylar</label>
-                        <textarea id="order-notes" rows="4" placeholder="Hayalinizdeki tasarımı bize kısaca tarif edin..."></textarea>
+                        <label for="order-notes" data-i18n="label-notes">Eklemek İstediğiniz Detaylar</label>
+                        <textarea id="order-notes" data-i18n-placeholder="order-notes" rows="4" placeholder="Hayalinizdeki tasarımı bize kısaca tarif edin..."></textarea>
                     </div>
                     <div class="text-center" style="margin-top: 3rem;">
                         <button type="submit" class="btn btn-primary premium-btn" style="padding: 1rem 4rem;">
-                            <i class="fab fa-whatsapp" style="margin-right: 10px;"></i> Talebi WhatsApp ile İlet
+                            <i class="fab fa-whatsapp" style="margin-right: 10px;"></i> <span data-i18n="bespoke-submit">Talebi WhatsApp ile İlet</span>
                         </button>
                     </div>
                 </form>
@@ -1066,11 +1068,9 @@
     <!-- Instagram & Social Proof -->
     <section class="social section-padding" id="instagram">
         <div class="container text-center reveal">
-            <h3 class="section-subtitle">İlham Alın</h3>
-            <h2 class="section-title">Instagram'da Bizi Takip Edin</h2>
-            <p style="margin-bottom: 1.5rem;">Evlerinizin en güzel köşelerinden yansıyan zarif tasarımlarımızı keşfetmek için bizi takip edin.</p>
-            
-
+            <h3 class="section-subtitle" data-i18n="insta-subtitle">İlham Alın</h3>
+            <h2 class="section-title" data-i18n="insta-title">Instagram'da Bizi Takip Edin</h2>
+            <p style="margin-bottom: 1.5rem;" data-i18n="insta-desc">Evlerinizin en güzel köşelerinden yansıyan zarif tasarımlarımızı keşfetmek için bizi takip edin.</p>
             
             <div class="insta-grid" id="insta-feed">
                 <!-- Fallback Static Content (will be replaced dynamically if API succeeds) -->
@@ -1079,7 +1079,7 @@
                     <div class="insta-overlay">
                         <div class="insta-overlay-content">
                             <i class="fab fa-instagram"></i>
-                            <span>Gönderiyi Gör</span>
+                            <span data-i18n="view-post">Gönderiyi Gör</span>
                         </div>
                     </div>
                 </a>
@@ -1088,7 +1088,7 @@
                     <div class="insta-overlay">
                         <div class="insta-overlay-content">
                             <i class="fab fa-instagram"></i>
-                            <span>Gönderiyi Gör</span>
+                            <span data-i18n="view-post">Gönderiyi Gör</span>
                         </div>
                     </div>
                 </a>
@@ -1097,7 +1097,7 @@
                     <div class="insta-overlay">
                         <div class="insta-overlay-content">
                             <i class="fab fa-instagram"></i>
-                            <span>Gönderiyi Gör</span>
+                            <span data-i18n="view-post">Gönderiyi Gör</span>
                         </div>
                     </div>
                 </a>
@@ -1106,7 +1106,7 @@
                     <div class="insta-overlay">
                         <div class="insta-overlay-content">
                             <i class="fab fa-instagram"></i>
-                            <span>Gönderiyi Gör</span>
+                            <span data-i18n="view-post">Gönderiyi Gör</span>
                         </div>
                     </div>
                 </a>
@@ -1115,7 +1115,7 @@
                     <div class="insta-overlay">
                         <div class="insta-overlay-content">
                             <i class="fab fa-instagram"></i>
-                            <span>Gönderiyi Gör</span>
+                            <span data-i18n="view-post">Gönderiyi Gör</span>
                         </div>
                     </div>
                 </a>
@@ -1124,7 +1124,7 @@
                     <div class="insta-overlay">
                         <div class="insta-overlay-content">
                             <i class="fab fa-instagram"></i>
-                            <span>Gönderiyi Gör</span>
+                            <span data-i18n="view-post">Gönderiyi Gör</span>
                         </div>
                     </div>
                 </a>
@@ -1132,7 +1132,7 @@
 
             <div class="instagram-buttons" style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
                 <a href="galeri.html" class="btn btn-primary">
-                    <i class="fab fa-instagram"></i> Tüm Instagram Gönderileri
+                    <i class="fab fa-instagram"></i> <span data-i18n="all-insta-posts">Tüm Instagram Gönderileri</span>
                 </a>
                 <a href="https://www.instagram.com/elegantcrochet2026/" target="_blank" class="btn btn-outline">
                     <i class="fab fa-instagram"></i> @elegantcrochet2026
@@ -1154,12 +1154,12 @@
             <div class="premium-cta-card text-center">
                 <div class="premium-cta-overlay"></div>
                 <div class="premium-cta-content">
-                    <h2 class="premium-cta-title">Evinize El Emeği Dokunuşu</h2>
-                    <p class="premium-cta-desc">
+                    <h2 class="premium-cta-title" data-i18n="cta-title">Evinize El Emeği Dokunuşu</h2>
+                    <p class="premium-cta-desc" data-i18n="cta-desc">
                         Tamamı elde özenle hazırlanan, sofranıza ve stilinize zarafet katacak bu özel tasarımları keşfetmek için koleksiyonumuzu inceleyin.
                     </p>
                     <div class="hero-buttons premium-cta-buttons">
-                        <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn btn-primary premium-btn">Shopier Mağazasına Git</a>
+                        <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn btn-primary premium-btn" data-i18n="cta-btn">Shopier Mağazasına Git</a>
                     </div>
                 </div>
             </div>
@@ -1172,26 +1172,26 @@
             <div class="premium-footer-top">
                 <div class="footer-brand premium-footer-brand">
                     <a href="#" class="logo premium-footer-logo">Elegant Crochet</a>
-                    <p class="premium-footer-desc">El işçiliğinin en saf haliyle, masanıza zarafet ve sıcacık bir dokunuş katmak için her ilmeği sevgiyle dokuyoruz.</p>
+                    <p class="premium-footer-desc" data-i18n="footer-desc">El işçiliğinin en saf haliyle, masanıza zarafet ve sıcacık bir dokunuş katmak için her ilmeği sevgiyle dokuyoruz.</p>
                 </div>
                 
                 <div class="footer-links premium-footer-col">
-                    <h4 class="premium-footer-title">Keşfedin</h4>
-                    <a href="#story" class="premium-footer-link">Hikayemiz</a>
-                    <a href="#products" class="premium-footer-link">Koleksiyonlar</a>
-                    <a href="#video" class="premium-footer-link">Videolar</a>
+                    <h4 class="premium-footer-title" data-i18n="footer-title-explore">Keşfedin</h4>
+                    <a href="#story" class="premium-footer-link" data-i18n="nav-story">Hikayemiz</a>
+                    <a href="#products" class="premium-footer-link" data-i18n="products-subtitle">Koleksiyonlar</a>
+                    <a href="#video" class="premium-footer-link" data-i18n="footer-link-videos">Videolar</a>
                 </div>
 
                 <div class="footer-contact premium-footer-col">
-                    <h4 class="premium-footer-title">İletişim</h4>
+                    <h4 class="premium-footer-title" data-i18n="footer-title-contact">İletişim</h4>
                     <p class="premium-footer-link"><i class="fab fa-instagram" style="margin-right: 10px; color: var(--color-brown);"></i> @elegantcrochet2026</p>
-                    <p class="premium-footer-link"><i class="fas fa-gem" style="margin-right: 10px; color: var(--color-brown);"></i> %100 El Emeği</p>
-                    <p class="premium-footer-link"><i class="fas fa-seedling" style="margin-right: 10px; color: var(--color-brown);"></i> Doğal İplik Kalitesi</p>
+                    <p class="premium-footer-link"><i class="fas fa-gem" style="margin-right: 10px; color: var(--color-brown);"></i> <span data-i18n="footer-contact-handmade">%100 El Emeği</span></p>
+                    <p class="premium-footer-link"><i class="fas fa-seedling" style="margin-right: 10px; color: var(--color-brown);"></i> <span data-i18n="footer-contact-yarn">Doğal İplik Kalitesi</span></p>
                 </div>
             </div>
 
             <div class="footer-bottom premium-footer-bottom">
-                <p>&copy; 2026 Elegant Crochet. Tüm Hakları Saklıdır.</p>
+                <p data-i18n="footer-copyright">&copy; 2026 Elegant Crochet. Tüm Hakları Saklıdır.</p>
             </div>
         </div>
     </footer>
@@ -1245,7 +1245,7 @@
                     </div>
                     <div class="lightbox-footer" style="display: flex; gap: 1rem;">
                         <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn btn-primary btn-sm" style="flex: 1; justify-content: center; display: flex; align-items: center; gap: 0.5rem;">
-                            <i class="fas fa-shopping-bag"></i> Satın Al
+                            <i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Satın Al</span>
                         </a>
                         <a href="#" target="_blank" class="btn btn-outline btn-sm" id="insta-lightbox-instagram-link" style="flex: 1; justify-content: center; display: flex; align-items: center; gap: 0.5rem;">
                             <i class="fab fa-instagram"></i> Instagram'da Gör

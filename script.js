@@ -233,19 +233,46 @@ document.addEventListener('DOMContentLoaded', () => {
             const name = document.getElementById('order-name').value;
             const phone = document.getElementById('order-phone').value;
             const category = document.getElementById('order-category').value;
-            const color = document.getElementById('order-color').value || 'Belirtilmedi';
-            const size = document.getElementById('order-size').value || 'Belirtilmedi';
-            const date = document.getElementById('order-date').value || 'Belirtilmedi';
-            const notes = document.getElementById('order-notes').value || 'Yok';
+            const color = document.getElementById('order-color').value;
+            const size = document.getElementById('order-size').value;
+            const date = document.getElementById('order-date').value;
+            const notes = document.getElementById('order-notes').value;
 
-            let message = `*Yeni Özel Sipariş Talebi*\n\n`;
-            message += `👤 *İsim:* ${name}\n`;
-            message += `📞 *Telefon:* ${phone}\n`;
-            message += `🧶 *Ürün:* ${category}\n`;
-            message += `🎨 *Renk:* ${color}\n`;
-            message += `📏 *Ölçü:* ${size}\n`;
-            message += `🗓️ *Tarih:* ${date}\n\n`;
-            message += `📝 *Notlar:* ${notes}`;
+            const isEn = (typeof currentLang !== 'undefined' ? currentLang : 'tr') === 'en';
+            
+            const categoryEn = {
+                'Supla Seti': 'Charger Set',
+                'Runner': 'Table Runner',
+                'El Örgüsü Çanta': 'Handmade Bag',
+                'Diğer': 'Other'
+            };
+
+            const translatedCategory = isEn ? (categoryEn[category] || category) : category;
+            const translatedColor = color ? color : (isEn ? 'Not Specified' : 'Belirtilmedi');
+            const translatedSize = size ? size : (isEn ? 'Not Specified' : 'Belirtilmedi');
+            const translatedDate = date ? date : (isEn ? 'Not Specified' : 'Belirtilmedi');
+            const translatedNotes = notes ? notes : (isEn ? 'None' : 'Yok');
+
+            let message = '';
+            if (isEn) {
+                message = `*New Bespoke Order Request*\n\n`;
+                message += `👤 *Name:* ${name}\n`;
+                message += `📞 *Phone:* ${phone}\n`;
+                message += `🧶 *Product:* ${translatedCategory}\n`;
+                message += `🎨 *Color:* ${translatedColor}\n`;
+                message += `📏 *Size:* ${translatedSize}\n`;
+                message += `🗓️ *Date:* ${translatedDate}\n\n`;
+                message += `📝 *Notes:* ${translatedNotes}`;
+            } else {
+                message = `*Yeni Özel Sipariş Talebi*\n\n`;
+                message += `👤 *İsim:* ${name}\n`;
+                message += `📞 *Telefon:* ${phone}\n`;
+                message += `🧶 *Ürün:* ${translatedCategory}\n`;
+                message += `🎨 *Renk:* ${translatedColor}\n`;
+                message += `📏 *Ölçü:* ${translatedSize}\n`;
+                message += `🗓️ *Tarih:* ${translatedDate}\n\n`;
+                message += `📝 *Notlar:* ${translatedNotes}`;
+            }
 
             const whatsappUrl = `https://wa.me/905330513394?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
@@ -341,7 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         overlay.innerHTML = `
                             <div class="insta-overlay-content">
                                 <i class="fab fa-instagram"></i>
-                                <span>Gönderiyi Gör</span>
+                                <span data-i18n="view-post">Gönderiyi Gör</span>
                             </div>
                         `;
                         a.appendChild(overlay);
@@ -506,7 +533,18 @@ document.addEventListener('DOMContentLoaded', () => {
             slideBody.appendChild(img);
         }
 
-        if (timeLabel) timeLabel.textContent = slide.time || '1s';
+        if (timeLabel) {
+            let timeText = slide.time || '1s';
+            const isEn = (typeof currentLang !== 'undefined' ? currentLang : 'tr') === 'en';
+            if (isEn) {
+                timeText = timeText
+                    .replace('sa', 'h')
+                    .replace('dk', 'm')
+                    .replace('g', 'd')
+                    .replace('h', 'w');
+            }
+            timeLabel.textContent = timeText;
+        }
         
         updateProgressBarsUI();
         startStoryTimer();

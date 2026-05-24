@@ -287,12 +287,89 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 1px;
 }
 
+/* Language Selector */
+.lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 20px;
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    color: var(--color-brown-dark);
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 2px 8px;
+    opacity: 0.6;
+    letter-spacing: 1px;
+    transition: var(--transition);
+    border-radius: 4px;
+}
+
+.lang-btn:hover {
+    opacity: 1;
+    color: var(--color-brown);
+}
+
+.lang-btn.active {
+    opacity: 1;
+    font-weight: 700;
+    color: var(--color-brown-dark);
+    background-color: rgba(197, 160, 140, 0.15);
+}
+
+.lang-separator {
+    color: var(--color-brown-dark);
+    opacity: 0.3;
+    font-size: 0.8rem;
+    user-select: none;
+}
+
+.top-bar .lang-selector {
+    margin-right: 0;
+    margin-left: 15px;
+}
+
+.top-bar .lang-btn {
+    color: var(--color-white);
+    opacity: 0.85;
+}
+
+.top-bar .lang-btn.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--color-white);
+}
+
+.top-bar .lang-separator {
+    color: var(--color-white);
+}
+
+.mobile-menu .lang-selector {
+    margin: 1rem 0 0 0;
+    justify-content: flex-start;
+}
+
+.mobile-menu .lang-btn {
+    font-size: 1rem;
+    padding: 4px 12px;
+}
+
 @media (max-width: 900px) {
     .nav-links, .nav-actions .btn {
         display: none;
     }
     .mobile-menu-btn {
         display: block;
+    }
+    /* Keep desktop lang switcher in nav-actions on mobile but adjust spacing if needed */
+    .nav-actions .lang-selector {
+        margin-right: 10px;
     }
 }
 

@@ -53,6 +53,57 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let loadedGalleryItems = [];
 
+    const fallbackTranslations = {
+        "fb1": {
+            tr: 'Cozy tığ işi el emeği supla modellerimiz ile masalarınıza sıcaklık katın. ✨',
+            en: 'Add warmth to your tables with our cozy handmade crochet charger models. ✨'
+        },
+        "fb2": {
+            tr: 'Zarif detaylar ve en kaliteli pamuk iplikleriyle işlenmiş runner takımlarımız.',
+            en: 'Our runner sets, crafted with elegant details and the highest quality cotton yarns.'
+        },
+        "fb3": {
+            tr: 'Masalarınız için premium runner örtü. Farklı renk seçenekleriyle siparişe hazır. 🧶',
+            en: 'Premium table runner for your dining tables. Ready to order in various colors. 🧶'
+        },
+        "fb4": {
+            tr: 'Paketleme sürecimiz de en az tasarımlarımız kadar özenli ve hediye kalitesinde. 🎁',
+            en: 'Our packaging process is just as careful and elegant as our designs, perfect for gifting. 🎁'
+        },
+        "fb5": {
+            tr: 'Sizden gelenler köşesinde bugün! Sizlerin güzel sunumları bizim en büyük mutluluğumuz.',
+            en: 'Today in our customer showcase! Your beautiful presentations are our greatest happiness.'
+        },
+        "fb6": {
+            tr: 'Doğal ipliklerden üretilen, yıkanabilir ve uzun ömürlü el işi supla tasarımları.',
+            en: 'Handmade charger designs made of natural yarns, washable and long-lasting.'
+        },
+        "fb7": {
+            tr: 'Gri tonlarının asil ve modern duruşu. Her türlü yemek takımıyla mükemmel uyum.',
+            en: 'The noble and modern stance of gray tones. Perfect match for any dinnerware set.'
+        },
+        "fb8": {
+            tr: 'Her ilmekte zarafet barındıran atölye günlüklerimizden bir kare. 🤎',
+            en: 'A capture from our workshop diaries containing elegance in every single stitch. 🤎'
+        },
+        "fb9": {
+            tr: 'Elegant Crochet ile sofra zarafetinizi en üst seviyeye taşıyın.',
+            en: 'Elevate your table elegance to the highest level with Elegant Crochet.'
+        },
+        "fb10": {
+            tr: 'Lüks el emeği tığ işi supla ve runner takımları ile sofranızı güzelleştirin.',
+            en: 'Beautify your table with luxury handmade crochet charger and runner sets.'
+        },
+        "fb11": {
+            tr: 'El emeği ile hazırlanan tığ işi tasarımlarımız hakkında bilgi ve sipariş için DM veya WhatsApp.',
+            en: 'For information and ordering about our handmade crochet designs, contact via DM or WhatsApp.'
+        },
+        "fb12": {
+            tr: 'Her bir ilmeği özenle dokunmuş runner örtülerimizle evinizi şımartın.',
+            en: 'Spoil your home with our table runners, where every single stitch is carefully woven.'
+        }
+    };
+
     const fallbackItems = [
         { id: "fb1", media_type: 'IMAGE', media_url: 'assets/product-1.jpg', permalink: 'https://www.instagram.com/elegantcrochet2026/', caption: 'Cozy tığ işi el emeği supla modellerimiz ile masalarınıza sıcaklık katın. ✨' },
         { id: "fb2", media_type: 'IMAGE', media_url: 'assets/product-2.jpg', permalink: 'https://www.instagram.com/elegantcrochet2026/', caption: 'Zarif detaylar ve en kaliteli pamuk iplikleriyle işlenmiş runner takımlarımız.' },
@@ -75,7 +126,14 @@ document.addEventListener('DOMContentLoaded', () => {
         
         items.forEach((item, index) => {
             const mediaUrl = item.media_type === 'VIDEO' ? (item.thumbnail_url || item.media_url) : item.media_url;
-            const caption = item.caption || 'Elegant Crochet';
+            
+            let caption = item.caption || 'Elegant Crochet';
+            const isEn = (typeof currentLang !== 'undefined' ? currentLang : 'tr') === 'en';
+            if (isEn && item.id && fallbackTranslations[item.id]) {
+                caption = fallbackTranslations[item.id].en;
+            } else if (!isEn && item.id && fallbackTranslations[item.id]) {
+                caption = fallbackTranslations[item.id].tr;
+            }
             
             const a = document.createElement('a');
             a.href = '#';
@@ -102,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
             overlay.innerHTML = `
                 <div class="insta-overlay-content">
                     <i class="fab fa-instagram"></i>
-                    <span>Gönderiyi Gör</span>
+                    <span data-i18n="view-post">Gönderiyi Gör</span>
                 </div>
             `;
             a.appendChild(overlay);
@@ -147,6 +205,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const item = loadedGalleryItems[index];
         mediaContainer.innerHTML = '';
         
+        let caption = item.caption || 'Elegant Crochet';
+        const isEn = (typeof currentLang !== 'undefined' ? currentLang : 'tr') === 'en';
+        if (isEn && item.id && fallbackTranslations[item.id]) {
+            caption = fallbackTranslations[item.id].en;
+        } else if (!isEn && item.id && fallbackTranslations[item.id]) {
+            caption = fallbackTranslations[item.id].tr;
+        }
+        
         if (item.media_type === 'VIDEO') {
             const video = document.createElement('video');
             video.src = item.media_url;
@@ -158,11 +224,11 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             const img = document.createElement('img');
             img.src = item.media_url;
-            img.alt = item.caption || 'Elegant Crochet Post';
+            img.alt = caption;
             mediaContainer.appendChild(img);
         }
         
-        captionContainer.textContent = item.caption || 'Elegant Crochet el emeği ürünlerimiz.';
+        captionContainer.textContent = caption;
         instaLink.href = item.permalink || 'https://www.instagram.com/elegantcrochet2026/';
         
         instaLightbox.classList.add('active');
@@ -205,5 +271,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape') {
             closeFeedLightbox();
         }
+    });
+
+    window.addEventListener('languageChanged', (e) => {
+        renderGallery(loadedGalleryItems);
     });
 });
