@@ -12,6 +12,34 @@ const audioApplause = document.getElementById('audio-applause');
 const audioMusic = document.getElementById('audio-music');
 const muteBtn = document.getElementById('mute-btn');
 
+// Helper function for confetti bursts
+const triggerConfetti = (durationMs, particleCount = 5) => {
+    if (typeof confetti !== 'function') return;
+    var duration = durationMs;
+    var end = Date.now() + duration;
+
+    (function frame() {
+        confetti({
+            particleCount: particleCount,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 },
+            colors: ['#ffc0cb', '#ff69b4', '#ffffff', '#ffd700']
+        });
+        confetti({
+            particleCount: particleCount,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 },
+            colors: ['#ffc0cb', '#ff69b4', '#ffffff', '#ffd700']
+        });
+
+        if (Date.now() < end) {
+            requestAnimationFrame(frame);
+        }
+    }());
+};
+
 if (enterBtn) {
     enterBtn.addEventListener('click', () => {
         // Show mute button
@@ -25,35 +53,16 @@ if (enterBtn) {
             audioMusic.play().catch(e => console.log('Audio play failed:', e));
         }
 
-        // Fire Confetti
-        if (typeof confetti === 'function') {
-            var duration = 3000;
-            var end = Date.now() + duration;
-
-            (function frame() {
-                confetti({
-                    particleCount: 5,
-                    angle: 60,
-                    spread: 55,
-                    origin: { x: 0 },
-                    colors: ['#ffc0cb', '#ff69b4', '#ffffff', '#ffd700']
-                });
-                confetti({
-                    particleCount: 5,
-                    angle: 120,
-                    spread: 55,
-                    origin: { x: 1 },
-                    colors: ['#ffc0cb', '#ff69b4', '#ffffff', '#ffd700']
-                });
-
-                if (Date.now() < end) {
-                    requestAnimationFrame(frame);
-                }
-            }());
-        }
+        // Fire big Confetti burst
+        triggerConfetti(3000, 5);
 
         // Hide screen after a tiny delay to allow confetti to start
         setTimeout(hidePreloader, 400);
+
+        // Set interval for occasional subtle confetti bursts while browsing (every 20 seconds)
+        setInterval(() => {
+            triggerConfetti(1000, 2); // Shorter, fewer particles
+        }, 20000);
     });
 }
 
