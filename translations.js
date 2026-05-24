@@ -244,6 +244,7 @@ const categoryTranslations = {
     "Kol Çantası": "Shoulder Bags",
     "Çocuk & Yetişkin Çantaları": "Kids & Adult Bags",
     "Anahtarlık": "Keychains",
+    "Anahtar & Charm": "Keychains & Charms",
     "Amigurumi": "Amigurumi"
 };
 
