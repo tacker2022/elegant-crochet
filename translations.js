@@ -106,7 +106,17 @@ const translations = {
         "footer-copyright": "© 2026 Elegant Crochet. Tüm Hakları Saklıdır.",
 
         // General / Toast Alerts
-        "alert-bespoke-success": "WhatsApp yönlendirmesi hazırlanıyor..."
+        "alert-bespoke-success": "WhatsApp yönlendirmesi hazırlanıyor...",
+
+        // Share Widget
+        "share-site-title": "Sitemizi Paylaşın",
+        "share-modal-title": "Sofra Zarafetini Paylaşın",
+        "share-modal-desc": "Zarif el emeği ürünlerimizi ve sofra zarafetimizi sevdiklerinizle paylaşın.",
+        "share-whatsapp": "WhatsApp ile Gönder",
+        "share-pinterest": "Pinterest'te Paylaş",
+        "share-facebook": "Facebook'ta Paylaş",
+        "share-copy": "Bağlantıyı Kopyala",
+        "toast-copied": "Bağlantı kopyalandı! ✨"
     },
     en: {
         // Preloader / Splash
@@ -213,7 +223,17 @@ const translations = {
         "footer-copyright": "© 2026 Elegant Crochet. All Rights Reserved.",
 
         // General / Toast Alerts
-        "alert-bespoke-success": "Preparing WhatsApp redirection..."
+        "alert-bespoke-success": "Preparing WhatsApp redirection...",
+
+        // Share Widget
+        "share-site-title": "Share Our Website",
+        "share-modal-title": "Share the Table Elegance",
+        "share-modal-desc": "Share our elegant handmade products and table elegance with your loved ones.",
+        "share-whatsapp": "Share via WhatsApp",
+        "share-pinterest": "Share on Pinterest",
+        "share-facebook": "Share on Facebook",
+        "share-copy": "Copy Link",
+        "toast-copied": "Link copied! ✨"
     }
 };
 

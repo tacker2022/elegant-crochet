@@ -266,14 +266,90 @@ document.addEventListener('DOMContentLoaded', () => {
     if (instaLightboxClose) instaLightboxClose.addEventListener('click', closeFeedLightbox);
     if (lightboxBg) lightboxBg.addEventListener('click', closeFeedLightbox);
 
-    // Escape key press to close lightbox
+    // Escape key press to close lightbox and share modal
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             closeFeedLightbox();
+            closeShareModal();
         }
     });
 
     window.addEventListener('languageChanged', (e) => {
         renderGallery(loadedGalleryItems);
     });
+
+    // --- 9. Premium Sharing Button Integration ---
+    const shareFloatBtn = document.getElementById('share-float-btn');
+    const shareModal = document.getElementById('share-modal');
+    const shareModalClose = document.getElementById('share-modal-close');
+    const shareCopyBtn = document.getElementById('share-copy-btn');
+    const toastAlert = document.getElementById('toast-alert');
+
+    function closeShareModal() {
+        if (shareModal) shareModal.classList.remove('active');
+    }
+
+    if (shareFloatBtn) {
+        shareFloatBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Try to use native sharing if available
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    text: 'Elegant Crochet | Lüks El Emeği Tığ İşi Supla & Runner Takımları',
+                    url: window.location.href
+                }).catch(err => {
+                    console.log('Native share error or cancelled:', err);
+                });
+            } else {
+                // Open custom glassmorphism share modal
+                if (shareModal) {
+                    const shareWa = document.getElementById('share-wa');
+                    const sharePin = document.getElementById('share-pin');
+                    const shareFb = document.getElementById('share-fb');
+                    const currentUrl = window.location.href;
+                    const shareText = `${document.title} - ${currentUrl}`;
+
+                    if (shareWa) shareWa.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+                    if (sharePin) sharePin.href = `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(currentUrl)}&media=${encodeURIComponent('https://elegantcrochet.net/assets/about.jpg')}&description=${encodeURIComponent(document.title)}`;
+                    if (shareFb) shareFb.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`;
+
+                    shareModal.classList.add('active');
+                }
+            }
+        });
+    }
+
+    if (shareModalClose) {
+        shareModalClose.addEventListener('click', closeShareModal);
+    }
+
+    if (shareModal) {
+        shareModal.addEventListener('click', (e) => {
+            if (e.target === shareModal) {
+                closeShareModal();
+            }
+        });
+    }
+
+    if (shareCopyBtn) {
+        shareCopyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(window.location.href)
+                .then(() => {
+                    closeShareModal();
+                    
+                    // Show premium rose-colored toast notification
+                    if (toastAlert) {
+                        toastAlert.classList.add('show');
+                        setTimeout(() => {
+                            toastAlert.classList.remove('show');
+                        }, 3000);
+                    }
+                })
+                .catch(err => {
+                    console.error('Could not copy link:', err);
+                });
+        });
+    }
 });

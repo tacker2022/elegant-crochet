@@ -221,5 +221,40 @@
     <a href="https://wa.me/905330513394?text=Merhaba,%20Elegant%20Crochet%20ürünleriniz%20hakkında%20bilgi%20almak%20istiyorum." class="whatsapp-float" target="_blank" title="WhatsApp ile İletişime Geçin">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <!-- Sharing Elements -->
+    <button id="share-float-btn" class="share-float" title="Sitemizi Paylaşın" data-i18n-title="share-site-title">
+        <i class="fas fa-share-nodes"></i>
+    </button>
+
+    <!-- Custom Share Fallback Modal -->
+    <div id="share-modal" class="share-modal">
+        <div class="share-modal-content">
+            <button class="share-modal-close" id="share-modal-close" aria-label="Kapat">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3 class="share-modal-title" data-i18n="share-modal-title">Sofra Zarafetini Paylaşın</h3>
+            <p class="share-modal-desc" data-i18n="share-modal-desc">Zarif el emeği ürünlerimizi ve sofra zarafetimizi sevdiklerinizle paylaşın.</p>
+            <div class="share-options-list">
+                <a href="#" id="share-wa" class="share-option-btn whatsapp-share" target="_blank">
+                    <i class="fab fa-whatsapp"></i> <span data-i18n="share-whatsapp">WhatsApp ile Gönder</span>
+                </a>
+                <a href="#" id="share-pin" class="share-option-btn pinterest-share" target="_blank">
+                    <i class="fab fa-pinterest"></i> <span data-i18n="share-pinterest">Pinterest'te Paylaş</span>
+                </a>
+                <a href="#" id="share-fb" class="share-option-btn facebook-share" target="_blank">
+                    <i class="fab fa-facebook-f"></i> <span data-i18n="share-facebook">Facebook'ta Paylaş</span>
+                </a>
+                <button id="share-copy-btn" class="share-option-btn copy-share">
+                    <i class="far fa-copy"></i> <span data-i18n="share-copy">Bağlantıyı Kopyala</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Alert Notification -->
+    <div id="toast-alert" class="toast-alert">
+        <i class="fas fa-check-circle"></i> <span id="toast-message" data-i18n="toast-copied">Bağlantı kopyalandı! ✨</span>
+    </div>
 </body>
 </html>
