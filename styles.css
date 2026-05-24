@@ -1283,7 +1283,7 @@ a.premium-footer-link:hover { opacity: 0.7; padding-left: 5px; color: var(--colo
 }
 
 .preloader-logo {
-    font-family: var(--font-logo);
+    font-family: var(--font-script);
     font-size: 3.5rem;
     color: var(--color-brown-dark);
     opacity: 0;
@@ -1322,9 +1322,17 @@ a.premium-footer-link:hover { opacity: 0.7; padding-left: 5px; color: var(--colo
 }
 
 @keyframes preloaderReveal {
-    to {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    60% {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(-5px) scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
 }
 
