@@ -472,7 +472,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    justify-content: center;
     gap: 3rem;
 }
 
