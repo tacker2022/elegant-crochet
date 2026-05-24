@@ -97,7 +97,18 @@
             <a href="#" class="logo">Elegant Crochet</a>
             <nav class="nav-links">
                 <a href="#story">Hikayemiz</a>
-                <a href="#products">Ürünler</a>
+                <div class="nav-dropdown" style="position: relative; display: inline-block;">
+                    <a href="#products" style="cursor: pointer;">Ürünler <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 2px;"></i></a>
+                    <div class="dropdown-content" style="display: none; position: absolute; background-color: var(--color-white); min-width: 220px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1); z-index: 100; border-radius: 8px; overflow: hidden; top: 100%; left: 0;">
+                        <a href="#cat-polyester" style="display: block; padding: 12px 16px; color: var(--color-brown-dark); text-decoration: none; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem;">Polyester Supla Takımları</a>
+                        <a href="#cat-koton" style="display: block; padding: 12px 16px; color: var(--color-brown-dark); text-decoration: none; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem;">Koton Supla Takımları</a>
+                        <a href="#cat-cocuk" style="display: block; padding: 12px 16px; color: var(--color-brown-dark); text-decoration: none; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem;">Çocuk Çantaları</a>
+                        <a href="#cat-runner" style="display: block; padding: 12px 16px; color: var(--color-brown-dark); text-decoration: none; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem;">Runner</a>
+                        <a href="#cat-kol" style="display: block; padding: 12px 16px; color: var(--color-brown-dark); text-decoration: none; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem;">Kol Çantası</a>
+                        <a href="#cat-anahtarlik" style="display: block; padding: 12px 16px; color: var(--color-brown-dark); text-decoration: none; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem;">Anahtarlık</a>
+                        <a href="#cat-amigurumi" style="display: block; padding: 12px 16px; color: var(--color-brown-dark); text-decoration: none; font-size: 0.95rem;">Amigurumi</a>
+                    </div>
+                </div>
                 <a href="#why-us">Neden Biz?</a>
                 <!-- <a href="#testimonials">Yorumlar</a> -->
             </nav>
@@ -109,10 +120,19 @@
         <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobile-menu">
             <a href="#story">Hikayemiz</a>
-            <a href="#products">Ürünler</a>
+            <div style="padding: 10px 0; font-weight: 500; color: var(--color-brown-dark);">Kategoriler <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></div>
+            <div class="mobile-subcategories" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px;">
+                <a href="#cat-polyester" style="font-size: 1rem; padding: 5px 0 5px 20px; font-weight: 400;">- Polyester Supla Takımları</a>
+                <a href="#cat-koton" style="font-size: 1rem; padding: 5px 0 5px 20px; font-weight: 400;">- Koton Supla Takımları</a>
+                <a href="#cat-cocuk" style="font-size: 1rem; padding: 5px 0 5px 20px; font-weight: 400;">- Çocuk Çantaları</a>
+                <a href="#cat-runner" style="font-size: 1rem; padding: 5px 0 5px 20px; font-weight: 400;">- Runner</a>
+                <a href="#cat-kol" style="font-size: 1rem; padding: 5px 0 5px 20px; font-weight: 400;">- Kol Çantası</a>
+                <a href="#cat-anahtarlik" style="font-size: 1rem; padding: 5px 0 5px 20px; font-weight: 400;">- Anahtarlık</a>
+                <a href="#cat-amigurumi" style="font-size: 1rem; padding: 5px 0 5px 20px; font-weight: 400;">- Amigurumi</a>
+            </div>
             <a href="#why-us">Neden Biz?</a>
             <!-- <a href="#testimonials">Yorumlar</a> -->
-            <a href="https://www.shopier.com/ElegantCrochet" target="_blank">Shopier'de İncele</a>
+            <a href="https://www.shopier.com/ElegantCrochet" target="_blank" style="margin-top: 15px;" class="btn btn-primary">Shopier'de İncele</a>
         </div>
     </header>
 
@@ -219,42 +239,11 @@
                 <h2 class="section-title">En Çok Tercih Edilenler</h2>
                 <p>Masanızı zarifliğin zirvesine taşıyacak, özenle tasarlanmış favori parçalarımız.</p>
             </div>
-            <div class="category-section">
-                <h3 class="category-title reveal">Supla & Runner Setleri</h3>
+            <!-- 1. Polyester Supla Takımları -->
+            <div class="category-section" id="cat-polyester">
+                <h3 class="category-title reveal">Polyester Supla Takımları</h3>
                 <div class="product-grid">
-                    <!-- Supla & Runner Products -->
-                    <!-- Product 2 -->
-                    <div class="product-card reveal reveal-up fade-delay-2">
-                        <div class="product-img-wrapper">
-                            <img src="assets/product-2.jpg" alt="Runner ve Supla Seti">
-                            <div class="product-overlay">
-                                <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn btn-primary compact">Satın Al</a>
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="assets/product-2.jpg" data-caption="Minimalist Runner Seti">Resmi Gör</button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h4>Minimalist Runner Seti</h4>
-                            <p class="price">Uzun ve yuvarlak takım seçenekleri</p>
-                            <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
-                        </div>
-                    </div>
-                    <!-- Product 3 -->
-                    <div class="product-card reveal reveal-up fade-delay-3">
-                        <div class="product-img-wrapper">
-                            <img src="assets/product-runner.jpg" alt="Yuvarlak Detaylı Runner">
-                            <div class="product-overlay">
-                                <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn btn-primary compact">Satın Al</a>
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="assets/product-runner.jpg" data-caption="Yuvarlak Detaylı Runner">Resmi Gör</button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h4>Yuvarlak Detaylı Runner</h4>
-                            <p class="price">Özel akşam yemekleri için</p>
-                            <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
-                        </div>
-                    </div>
-                    <!-- Product 4 -->
-                    <div class="product-card reveal reveal-up fade-delay-4">
+                    <div class="product-card reveal reveal-up fade-delay-1">
                         <div class="product-img-wrapper">
                             <img src="assets/product-4.jpg" alt="Meyve Bahçesi Supla Seti">
                             <div class="product-overlay">
@@ -268,8 +257,7 @@
                             <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
                         </div>
                     </div>
-                    <!-- Product 5 -->
-                    <div class="product-card reveal reveal-up fade-delay-1">
+                    <div class="product-card reveal reveal-up fade-delay-2">
                         <div class="product-img-wrapper">
                             <img src="assets/product-5.jpg" alt="Gece Mavisi Supla Takımı">
                             <div class="product-overlay">
@@ -283,24 +271,14 @@
                             <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
                         </div>
                     </div>
-                    <!-- Product 8 -->
-                    <div class="product-card reveal reveal-up fade-delay-4">
-                        <div class="product-img-wrapper">
-                            <img src="assets/product-8.jpg" alt="Toprak Serisi Runner">
-                            <div class="product-overlay">
-                                <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn btn-primary compact">Satın Al</a>
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="assets/product-8.jpg" data-caption="Toprak Serisi Runner">Resmi Gör</button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h4>Toprak Serisi Runner</h4>
-                            <p class="price">Sıcak ve doğal tonların yansıması</p>
-                            <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
-                        </div>
-                    </div>
+                </div>
+            </div>
 
-                    <!-- Product 9 -->
-                    <div class="product-card reveal reveal-up fade-delay-2">
+            <!-- 2. Koton Supla Takımları -->
+            <div class="category-section" id="cat-koton" style="margin-top: 5rem;">
+                <h3 class="category-title reveal">Koton Supla Takımları</h3>
+                <div class="product-grid">
+                    <div class="product-card reveal reveal-up fade-delay-1">
                         <div class="product-img-wrapper">
                             <img src="assets/product-gray.jpg" alt="Füme Klasik Supla Takımı">
                             <div class="product-overlay">
@@ -314,9 +292,7 @@
                             <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
                         </div>
                     </div>
-
-                    <!-- Product 10 -->
-                    <div class="product-card reveal reveal-up fade-delay-3">
+                    <div class="product-card reveal reveal-up fade-delay-2">
                         <div class="product-img-wrapper">
                             <img src="assets/product-cacao.jpg" alt="Bitter Çikolata Supla Takımı">
                             <div class="product-overlay">
@@ -330,9 +306,7 @@
                             <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
                         </div>
                     </div>
-
-                    <!-- Product 11 -->
-                    <div class="product-card reveal reveal-up fade-delay-4">
+                    <div class="product-card reveal reveal-up fade-delay-3">
                         <div class="product-img-wrapper">
                             <img src="assets/product-fruit-v2.jpg" alt="Meyve Bahçesi - Soft Seri">
                             <div class="product-overlay">
@@ -349,11 +323,11 @@
                 </div>
             </div>
 
-            <div class="category-section" style="margin-top: 5rem;">
-                <h3 class="category-title reveal">El Örgüsü Çantalar</h3>
+            <!-- 3. Çocuk Çantaları -->
+            <div class="category-section" id="cat-cocuk" style="margin-top: 5rem;">
+                <h3 class="category-title reveal">Çocuk Çantaları</h3>
                 <div class="product-grid">
-                    <!-- Product 6 -->
-                    <div class="product-card reveal reveal-up fade-delay-2">
+                    <div class="product-card reveal reveal-up fade-delay-1">
                         <div class="product-img-wrapper">
                             <img src="assets/product-papatya-aski.jpg" alt="Papatya Aşkı Sırt Çantası">
                             <div class="product-overlay">
@@ -367,8 +341,7 @@
                             <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
                         </div>
                     </div>
-                    <!-- Product 7 -->
-                    <div class="product-card reveal reveal-up fade-delay-3">
+                    <div class="product-card reveal reveal-up fade-delay-2">
                         <div class="product-img-wrapper">
                             <img src="assets/product-doga-yesili.jpg" alt="Doğa Yeşili Sırt Çantası">
                             <div class="product-overlay">
@@ -385,11 +358,81 @@
                 </div>
             </div>
 
-            <div class="category-section" style="margin-top: 5rem;">
-                <h3 class="category-title reveal">Lif Koleksiyonu</h3>
+            <!-- 4. Runner -->
+            <div class="category-section" id="cat-runner" style="margin-top: 5rem;">
+                <h3 class="category-title reveal">Runner</h3>
+                <div class="product-grid">
+                    <div class="product-card reveal reveal-up fade-delay-1">
+                        <div class="product-img-wrapper">
+                            <img src="assets/product-2.jpg" alt="Runner ve Supla Seti">
+                            <div class="product-overlay">
+                                <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn btn-primary compact">Satın Al</a>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="assets/product-2.jpg" data-caption="Minimalist Runner Seti">Resmi Gör</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h4>Minimalist Runner Seti</h4>
+                            <p class="price">Uzun ve yuvarlak takım seçenekleri</p>
+                            <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                        </div>
+                    </div>
+                    <div class="product-card reveal reveal-up fade-delay-2">
+                        <div class="product-img-wrapper">
+                            <img src="assets/product-runner.jpg" alt="Yuvarlak Detaylı Runner">
+                            <div class="product-overlay">
+                                <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn btn-primary compact">Satın Al</a>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="assets/product-runner.jpg" data-caption="Yuvarlak Detaylı Runner">Resmi Gör</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h4>Yuvarlak Detaylı Runner</h4>
+                            <p class="price">Özel akşam yemekleri için</p>
+                            <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                        </div>
+                    </div>
+                    <div class="product-card reveal reveal-up fade-delay-3">
+                        <div class="product-img-wrapper">
+                            <img src="assets/product-8.jpg" alt="Toprak Serisi Runner">
+                            <div class="product-overlay">
+                                <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn btn-primary compact">Satın Al</a>
+                                <button class="btn btn-outline compact lightbox-trigger" data-image="assets/product-8.jpg" data-caption="Toprak Serisi Runner">Resmi Gör</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h4>Toprak Serisi Runner</h4>
+                            <p class="price">Sıcak ve doğal tonların yansıması</p>
+                            <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Kol Çantası -->
+            <div class="category-section" id="cat-kol" style="margin-top: 5rem;">
+                <h3 class="category-title reveal">Kol Çantası</h3>
                 <div class="coming-soon-box reveal">
-                    <i class="fas fa-hand-sparkles" style="font-size: 3rem; color: var(--color-brown); margin-bottom: 1.5rem; display: block;"></i>
-                    <p style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--color-brown-dark);">Çok yakında en zarif lif modellerimizle sizlerle olacağız...</p>
+                    <i class="fas fa-shopping-bag" style="font-size: 3rem; color: var(--color-brown); margin-bottom: 1.5rem; display: block;"></i>
+                    <p style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--color-brown-dark);">Çok yakında yeni kol çantası modellerimizle sizlerle olacağız...</p>
+                    <p style="font-style: italic; color: var(--color-brown); margin-top: 1rem;">Hazırlıklarımız devam ediyor.</p>
+                </div>
+            </div>
+
+            <!-- 6. Anahtarlık -->
+            <div class="category-section" id="cat-anahtarlik" style="margin-top: 5rem;">
+                <h3 class="category-title reveal">Anahtarlık</h3>
+                <div class="coming-soon-box reveal">
+                    <i class="fas fa-key" style="font-size: 3rem; color: var(--color-brown); margin-bottom: 1.5rem; display: block;"></i>
+                    <p style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--color-brown-dark);">Çok yakında şirin anahtarlık modellerimizle sizlerle olacağız...</p>
+                    <p style="font-style: italic; color: var(--color-brown); margin-top: 1rem;">Hazırlıklarımız devam ediyor.</p>
+                </div>
+            </div>
+
+            <!-- 7. Amigurumi -->
+            <div class="category-section" id="cat-amigurumi" style="margin-top: 5rem;">
+                <h3 class="category-title reveal">Amigurumi</h3>
+                <div class="coming-soon-box reveal">
+                    <i class="fas fa-hand-holding-heart" style="font-size: 3rem; color: var(--color-brown); margin-bottom: 1.5rem; display: block;"></i>
+                    <p style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--color-brown-dark);">Çok yakında en sevimli amigurumi tasarımlarımızla sizlerle olacağız...</p>
                     <p style="font-style: italic; color: var(--color-brown); margin-top: 1rem;">Hazırlıklarımız devam ediyor.</p>
                 </div>
             </div>

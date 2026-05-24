@@ -74,10 +74,21 @@
         <div class="nav-container">
             <a href="index.html" class="logo">Elegant Crochet</a>
             <nav class="nav-links">
-                <a href="index.html#hero">Ana Sayfa</a>
                 <a href="index.html#story">Hikayemiz</a>
-                <a href="index.html#products">Ürünler</a>
+                <div class="nav-dropdown" style="position: relative; display: inline-block;">
+                    <a href="index.html#products" style="cursor: pointer;">Ürünler <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 2px;"></i></a>
+                    <div class="dropdown-content" style="display: none; position: absolute; background-color: var(--color-white); min-width: 220px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1); z-index: 100; border-radius: 8px; overflow: hidden; top: 100%; left: 0;">
+                        <a href="index.html#cat-polyester" style="display: block; padding: 12px 16px; color: var(--color-brown-dark); text-decoration: none; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem;">Polyester Supla Takımları</a>
+                        <a href="index.html#cat-koton" style="display: block; padding: 12px 16px; color: var(--color-brown-dark); text-decoration: none; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem;">Koton Supla Takımları</a>
+                        <a href="index.html#cat-cocuk" style="display: block; padding: 12px 16px; color: var(--color-brown-dark); text-decoration: none; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem;">Çocuk Çantaları</a>
+                        <a href="index.html#cat-runner" style="display: block; padding: 12px 16px; color: var(--color-brown-dark); text-decoration: none; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem;">Runner</a>
+                        <a href="index.html#cat-kol" style="display: block; padding: 12px 16px; color: var(--color-brown-dark); text-decoration: none; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem;">Kol Çantası</a>
+                        <a href="index.html#cat-anahtarlik" style="display: block; padding: 12px 16px; color: var(--color-brown-dark); text-decoration: none; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem;">Anahtarlık</a>
+                        <a href="index.html#cat-amigurumi" style="display: block; padding: 12px 16px; color: var(--color-brown-dark); text-decoration: none; font-size: 0.95rem;">Amigurumi</a>
+                    </div>
+                </div>
                 <a href="index.html#why-us">Neden Biz?</a>
+                <a href="galeri.html" class="active">Galeri</a>
             </nav>
             <div class="nav-actions">
                 <a href="https://www.shopier.com/ElegantCrochet" target="_blank" class="btn btn-outline">Shopier'de İncele</a>
@@ -86,11 +97,20 @@
         </div>
         <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobile-menu">
-            <a href="index.html#hero">Ana Sayfa</a>
             <a href="index.html#story">Hikayemiz</a>
-            <a href="index.html#products">Ürünler</a>
+            <div style="padding: 10px 0; font-weight: 500; color: var(--color-brown-dark);">Kategoriler <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></div>
+            <div class="mobile-subcategories" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px;">
+                <a href="index.html#cat-polyester" style="font-size: 1rem; padding: 5px 0 5px 20px; font-weight: 400;">- Polyester Supla Takımları</a>
+                <a href="index.html#cat-koton" style="font-size: 1rem; padding: 5px 0 5px 20px; font-weight: 400;">- Koton Supla Takımları</a>
+                <a href="index.html#cat-cocuk" style="font-size: 1rem; padding: 5px 0 5px 20px; font-weight: 400;">- Çocuk Çantaları</a>
+                <a href="index.html#cat-runner" style="font-size: 1rem; padding: 5px 0 5px 20px; font-weight: 400;">- Runner</a>
+                <a href="index.html#cat-kol" style="font-size: 1rem; padding: 5px 0 5px 20px; font-weight: 400;">- Kol Çantası</a>
+                <a href="index.html#cat-anahtarlik" style="font-size: 1rem; padding: 5px 0 5px 20px; font-weight: 400;">- Anahtarlık</a>
+                <a href="index.html#cat-amigurumi" style="font-size: 1rem; padding: 5px 0 5px 20px; font-weight: 400;">- Amigurumi</a>
+            </div>
             <a href="index.html#why-us">Neden Biz?</a>
-            <a href="https://www.shopier.com/ElegantCrochet" target="_blank">Shopier'de İncele</a>
+            <a href="galeri.html" class="active">Galeri</a>
+            <a href="https://www.shopier.com/ElegantCrochet" target="_blank" style="margin-top: 15px;" class="btn btn-primary">Shopier'de İncele</a>
         </div>
     </header>
 
