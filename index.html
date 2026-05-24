@@ -82,15 +82,26 @@
 
       gtag('config', 'G-1TCJSLLE19');
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body class="no-scroll">
-    <!-- Preloader -->
+    <!-- Splash Screen / Preloader -->
     <div class="preloader" id="preloader">
-        <div class="preloader-content">
-            <h1 class="preloader-logo">Elegant Crochet</h1>
-            <div class="preloader-line"></div>
+        <div class="preloader-content splash-content">
+            <h1 class="preloader-logo splash-logo">Elegant Crochet</h1>
+            <p class="splash-subtitle">Annemin Elişi Dünyasına Hoşgeldiniz</p>
+            <div class="splash-line"></div>
+            <button id="enter-site-btn" class="btn btn-primary premium-btn splash-btn">Koleksiyonu Keşfet</button>
         </div>
     </div>
+    
+    <!-- Audio Elements -->
+    <audio id="audio-applause" preload="auto">
+        <source src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Applause.ogg" type="audio/ogg">
+    </audio>
+    <audio id="audio-music" preload="auto">
+        <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
+    </audio>
     <!-- Navbar -->
     <header class="navbar" id="navbar">
         <div class="nav-container">

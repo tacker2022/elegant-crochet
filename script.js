@@ -1,4 +1,4 @@
-// --- 0. Preloader Logic ---
+// --- 0. Splash Screen / Preloader Logic ---
 const hidePreloader = () => {
     const preloader = document.getElementById('preloader');
     if (preloader && !preloader.classList.contains('hidden')) {
@@ -7,17 +7,50 @@ const hidePreloader = () => {
     }
 };
 
-// Check if page is already loaded, otherwise listen to load event
-if (document.readyState === 'complete') {
-    setTimeout(hidePreloader, 1000);
-} else {
-    window.addEventListener('load', () => {
-        setTimeout(hidePreloader, 1000);
+const enterBtn = document.getElementById('enter-site-btn');
+const audioApplause = document.getElementById('audio-applause');
+const audioMusic = document.getElementById('audio-music');
+
+if (enterBtn) {
+    enterBtn.addEventListener('click', () => {
+        // Play Audio
+        if (audioApplause) audioApplause.play().catch(e => console.log('Audio play failed:', e));
+        if (audioMusic) {
+            audioMusic.volume = 0.5;
+            audioMusic.play().catch(e => console.log('Audio play failed:', e));
+        }
+
+        // Fire Confetti
+        if (typeof confetti === 'function') {
+            var duration = 3000;
+            var end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 5,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: ['#ffc0cb', '#ff69b4', '#ffffff', '#ffd700']
+                });
+                confetti({
+                    particleCount: 5,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: ['#ffc0cb', '#ff69b4', '#ffffff', '#ffd700']
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
+
+        // Hide screen after a tiny delay to allow confetti to start
+        setTimeout(hidePreloader, 400);
     });
 }
-
-// Safety fallback: hide preloader after maximum 3 seconds regardless of resource states
-setTimeout(hidePreloader, 3000);
 
 document.addEventListener('DOMContentLoaded', () => {
     
