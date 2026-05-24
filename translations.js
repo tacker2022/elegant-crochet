@@ -242,6 +242,7 @@ const categoryTranslations = {
     "Gözlük Kılıfları": "Glasses Cases",
     "Runner": "Table Runners",
     "Kol Çantası": "Shoulder Bags",
+    "Çocuk & Yetişkin Çantaları": "Kids & Adult Bags",
     "Anahtarlık": "Keychains",
     "Amigurumi": "Amigurumi"
 };
