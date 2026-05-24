@@ -2030,3 +2030,30 @@ a.premium-footer-link:hover { opacity: 0.7; padding-left: 5px; color: var(--colo
     letter-spacing: 1px;
     color: var(--color-brown);
 }
+
+/* Direct Product Buy Button */
+.btn-product-buy {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.6rem 1.2rem;
+    background-color: var(--color-brown);
+    color: var(--color-white);
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-align: center;
+}
+
+.btn-product-buy:hover {
+    background-color: var(--color-brown-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(118, 93, 76, 0.2);
+    color: var(--color-white);
+}
+
+.btn-product-buy i {
+    margin-right: 0.5rem;
+}
