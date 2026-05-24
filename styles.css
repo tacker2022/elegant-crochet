@@ -1342,6 +1342,32 @@ a.premium-footer-link:hover { opacity: 0.7; padding-left: 5px; color: var(--colo
     }
 }
 
+/* --- Mute Button --- */
+.mute-btn {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background: var(--color-white);
+    color: var(--color-brown-dark);
+    border: 1px solid var(--color-brown-light);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.mute-btn:hover {
+    transform: scale(1.1);
+    background: var(--color-brown);
+    color: var(--color-white);
+}
+
 /* --- WhatsApp Floating Button --- */
 .whatsapp-float {
     position: fixed;

@@ -10,9 +10,14 @@ const hidePreloader = () => {
 const enterBtn = document.getElementById('enter-site-btn');
 const audioApplause = document.getElementById('audio-applause');
 const audioMusic = document.getElementById('audio-music');
+const muteBtn = document.getElementById('mute-btn');
 
 if (enterBtn) {
     enterBtn.addEventListener('click', () => {
+        // Show mute button
+        if (muteBtn) {
+            muteBtn.style.display = 'flex';
+        }
         // Play Audio
         if (audioApplause) audioApplause.play().catch(e => console.log('Audio play failed:', e));
         if (audioMusic) {
@@ -49,6 +54,23 @@ if (enterBtn) {
 
         // Hide screen after a tiny delay to allow confetti to start
         setTimeout(hidePreloader, 400);
+    });
+}
+
+// --- Mute Button Logic ---
+if (muteBtn) {
+    muteBtn.addEventListener('click', () => {
+        if (audioMusic) {
+            audioMusic.muted = !audioMusic.muted;
+            const icon = muteBtn.querySelector('i');
+            if (audioMusic.muted) {
+                icon.classList.remove('fa-volume-up');
+                icon.classList.add('fa-volume-mute');
+            } else {
+                icon.classList.remove('fa-volume-mute');
+                icon.classList.add('fa-volume-up');
+            }
+        }
     });
 }
 
