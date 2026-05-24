@@ -637,4 +637,42 @@ document.addEventListener('DOMContentLoaded', () => {
             closeFeedLightbox();
         }
     });
+
+    // --- 8. YouTube Dynamic Showcase Integration ---
+    const youtubeGrid = document.getElementById('youtube-grid');
+    if (youtubeGrid) {
+        fetch('/api/youtube')
+            .then(response => {
+                if (!response.ok) throw new Error('YouTube API request failed');
+                return response.json();
+            })
+            .then(res => {
+                if (res.success && res.data && res.data.length > 0) {
+                    youtubeGrid.innerHTML = ''; // Clear fallback iframes
+                    
+                    res.data.forEach((video, index) => {
+                        const videoContainer = document.createElement('div');
+                        videoContainer.className = `video-container reveal reveal-up fade-delay-${index + 1}`;
+                        
+                        const iframe = document.createElement('iframe');
+                        iframe.src = `https://www.youtube.com/embed/${video.videoId}?vq=hd1080`;
+                        iframe.title = video.title || `Elegant Crochet Video ${index + 1}`;
+                        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+                        iframe.allowFullscreen = true;
+                        
+                        videoContainer.appendChild(iframe);
+                        youtubeGrid.appendChild(videoContainer);
+                        
+                        // Register new dynamic element with scroll reveal observer
+                        if (typeof revealObserver !== 'undefined') {
+                            revealObserver.observe(videoContainer);
+                        }
+                    });
+                }
+            })
+            .catch(error => {
+                console.warn('YouTube API error, using static fallback videos:', error);
+            });
+    }
 });
+
