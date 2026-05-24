@@ -206,7 +206,7 @@ h1, h2, h3, h4, h5, h6 {
 .logo {
     font-family: var(--font-script);
     font-size: 2.2rem;
-    color: var(--color-white);
+    color: var(--color-brown-dark);
     font-weight: 400;
     transition: var(--transition);
 }
@@ -219,7 +219,7 @@ h1, h2, h3, h4, h5, h6 {
 .nav-links a {
     font-size: 0.95rem;
     font-weight: 500;
-    color: var(--color-white);
+    color: var(--color-brown-dark);
     text-transform: uppercase;
     letter-spacing: 1px;
     position: relative;
@@ -246,7 +246,7 @@ h1, h2, h3, h4, h5, h6 {
     background: none;
     border: none;
     font-size: 1.5rem;
-    color: var(--color-white);
+    color: var(--color-brown-dark);
     cursor: pointer;
     transition: var(--transition);
 }
