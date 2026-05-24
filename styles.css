@@ -1256,8 +1256,8 @@ a.premium-footer-link:hover { opacity: 0.7; padding-left: 5px; color: var(--colo
 .top-bar {
     background-color: var(--color-brown);
     color: var(--color-white);
-    font-size: 0.85rem;
-    padding: 8px 0;
+    font-size: 1rem;
+    padding: 12px 0;
     display: flex;
     align-items: center;
     position: relative;
@@ -1266,23 +1266,26 @@ a.premium-footer-link:hover { opacity: 0.7; padding-left: 5px; color: var(--colo
 
 .top-bar-inner {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    text-align: center;
 }
 
 .top-bar-text {
-    letter-spacing: 0.5px;
-    font-weight: 300;
+    letter-spacing: 1px;
+    font-weight: 400;
 }
 
 .top-social-icons {
     display: flex;
-    gap: 15px;
+    gap: 20px;
 }
 
 .top-social-icons a {
     color: var(--color-white);
-    font-size: 1rem;
+    font-size: 1.3rem;
     transition: var(--transition);
 }
 
