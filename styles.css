@@ -980,70 +980,7 @@ h1, h2, h3, h4, h5, h6 {
     border: none;
 }
 
-/* ==============================
-   Categories Section
-============================== */
-.categories {
-    background-color: var(--color-white);
-}
 
-.category-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
-
-.category-card {
-    display: block;
-    padding: 3rem 2rem;
-    text-align: center;
-    background-color: var(--color-bg);
-    border: 1px solid rgba(201, 134, 147, 0.2);
-    border-radius: 8px;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    transition: var(--transition);
-}
-
-.category-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: var(--color-brown);
-    z-index: -1;
-    transform: scaleY(0);
-    transform-origin: bottom;
-    transition: transform 0.4s ease;
-}
-
-.category-card:hover {
-    border-color: var(--color-brown);
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-md);
-}
-
-.category-card:hover::before {
-    transform: scaleY(1);
-}
-
-.category-content h4 {
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-    color: var(--color-brown-dark);
-    transition: var(--transition);
-}
-
-.category-content p {
-    font-size: 0.95rem;
-    color: var(--color-text-light);
-    transition: var(--transition);
-}
-
-.category-card:hover .category-content h4,
-.category-card:hover .category-content p {
-    color: var(--color-white);
-}
 
 /* ==============================
    Animations (Intersection Observer)
