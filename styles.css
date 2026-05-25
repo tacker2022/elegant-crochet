@@ -2398,7 +2398,7 @@ a.premium-footer-link:hover { opacity: 0.7; padding-left: 5px; color: var(--colo
 /* --- Simulated Viewer Count Widget --- */
 .viewer-count-widget {
     position: fixed;
-    bottom: 30px;
+    bottom: 90px;
     left: 30px;
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(10px);
@@ -2487,7 +2487,7 @@ a.premium-footer-link:hover { opacity: 0.7; padding-left: 5px; color: var(--colo
 
 @media (max-width: 768px) {
     .viewer-count-widget {
-        bottom: 20px;
+        bottom: 80px;
         left: 20px;
         padding: 8px 16px;
         gap: 8px;
