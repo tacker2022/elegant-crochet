@@ -106,16 +106,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (mobileMenu.classList.contains('active')) {
             icon.classList.remove('fa-bars');
             icon.classList.add('fa-times');
-            // Change color if not scrolled because it opens over light background
-            if(window.scrollY < 50) {
-              icon.style.color = 'var(--color-brown-dark)';
-            }
         } else {
             icon.classList.remove('fa-times');
             icon.classList.add('fa-bars');
-            if(window.scrollY < 50) {
-              icon.style.color = 'var(--color-white)';
-            }
         }
     });
     
@@ -127,9 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const icon = mobileMenuBtn.querySelector('i');
             icon.classList.remove('fa-times');
             icon.classList.add('fa-bars');
-            if(window.scrollY < 50) {
-                icon.style.color = 'var(--color-white)';
-            }
         });
     });
 
