@@ -98,6 +98,9 @@ const translations = {
         "footer-title-explore": "Keşfedin",
         "footer-title-explore-galeri": "Hızlı Bağlantılar",
         "footer-link-home": "Ana Sayfa",
+        
+        // Viewer Count
+        "viewer-count": "kişi şu an siteyi inceliyor",
         "footer-link-collections": "Koleksiyonlar",
         "footer-link-videos": "Videolar",
         "footer-title-contact": "İletişim",
@@ -215,6 +218,9 @@ const translations = {
         "footer-title-explore": "Explore",
         "footer-title-explore-galeri": "Quick Links",
         "footer-link-home": "Home",
+        
+        // Viewer Count
+        "viewer-count": "people are viewing the site right now",
         "footer-link-collections": "Collections",
         "footer-link-videos": "Videos",
         "footer-title-contact": "Contact",
@@ -264,7 +270,7 @@ const categoryTranslations = {
     "Kol Çantası": "Shoulder Bags",
     "Çocuk & Yetişkin Çantaları": "Kids & Adult Bags",
     "Anahtarlık": "Keychains",
-    "Anahtar & Charm": "Keychains & Charms",
+    "Anahtarlık & Charm": "Keychains & Charms",
     "Amigurumi": "Amigurumi"
 };
 

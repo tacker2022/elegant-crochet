@@ -763,3 +763,53 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
+// --- 11. Simulated Viewer Count Widget ---
+document.addEventListener('DOMContentLoaded', () => {
+    const viewerWidget = document.getElementById('viewer-count-widget');
+    const viewerNumberEl = document.getElementById('viewer-number');
+    
+    if (viewerWidget && viewerNumberEl) {
+        // Show widget after 2 seconds
+        setTimeout(() => {
+            viewerWidget.classList.remove('hidden');
+        }, 2000);
+
+        // Initial base number (between 4 and 9)
+        let currentViewers = Math.floor(Math.random() * 6) + 4;
+        viewerNumberEl.textContent = currentViewers;
+
+        // Function to randomly update the number
+        const updateViewers = () => {
+            // Randomly decide to increase, decrease, or stay
+            const change = Math.floor(Math.random() * 3) - 1; // -1, 0, or 1
+            
+            // Randomly maybe add 2 or subtract 2 to make it more dynamic sometimes
+            const largerChange = Math.random() > 0.8 ? (Math.random() > 0.5 ? 2 : -2) : 0;
+            
+            currentViewers = currentViewers + change + largerChange;
+
+            // Keep the number realistic (between 3 and 18)
+            if (currentViewers < 3) currentViewers = 3 + Math.floor(Math.random() * 2);
+            if (currentViewers > 18) currentViewers = 18 - Math.floor(Math.random() * 2);
+
+            // Animate the change
+            viewerNumberEl.classList.add('changed');
+            
+            setTimeout(() => {
+                viewerNumberEl.textContent = currentViewers;
+            }, 150); // Change text midway through animation
+
+            setTimeout(() => {
+                viewerNumberEl.classList.remove('changed');
+            }, 300);
+
+            // Schedule next update (between 4 and 10 seconds)
+            const nextUpdate = Math.floor(Math.random() * 6000) + 4000;
+            setTimeout(updateViewers, nextUpdate);
+        };
+
+        // Start the cycle after 5 seconds
+        setTimeout(updateViewers, 5000);
+    }
+});

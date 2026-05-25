@@ -362,4 +362,44 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
         });
     }
+
+    // --- 10. Simulated Viewer Count Widget ---
+    const viewerWidget = document.getElementById('viewer-count-widget');
+    const viewerNumberEl = document.getElementById('viewer-number');
+    
+    if (viewerWidget && viewerNumberEl) {
+        // Show widget after 2 seconds
+        setTimeout(() => {
+            viewerWidget.classList.remove('hidden');
+        }, 2000);
+
+        // Initial base number (between 4 and 9)
+        let currentViewers = Math.floor(Math.random() * 6) + 4;
+        viewerNumberEl.textContent = currentViewers;
+
+        // Function to randomly update the number
+        const updateViewers = () => {
+            const change = Math.floor(Math.random() * 3) - 1; // -1, 0, or 1
+            const largerChange = Math.random() > 0.8 ? (Math.random() > 0.5 ? 2 : -2) : 0;
+            currentViewers = currentViewers + change + largerChange;
+
+            if (currentViewers < 3) currentViewers = 3 + Math.floor(Math.random() * 2);
+            if (currentViewers > 18) currentViewers = 18 - Math.floor(Math.random() * 2);
+
+            viewerNumberEl.classList.add('changed');
+            
+            setTimeout(() => {
+                viewerNumberEl.textContent = currentViewers;
+            }, 150);
+
+            setTimeout(() => {
+                viewerNumberEl.classList.remove('changed');
+            }, 300);
+
+            const nextUpdate = Math.floor(Math.random() * 6000) + 4000;
+            setTimeout(updateViewers, nextUpdate);
+        };
+
+        setTimeout(updateViewers, 5000);
+    }
 });
