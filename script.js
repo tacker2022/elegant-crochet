@@ -813,3 +813,52 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(updateViewers, 5000);
     }
 });
+
+// --- 12. Mobile Menu Subcategories Toggle ---
+document.addEventListener('DOMContentLoaded', () => {
+    const productsLink = document.querySelector('.mobile-menu a[href="#products"]');
+    const subCategories = document.querySelector('.mobile-subcategories');
+    
+    if (productsLink && subCategories) {
+        // Initially hide them to save space, or keep them visible but allow toggling
+        // Let's keep them hidden initially for a cleaner look
+        subCategories.style.display = 'none';
+        
+        // Add a dropdown icon to the products link
+        if (!productsLink.querySelector('i')) {
+            productsLink.innerHTML += ' <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px; transition: transform 0.3s ease;"></i>';
+        }
+        
+        productsLink.addEventListener('click', (e) => {
+            // Prevent default scroll if they just want to open the menu
+            // But we also want to scroll to products. 
+            // Let's just toggle the menu and let it scroll.
+            if (subCategories.style.display === 'none') {
+                subCategories.style.display = 'flex';
+                productsLink.querySelector('i').style.transform = 'rotate(180deg)';
+                e.preventDefault(); // Don't scroll immediately, let them see the categories
+            } else {
+                subCategories.style.display = 'none';
+                productsLink.querySelector('i').style.transform = 'rotate(0deg)';
+            }
+        });
+
+        // Make sure clicking a subcategory closes the mobile menu
+        const subLinks = subCategories.querySelectorAll('a');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+
+        subLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if(mobileMenu) mobileMenu.classList.remove('active');
+                if(mobileMenuBtn) {
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if(icon) {
+                        icon.classList.add('fa-bars');
+                        icon.classList.remove('fa-times');
+                    }
+                }
+            });
+        });
+    }
+});

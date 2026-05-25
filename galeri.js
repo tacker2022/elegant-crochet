@@ -402,4 +402,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(updateViewers, 5000);
     }
+
+    // --- 11. Mobile Menu Subcategories Toggle ---
+    const productsLink = document.querySelector('.mobile-menu a[href="index.html#products"]');
+    const subCategories = document.querySelector('.mobile-subcategories');
+    
+    if (productsLink && subCategories) {
+        subCategories.style.display = 'none';
+        
+        if (!productsLink.querySelector('i')) {
+            productsLink.innerHTML += ' <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px; transition: transform 0.3s ease;"></i>';
+        }
+        
+        productsLink.addEventListener('click', (e) => {
+            if (subCategories.style.display === 'none') {
+                subCategories.style.display = 'flex';
+                productsLink.querySelector('i').style.transform = 'rotate(180deg)';
+                e.preventDefault();
+            } else {
+                subCategories.style.display = 'none';
+                productsLink.querySelector('i').style.transform = 'rotate(0deg)';
+            }
+        });
+
+        const subLinks = subCategories.querySelectorAll('a');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+
+        subLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if(mobileMenu) mobileMenu.classList.remove('active');
+                if(mobileMenuBtn) {
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if(icon) {
+                        icon.classList.add('fa-bars');
+                        icon.classList.remove('fa-times');
+                    }
+                }
+            });
+        });
+    }
 });
