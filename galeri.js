@@ -295,16 +295,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Open custom glassmorphism share modal directly for a fully branded premium experience
             if (shareModal) {
-                const shareWa = document.getElementById('share-wa');
-                const sharePin = document.getElementById('share-pin');
-                const shareFb = document.getElementById('share-fb');
-                const currentUrl = window.location.href;
-                const shareText = `${document.title} - ${currentUrl}`;
-
-                if (shareWa) shareWa.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
-                if (sharePin) sharePin.href = `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(currentUrl)}&media=${encodeURIComponent('https://elegantcrochet.net/assets/about.jpg')}&description=${encodeURIComponent(document.title)}`;
-                if (shareFb) shareFb.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`;
-
                 shareModal.classList.add('active');
             }
         });
@@ -319,6 +309,37 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.target === shareModal) {
                 closeShareModal();
             }
+        });
+    }
+
+    // Direct click listeners for the share options to ensure they always work
+    const shareWa = document.getElementById('share-wa');
+    const sharePin = document.getElementById('share-pin');
+    const shareFb = document.getElementById('share-fb');
+
+    if (shareWa) {
+        shareWa.addEventListener('click', (e) => {
+            e.preventDefault();
+            const url = window.location.href;
+            const text = `${document.title} - ${url}`;
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
+        });
+    }
+
+    if (sharePin) {
+        sharePin.addEventListener('click', (e) => {
+            e.preventDefault();
+            const url = window.location.href;
+            const media = 'https://elegantcrochet.net/assets/about.jpg';
+            window.open(`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(url)}&media=${encodeURIComponent(media)}&description=${encodeURIComponent(document.title)}`, '_blank');
+        });
+    }
+
+    if (shareFb) {
+        shareFb.addEventListener('click', (e) => {
+            e.preventDefault();
+            const url = window.location.href;
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
         });
     }
 
