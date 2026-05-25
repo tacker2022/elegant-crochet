@@ -732,6 +732,58 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const shareIg = document.getElementById('share-ig');
+    if (shareIg) {
+        shareIg.addEventListener('click', (e) => {
+            e.preventDefault();
+            const url = window.location.href;
+            
+            if (navigator.share && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                navigator.share({
+                    title: document.title,
+                    text: 'Zarif el emeği tığ işi tasarımlar. ✨',
+                    url: url
+                })
+                .then(() => closeShareModal())
+                .catch(err => console.log('Error sharing:', err));
+            } else {
+                navigator.clipboard.writeText(url)
+                    .then(() => {
+                        closeShareModal();
+                        
+                        const toastMsg = document.getElementById('toast-message');
+                        if (toastMsg) {
+                            const isEn = (window.currentLang === 'en');
+                            toastMsg.innerText = isEn 
+                                ? "Link copied! Redirecting to Instagram profile. ✨" 
+                                : "Bağlantı kopyalandı! Instagram hesabımıza yönlendiriliyorsunuz. ✨";
+                        }
+                        
+                        if (toastAlert) {
+                            toastAlert.classList.add('show');
+                            setTimeout(() => {
+                                toastAlert.classList.remove('show');
+                                setTimeout(() => {
+                                    if (toastMsg) {
+                                        const isEn = (window.currentLang === 'en');
+                                        toastMsg.innerText = isEn ? "Link copied! ✨" : "Bağlantı kopyalandı! ✨";
+                                    }
+                                }, 300);
+                            }, 4000);
+                        }
+                        
+                        setTimeout(() => {
+                            window.open('https://www.instagram.com/elegantcrochet2026/', '_blank');
+                        }, 1200);
+                    })
+                    .catch(err => {
+                        console.error('Could not copy link:', err);
+                        window.open('https://www.instagram.com/elegantcrochet2026/', '_blank');
+                    });
+            }
+        });
+    }
+
     if (shareCopyBtn) {
         shareCopyBtn.addEventListener('click', () => {
             navigator.clipboard.writeText(window.location.href)

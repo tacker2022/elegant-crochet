@@ -118,8 +118,10 @@ const translations = {
         "share-whatsapp": "WhatsApp ile Gönder",
         "share-pinterest": "Pinterest'te Paylaş",
         "share-facebook": "Facebook'ta Paylaş",
+        "share-instagram": "Instagram'da Paylaş",
         "share-copy": "Bağlantıyı Kopyala",
-        "toast-copied": "Bağlantı kopyalandı! ✨"
+        "toast-copied": "Bağlantı kopyalandı! ✨",
+        "toast-copied-ig": "Bağlantı kopyalandı! Instagram hesabımıza yönlendiriliyorsunuz. ✨"
     },
     en: {
         // Preloader / Splash
@@ -238,8 +240,10 @@ const translations = {
         "share-whatsapp": "Share via WhatsApp",
         "share-pinterest": "Share on Pinterest",
         "share-facebook": "Share on Facebook",
+        "share-instagram": "Share on Instagram",
         "share-copy": "Copy Link",
-        "toast-copied": "Link copied! ✨"
+        "toast-copied": "Link copied! ✨",
+        "toast-copied-ig": "Link copied! Redirecting to our Instagram profile. ✨"
     }
 };
 

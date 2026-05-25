@@ -1638,6 +1638,16 @@ a.premium-footer-link:hover { opacity: 0.7; padding-left: 5px; color: var(--colo
     border-color: #1877f2;
 }
 
+.share-option-btn.instagram-share {
+    color: #e1306c;
+    border-color: rgba(225, 48, 108, 0.2);
+}
+.share-option-btn.instagram-share:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: var(--color-white);
+    border-color: transparent;
+}
+
 .share-option-btn.copy-share {
     color: var(--color-brown-dark);
     border-color: rgba(139, 115, 85, 0.3);
