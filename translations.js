@@ -318,7 +318,7 @@ let currentLang = localStorage.getItem('language') || 'tr';
 
 function translateProducts(lang) {
     // 1. Translate category headers
-    document.querySelectorAll('.category-title, .mobile-menu div, .dropdown-content a, .mobile-subcategories a').forEach(el => {
+    document.querySelectorAll('.category-title, .mobile-items-list a, .dropdown-content a, .mobile-subcategories a').forEach(el => {
         let originalText = el.getAttribute('data-original-text');
         if (!originalText) {
             originalText = el.innerText.trim().replace(/^- /, ''); // clean mobile dashes
