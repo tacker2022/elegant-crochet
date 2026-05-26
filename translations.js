@@ -379,25 +379,28 @@ function translateProducts(lang) {
 }
 
 function setLanguage(lang) {
-    if (!translations[lang]) return;
+    if (lang !== 'tr' && lang !== 'en') return;
     
     currentLang = lang;
     localStorage.setItem('language', lang);
     document.documentElement.lang = lang;
 
+    const activeTranslations = new Map(Object.entries(lang === 'en' ? translations.en : translations.tr));
+    const activePlaceholders = new Map(Object.entries(lang === 'en' ? placeholders.en : placeholders.tr));
+
     // 1. Static element translations
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (translations[lang][key]) {
-            el.innerText = translations[lang][key];
+        if (key && activeTranslations.has(key)) {
+            el.innerText = activeTranslations.get(key);
         }
     });
 
     // 2. Placeholders
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const key = el.getAttribute('data-i18n-placeholder');
-        if (placeholders[lang][key]) {
-            el.placeholder = placeholders[lang][key];
+        if (key && activePlaceholders.has(key)) {
+            el.placeholder = activePlaceholders.get(key);
         }
     });
 
