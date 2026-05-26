@@ -15,14 +15,15 @@ const categories = [
     { id: 'cat-gozluk', title: 'Gözlük Kılıfları', keywords: [/gözlük/i, /gozluk/i] }
 ];
 
-const categorizedProducts = {};
-categories.forEach(c => categorizedProducts[c.id] = []);
+const categorizedProducts = new Map();
+categories.forEach(c => categorizedProducts.set(c.id, []));
 
 products.forEach(p => {
     let placed = false;
     for (const cat of categories) {
         if (cat.keywords.some(kw => kw.test(p.title))) {
-            categorizedProducts[cat.id].push(p);
+            const list = categorizedProducts.get(cat.id);
+            if (list) list.push(p);
             placed = true;
         }
     }
@@ -30,7 +31,8 @@ products.forEach(p => {
     if (!placed) {
         console.log("Uncategorized: ", p.title);
         // Put in amigurumi by default
-        categorizedProducts['cat-amigurumi'].push(p);
+        const list = categorizedProducts.get('cat-amigurumi');
+        if (list) list.push(p);
     }
 });
 
@@ -44,7 +46,7 @@ let htmlOutput = `    <section class="products section-padding" id="products">
 `;
 
 categories.forEach((cat, index) => {
-    const items = categorizedProducts[cat.id];
+    const items = categorizedProducts.get(cat.id) || [];
     const marginTop = index === 0 ? '' : ' style="margin-top: 5rem;"';
     
     htmlOutput += `
