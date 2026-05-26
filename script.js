@@ -399,8 +399,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const captionContainer = document.getElementById('insta-lightbox-caption');
         const instaLink = document.getElementById('insta-lightbox-instagram-link');
 
-        if (loadedInstagramItems && loadedInstagramItems[index]) {
-            const item = loadedInstagramItems[index];
+        const item = loadedInstagramItems ? loadedInstagramItems.at(index) : undefined;
+        if (item) {
             mediaContainer.innerHTML = '';
             
             if (item.media_type === 'VIDEO') {
