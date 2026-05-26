@@ -70,32 +70,30 @@ categories.forEach((cat, index) => {
     const items = categorizedProducts.get(cat.id) || [];
     const marginTop = index === 0 ? '' : ' style="margin-top: 5rem;"';
     
-    htmlOutput += `
-            <!-- ${cat.title} -->
-            <div class="category-section" id="${cat.id}"${marginTop}>
-                <h3 class="category-title reveal">${cat.title}</h3>
-                <div class="product-grid">
-`;
+    htmlOutput += '\n' +
+        '            <!-- ' + cat.title + ' -->\n' +
+        '            <div class="category-section" id="' + cat.id + '"' + marginTop + '>\n' +
+        '                <h3 class="category-title reveal">' + cat.title + '</h3>\n' +
+        '                <div class="product-grid">\n';
 
     if (items.length === 0) {
         htmlOutput += `                    <p style="grid-column: 1 / -1; text-align: center; color: var(--color-text-light); padding: 2rem;">Şu an bu kategoride aktif ürün bulunmamaktadır.</p>\n`;
     } else {
         items.forEach((item, i) => {
             const delay = (i % 4) + 1;
-            htmlOutput += `                    <div class="product-card reveal reveal-up fade-delay-${delay}">
-                        <div class="product-img-wrapper">
-                            <img src="${item.image}" alt="${item.title}">
-                            <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="${item.image}" data-caption="${item.title}">Resmi Gör</button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h4>${item.title}</h4>
-                            <p class="price">${item.price}</p>
-                            <a href="${item.url}" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>
-                        </div>
-                    </div>
-`;
+            htmlOutput += '                    <div class="product-card reveal reveal-up fade-delay-' + delay + '">\n' +
+                '                        <div class="product-img-wrapper">\n' +
+                '                            <img src="' + item.image + '" alt="' + item.title + '">\n' +
+                '                            <div class="product-overlay">\n' +
+                '                                <button class="btn btn-outline compact lightbox-trigger" data-image="' + item.image + '" data-caption="' + item.title + '">Resmi Gör</button>\n' +
+                '                            </div>\n' +
+                '                        </div>\n' +
+                '                        <div class="product-info">\n' +
+                '                            <h4>' + item.title + '</h4>\n' +
+                '                            <p class="price">' + item.price + '</p>\n' +
+                '                            <a href="' + item.url + '" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> Hemen Satın Al</a>\n' +
+                '                        </div>\n' +
+                '                    </div>\n';
         });
     }
 

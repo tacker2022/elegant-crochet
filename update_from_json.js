@@ -49,12 +49,11 @@ categories.forEach((cat, index) => {
     const items = categorizedProducts.get(cat.id) || [];
     const marginTop = index === 0 ? '' : ' style="margin-top: 5rem;"';
     
-    htmlOutput += `
-            <!-- ${cat.title} -->
-            <div class="category-section" id="${cat.id}"${marginTop}>
-                <h3 class="category-title reveal">${cat.title}</h3>
-                <div class="product-grid">
-`;
+    htmlOutput += '\n' +
+        '            <!-- ' + cat.title + ' -->\n' +
+        '            <div class="category-section" id="' + cat.id + '"' + marginTop + '>\n' +
+        '                <h3 class="category-title reveal">' + cat.title + '</h3>\n' +
+        '                <div class="product-grid">\n';
 
     if (items.length === 0) {
         htmlOutput += `                    <p style="grid-column: 1 / -1; text-align: center; color: var(--color-text-light); padding: 2rem;">Şu an bu kategoride aktif ürün bulunmamaktadır.</p>\n`;
@@ -63,24 +62,27 @@ categories.forEach((cat, index) => {
             const delay = (i % 4) + 1;
             
             // Handle sold out items
-            const badgeHtml = item.isSoldOut ? `<div class="product-overlay" style="background: rgba(255,255,255,0.7); display:flex; align-items:center; justify-content:center;"><span style="background:#c98693; color:white; padding:5px 15px; border-radius:20px; font-weight:bold;" data-i18n="sold-out">Tükendi</span></div>` : `                            <div class="product-overlay">
-                                <button class="btn btn-outline compact lightbox-trigger" data-image="${item.image}" data-caption="${item.title}"><span data-i18n="view-image">Resmi Gör</span></button>
-                            </div>`;
+            const badgeHtml = item.isSoldOut ? 
+                '<div class="product-overlay" style="background: rgba(255,255,255,0.7); display:flex; align-items:center; justify-content:center;"><span style="background:#c98693; color:white; padding:5px 15px; border-radius:20px; font-weight:bold;" data-i18n="sold-out">Tükendi</span></div>' : 
+                '                            <div class="product-overlay">\n' +
+                '                                <button class="btn btn-outline compact lightbox-trigger" data-image="' + item.image + '" data-caption="' + item.title + '"><span data-i18n="view-image">Resmi Gör</span></button>\n' +
+                '                            </div>';
                             
-            const buyButtonHtml = item.isSoldOut ? `<a href="${item.url}" target="_blank" class="btn-product-buy" style="background-color: #ddd; color: #666; cursor: not-allowed; pointer-events: none;"><i class="fas fa-shopping-bag"></i> <span data-i18n="sold-out">Tükendi</span></a>` : `<a href="${item.url}" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>`;
+            const buyButtonHtml = item.isSoldOut ? 
+                '<a href="' + item.url + '" target="_blank" class="btn-product-buy" style="background-color: #ddd; color: #666; cursor: not-allowed; pointer-events: none;"><i class="fas fa-shopping-bag"></i> <span data-i18n="sold-out">Tükendi</span></a>' : 
+                '<a href="' + item.url + '" target="_blank" class="btn-product-buy"><i class="fas fa-shopping-bag"></i> <span data-i18n="buy-now">Hemen Satın Al</span></a>';
 
-            htmlOutput += `                    <div class="product-card reveal reveal-up fade-delay-${delay}">
-                        <div class="product-img-wrapper">
-                            <img src="${item.image}" alt="${item.title}">
-${badgeHtml}
-                        </div>
-                        <div class="product-info">
-                            <h4>${item.title}</h4>
-                            <p class="price">${item.price}</p>
-                            ${buyButtonHtml}
-                        </div>
-                    </div>
-`;
+            htmlOutput += '                    <div class="product-card reveal reveal-up fade-delay-' + delay + '">\n' +
+                '                        <div class="product-img-wrapper">\n' +
+                '                            <img src="' + item.image + '" alt="' + item.title + '">\n' +
+                '                            ' + badgeHtml + '\n' +
+                '                        </div>\n' +
+                '                        <div class="product-info">\n' +
+                '                            <h4>' + item.title + '</h4>\n' +
+                '                            <p class="price">' + item.price + '</p>\n' +
+                '                            ' + buyButtonHtml + '\n' +
+                '                        </div>\n' +
+                '                    </div>\n';
         });
     }
 
